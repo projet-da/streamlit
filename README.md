@@ -10,3 +10,6 @@
 
 - Modifier les infos du repo puis "Deploy" MAIS NE FONCTIONNE PAS SOUVENT ;(
 ![image](https://github.com/projet-da/streamlit/assets/67692878/1be329cd-9a90-47b7-892e-e7e4a7e0906c)
+
+- L'application démarre
+![image](https://github.com/projet-da/streamlit/assets/67692878/3bf72b9e-4c96-4d9c-8509-68b39e2ebca1)

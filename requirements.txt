@@ -1,7 +1,2 @@
 streamlit
-datetime
-pandas
 st_aggrid
-seaborn
-matplotlib.pyplot
-matplotlib.ticker

@@ -322,6 +322,7 @@ elif page == pages[5]:
 elif page == pages[6]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Modélisation</h1>", unsafe_allow_html=True)
 
+######## Séparation du jeu de données liées aux caractéristiques sélectionnées en un jeu d’entraînement et un jeu de test ################
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Séparation du jeu de données liées aux caractéristiques sélectionnées en un jeu d’entraînement et un jeu de test</h2>", unsafe_allow_html=True)
     st.markdown("""
     
@@ -340,7 +341,8 @@ elif page == pages[6]:
         Les valeurs des caractéristiques du jeu de test sont utilisées pour effectuer des prédictions sur la valeur de la variable cible et les comparer aux véritables valeurs de la variable cible du jeu de test, ce qui permet d’évaluer la précision du modèle.</li>
         </ul>
         """, unsafe_allow_html=True)
-    
+
+######## Séparation des différents types de caractéristiques (catégorielles, numériques, cycliques) ################
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Séparation des différents types de caractéristiques (catégorielles, numériques, cycliques)</h2>", unsafe_allow_html=True)
     st.markdown("""
         <style>
@@ -363,7 +365,8 @@ elif page == pages[6]:
         Une fois les types identifiés, nous avons découpé les jeux de données d’entraînement et de test, contenant les données des différentes caractéristiques, en sous-ensembles liés à chaque type de donnée, afin de pouvoir leur appliquer un traitement différencié (<strong><span style="color: orange;">standardisation</span></strong>  des caractéristiques <strong>numériques et cycliques</strong>, <strong><span style="color: orange;">encodage</span></strong> des caractéristiques <strong>catégorielles</strong>).<br>
         L'objectif de cette démarche est de traiter chaque type de caractéristique de manière optimale pour améliorer la performance du modèle de machine learning, tout en conservant les informations importantes et en réduisant les biais potentiels.<br>
         """, unsafe_allow_html=True)
-    
+
+######## Transformation des données (standardisation, encodage) ################
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Transformation des données (standardisation, encodage)</h2>", unsafe_allow_html=True)
     st.markdown("""
         <style>
@@ -386,7 +389,8 @@ elif page == pages[6]:
         Une fois ces traitements réalisés nous avons réassemblé les caractéristiques transformées en un seul DataFrame utilisé pour entrainer, optimiser et tester les modèles de machine learning.<br>
         """, unsafe_allow_html=True)
     
-    
+
+######## Sélection du type de modélisation (classification ou régression) et des modèles associés ################   
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Sélection du type de modélisation (classification ou régression) et des modèles associés</h2>", unsafe_allow_html=True)
     
     st.markdown("""
@@ -396,7 +400,7 @@ elif page == pages[6]:
         <p class="custom-p">Pour la modélisation nous avons utilisé un jeu de données contenant les caractéristiques liées à <strong>60 000 mobilisations sélectionnées aléatoirement sur 2023</strong>, pour lesquelles nous avons calculé la distance de l'itinéraire le plus court entre la caserne de départ et le lieu d'incident.</p>
         """, unsafe_allow_html=True)
 
-    
+######## Modélisation de type régression ################   
     st.markdown("<h3 style='text-align: left; color: blue; font-size: 20px;'>Modélisation de type régression</h3>", unsafe_allow_html=True)
     
     st.markdown("""
@@ -404,7 +408,7 @@ elif page == pages[6]:
         .custom-p {margin-bottom: -0.1em;}
         </style>
         <p class="custom-p">Nous avons dans un premier temps choisi de travailler sur un problème de <strong>régression</strong> pour <strong><span style="color: orange;">prédire le temps d’arrivée d’un camion de pompiers sur le lieu d’incident</span></strong> à partir du moment où la caserne a été sollicitée pour intervenir. <br>
-        Pour ce problème de régression, la variable cible est la variable AttendanceTimeSeconds, incluant le temps de mobilisation de l’équipage et le temps de trajet entre la caserne mobilisée et le lieu de l’incident. La distribution des valeurs de cette variable cible sur le jeu de données est la suivante :</p>
+        Pour ce problème de régression, la <strong><span style="color: orange;">variable cible</span></strong> est la variable <strong>AttendanceTimeSeconds</strong>, <strong><span style="color: orange;">Temps d'arrivée des pompiers sur le lieu d'incident</span></strong>, incluant le temps de mobilisation de l’équipage et le temps de trajet entre la caserne mobilisée et le lieu de l’incident. <br>La distribution des valeurs de cette variable cible sur le jeu de données est la suivante :</p>
         """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 10])
@@ -417,7 +421,7 @@ elif page == pages[6]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Pour résoudre ce problème de régression, nous avons entrainé et testé les modèles de régression suivants :</p>
+        <p class="custom-p">Pour résoudre ce problème de régression, nous avons entrainé et testé les <strong>modèles de régression</strong> suivants :</p>
         <ul class="custom-ul">
         <li><strong>Régression Linéaire</strong> : Ce modèle suppose une relation linéaire entre les caractéristiques et la cible, ce qui n'est pas toujours le cas dans les données réelles.  Il peut être influencé par les valeurs aberrantes.</li>
         <li><strong>Régression Polynomiale</strong> : Ce modèle est une extension de la régression linéaire tout en permettant de capturer des relations non linéaires entre les caractéristiques et la variable cible en ajoutant des termes polynomiaux.</li>
@@ -428,7 +432,8 @@ elif page == pages[6]:
         <li><strong>SGD Regressor (Stochastic Gradient Descent)</strong> : Ce modèle est un modèle de régression linéaire très efficace pour des ensembles de données de grande taille grâce à son approche incrémentale.</li>
         <li><strong>Huber Regressor</strong> : C'est un modèle est plus robuste aux valeurs aberrantes que la régression linéaire classique grâce à sa fonction de perte moins sensible aux erreurs importantes.</li>
         </ul>   
-        <p class="custom-p"> Pour évaluer et comparer la performance de ces différents modèles de régression nous avons calculé différentes métriques : MAE, MSE, RMSE, R².<br>
+        <p class="custom-p"> Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de régression nous avons calculé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>MAE, MSE, RMSE, R²</strong>.<br>
+        <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Résultats / Classement des modèles de régression</h4>
         Ci-dessous le classement (du plus performant au moins performant) des différents modèles de régression entrainés et testés :</p>
         """, unsafe_allow_html=True)
 
@@ -443,16 +448,20 @@ elif page == pages[6]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p"><strong>>>></strong> Le modèle de régression le plus performant est le modèle <strong>XGBRegressor</strong>, suivi des modèles DecisionTreeRegressor et RandomForestRegressor.<br>
-        Pour le modèle le plus performant, XGBRegressor, la <strong>MAE (écart moyen entre le temps d’arrivée prédit et le temps d’arrivée réel)</strong> est de <strong>57,5 secondes</strong> pour un <strong>temps d'arrivée moyen de 357 secondes</strong>, soit un <strong>écart moyen d’environ 16%</strong> par rapport au temps moyen, ce qui représente un écart significatif, surtout dans un contexte où chaque seconde peut être critique, comme dans les interventions d'urgence.</p>
+        <p class="custom-p"><strong><span style="color: orange;">>>></span></strong>  Le <strong>modèle de régression le plus performant</strong> est le modèle <strong><span style="color: orange;">XGBRegressor</span></strong>, suivi des modèles DecisionTreeRegressor et RandomForestRegressor.<br>
+        Pour le modèle le plus performant, <strong>XGBRegressor</strong>,</p>
+        <ul class="custom-ul">
+        <li>le <strong><span style="color: orange;">R²</span> (coefficient de détermination)</strong> est de <strong>0.66</strong>,</li>
+        <li>la <strong><span style="color: orange;">MAE</span> (écart moyen entre le temps d’arrivée prédit et le temps d’arrivée réel)</strong> est de <strong>57,5 secondes</strong> pour un <strong>temps d'arrivée moyen de 357 secondes</strong>, soit un <strong>écart moyen d’environ 16%</strong> par rapport au temps moyen, ce qui représente un écart significatif, surtout dans un contexte où chaque seconde peut être critique, comme dans les interventions d'urgence.</li>
+        </ul>
         """, unsafe_allow_html=True)
 
     st.markdown("""
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <br>
-        <p class="custom-p">Ci-dessous le <strong>graphe des résidus</strong> liés au modèle XGBRegressor.<br>
+        <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Graphe des résidus (écarts entre valeur prédite et valeur réelle)</h4>
+        <p class="custom-p">Ci-dessous le <strong><span style="color: orange;">graphe des résidus</span></strong> liés au modèle <strong>XGBRegressor</strong>.<br>
         On constate que les écarts entre la valeur prédite et la valeur réelle peut être très importante, parfois de quelques centaines de secondes.</p>
         """, unsafe_allow_html=True)
 
@@ -472,7 +481,8 @@ elif page == pages[6]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong>caractéristiques les plus influentes</strong> dans les prédictions du modèle XGBRegressor.</p>
+        <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
+        <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBRegressor</strong>.</p>
         """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 10])
@@ -499,16 +509,17 @@ elif page == pages[6]:
         """, unsafe_allow_html=True)
 
 
-    
-    st.markdown("<h3 style='text-align: left; color: blue; font-size: 20px;'>Modélisation de type classification</h3>", unsafe_allow_html=True)
+######## Modélisation de type classification ################       
+    st.markdown("<h3 style='text-align: left; color: blue; font-size: 20px;'><br>Modélisation de type classification</h3>", unsafe_allow_html=True)
     
     st.markdown("""
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Malgré l'<strong>ajout de nouvelles caractéristiques</strong> par rapport au jeu de données initial de la LFB, telles que la distance de trajet et les conditions météo, malgré l'<strong>optimisation des hyperparamètres</strong> des modèles, malgré l’utilisation de techniques d’<strong>ensemble learning</strong> comme le <strong>bagging</strong>, nous ne sommes pas parvenus à améliorer significativement les performances des modèles de régression.
-        Au regard du relativement faible niveau de performance (R2, résidus) observé sur les modèles de régression testés, nous avons décidés de compléter notre modélisation par la mise en œuvre de modèles de classification permettant de prédire par exemple si le temps d’arrivée sur un lieu d’incident sera inférieur ou supérieur à 6 min.<br>
-        Pour ce problème de classification, la variable cible est l'atteinte ou non de l’objectif de temps d’arrivée < 6 min. La distribution des valeurs de cette variable cible sur le jeu de données est la suivante :</p>
+        <p class="custom-p">Malgré l'<strong>ajout de nouvelles caractéristiques</strong> par rapport au jeu de données initial de la LFB, telles que la distance de trajet et les conditions météo, malgré l'<strong>optimisation des hyperparamètres</strong> des modèles, malgré l’utilisation de techniques d’<strong>ensemble learning</strong> comme le <strong>bagging</strong>, nous ne sommes pas parvenus à améliorer significativement les performances des modèles de régression.<br>
+        Au regard du relativement faible niveau de performance (R², résidus) observé sur les modèles de régression testés, nous avons décidés de compléter notre modélisation par la mise en œuvre de <strong><span style="color: orange;">modèles de classification</span></strong> permettant de prédire par exemple si le temps d’arrivée sur un lieu d’incident sera inférieur ou supérieur à 6 min.<br>
+        Pour ce problème de classification, la <strong><span style="color: orange;">variable cible</span></strong> est l'<strong><span style="color: orange;">atteinte ou non de l’objectif de temps d’arrivée < 6 min</span></strong>. <br>
+        La distribution des valeurs de cette variable cible sur le jeu de données est la suivante :</p>
         """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 10])
@@ -521,19 +532,17 @@ elif page == pages[6]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Pour résoudre ce problème de régression, nous avons entrainé et testé les modèles de régression suivants :</p>
+        <p class="custom-p">Pour résoudre ce problème de classification, nous avons entrainé et testé les <strong><span style="color: orange;">modèles de classification</span></strong> suivants :</p>
         <ul class="custom-ul">
-        <li><strong>Régression Linéaire</strong> : Ce modèle suppose une relation linéaire entre les caractéristiques et la cible, ce qui n'est pas toujours le cas dans les données réelles.  Il peut être influencé par les valeurs aberrantes.</li>
-        <li><strong>Régression Polynomiale</strong> : Ce modèle est une extension de la régression linéaire tout en permettant de capturer des relations non linéaires entre les caractéristiques et la variable cible en ajoutant des termes polynomiaux.</li>
-        <li><strong>Régression Ridge</strong> : Ce modèle permet une réduction de l'overfitting et est efficace lorsque les caractéristiques sont fortement corrélées entre elles.</li>
-        <li><strong>Régression Lasso</strong></li>
-        <li><strong>Forêts aléatoires et Arbres de décision</strong> : Ce sont deux modèles qui permettent de modéliser des relations non linéaires sans nécessiter de transformation des données. Ils sont peu sensibles à la mise à l'échelle des caractéristiques et gèrent bien les caractéristiques catégorielles.</li>
-        <li><strong>XGBoost Regressor (eXtreme Gradient Boosting Regressor)</strong> : Ce modèle est réputé pour sa performance, sa vitesse et sa précision. XGBoost utilise une série d'optimisations en termes de calcul pour améliorer la vitesse et l'efficacité, comme le parallélisme et la gestion efficace de la mémoire. Comme les autres modèles de gradient boosting, XGBRegressor construit de nombreux arbres de décision de manière séquentielle, où chaque nouvel arbre corrige les erreurs des arbres précédents.</li>
-        <li><strong>SGD Regressor (Stochastic Gradient Descent)</strong> : Ce modèle est un modèle de régression linéaire très efficace pour des ensembles de données de grande taille grâce à son approche incrémentale.</li>
-        <li><strong>Huber Regressor</strong> : C'est un modèle est plus robuste aux valeurs aberrantes que la régression linéaire classique grâce à sa fonction de perte moins sensible aux erreurs importantes.</li>
+        <li><strong>XGBoostClassifier</strong></li>
+        <li><strong>LogisticRegression</strong></li>
+        <li><strong>DecisionTreeClassifier</strong></li>
+        <li><strong>RandomForestClassifier</strong></li>
+        <li><strong>SupportVectorMachine</strong></li>
         </ul>   
-        <p class="custom-p"> Pour évaluer et comparer la performance de ces différents modèles de régression nous avons calculé différentes métriques : Exactitude (Accuracy), Rappel (Recall), Précision, F1-Score, AUC-ROC.<br>
-        Ci-dessous le classement (du plus performant au moins performant) des modèles de classification finaux entrainés et testés :</p>
+        <p class="custom-p"> Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de classification nous avons calculé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>Exactitude (Accuracy), Rappel (Recall), Précision, F1-Score, AUC-ROC</strong>.<p>
+        <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Résultats / Classement des modèles de classification</h4>
+        <p>Ci-dessous le classement (du plus performant au moins performant) des modèles de classification finaux entrainés et testés :</p>
         """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 10])
@@ -552,8 +561,7 @@ elif page == pages[6]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p"><strong>>>></strong> Le modèle de classification le plus performant est le modèle <strong>XGBClassifier</strong>.<br>
-        Pour le modèle le plus performant, XGBClassifier, on obtient :</p>
+        <p class="custom-p"><strong><span style="color: orange;">>>></span></strong> Le <strong>modèle de classification le plus performant</strong> est le modèle <strong><span style="color: orange;">XGBClassifier</span></strong>. Avec :<br></p>
         <ul class="custom-ul">
         <li><strong>Exactitude (Accuracy) : 82.93% </strong> - Cela signifie que le modèle prédit correctement la catégorie liée à l’objectif d’un temps d'arrivée inférieur à 6 min dans environ 83% des cas.</li>
         <li><strong>Rappel (Recall) : 88.06% </strong> - Une valeur élevée indique que le modèle est particulièrement bon pour prédire correctement les cas où les camions de pompiers arrivent rapidement (classe positive) et minimise le nombre de Faux Négatifs (Nb de positifs classés négatifs lors de la prédiction).</li>
@@ -572,7 +580,8 @@ elif page == pages[6]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong>caractéristiques les plus influentes</strong> dans les prédictions du modèle XGBClassifier.</p>
+        <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
+        <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBClassifier</strong>.</p>
         """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 10])

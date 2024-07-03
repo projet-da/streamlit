@@ -21,11 +21,18 @@ gridOptions['defaultColDef']['width']= 150
 
 st.set_page_config(page_title="Projet DA Pompiers", page_icon=":fire:", layout="wide", initial_sidebar_state="expanded")
 
+##############################################################
+# Sommaire
+##############################################################
 st.sidebar.title("Sommaire")
 pages=["Présentation du projet, du contexte et des enjeux","Exploration des données", "Analyse et visualisation des données", "Analyse & Visualisation des corrélations entre variables", "Choix des caractéristiques pertinentes pour la modélisation", "Nettoyage et prétraitement des données","Modélisation / Analyse des résultats", "Prédictions sur de nouvelles données", "Conclusions métier", "Perspectives d'amélioration"]
+
 page=st.sidebar.radio("Aller vers la page :",pages)
+##############################################################
+# Présentation du projet, du Contexte et des enjeux
+##############################################################
 if page == pages[0]:
-    st.write("### Présentation du projet et du Contexte")
+    st.write("### Présentation du projet, du Contexte et des enjeux")
     st.write("L’objet de ce projet est l’analyse des temps de réponse de la Brigade des Pompiers de Londres.")
     st.write("La London Fire Brigade (abrégé LFB) est le cinquième plus grand corps de sapeurs-pompiers dans le monde avec près de 6 000 employés dont environ 5 000 sapeurs-pompiers professionnels. ")
     st.write("La brigade des pompiers de Londres est le service d'incendie et de sauvetage le plus actif du Royaume-Uni et l'une des plus grandes organisations de lutte contre l'incendie et de sauvetage au monde.")
@@ -34,7 +41,10 @@ if page == pages[0]:
     st.write("*	102 casernes de pompiers terrestres, réparties dans les différents arrondissements de Londres")
     st.write("*	142 camions de pompiers stratégiquement placés dans tous les arrondissements de Londres")
     st.image("images/Carte_incidents_Londres_par_IncidentCategory_2023.png")
-    
+
+##############################################################
+# Exploration des données
+##############################################################
 elif page == pages[1]:
     st.write("### Exploration des données")
     # st.dataframe(df_merged.head(10), width=1200, height=300)
@@ -43,9 +53,12 @@ elif page == pages[1]:
     st.write(df_sample.shape)
     if st.checkbox("Afficher les valeurs manquantes"):
          st.dataframe(df_sample.isna().sum(), width=700)
-    
+
+##############################################################
+# Analyse et visualisations des données
+##############################################################
 elif page == pages[2]:
-    st.write("### Analyse des données")
+    st.write("### Analyse et visualisations des données")
     fig, ax = plt.subplots(figsize=(8,4))
     sns.set_style('whitegrid')
     title_font = {
@@ -608,18 +621,23 @@ elif page == pages[6]:
         """, unsafe_allow_html=True)
 
 
-
-#############################################
+##############################################################
+# Prédictions sur de nouvelles données
+##############################################################
 elif page == pages[7]:
     st.write("### Prédictions sur de nouvelles données")
 
 
-#############################################
+##############################################################
+# Conclusions métier
+##############################################################
 elif page == pages[8]:
     st.write("### Conclusions métier")
 
 
-#############################################
+##############################################################
+# Perspectives d'amélioration
+##############################################################
 elif page == pages[9]:
     st.write("### Perspectives d'amélioration")
              

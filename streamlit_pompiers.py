@@ -395,7 +395,10 @@ elif page == pages[5]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">La majorité des <strong>valeurs manquantes</strong> ont été traitées par <strong><span style="color: orange;">suppression des colonnes</span></strong> comportant une <strong>proportion importante de valeurs manquantes et/ou</strong> ayant un <strong>intérêt limité pour la modélisation</strong> ou par <strong><span style="color: orange;">remplacement (ou imputation)</span></strong> des valeurs manquantes <strong>par des valeurs bien choisies</strong>. </p>
+            <p class="custom-p">La majorité des <strong>valeurs manquantes</strong> ont été traitées par :</p>
+            <ul class="custom-ul">
+            <li><strong><span style="color: orange;">suppression des colonnes</span></strong> comportant une <strong>proportion importante de valeurs manquantes et/ou</strong> ayant un <strong>intérêt limité pour la modélisation</strong></li>
+            <li>ou par <strong><span style="color: orange;">remplacement (ou imputation)</span></strong> des valeurs manquantes <strong>par des valeurs bien choisies</strong>. </li></ul>
             """, unsafe_allow_html=True)
 
     ###########################################################################
@@ -413,12 +416,13 @@ elif page == pages[5]:
             </style>
             <h2 style='text-align: left; color: black; font-size: 22px;'>Gestion des valeurs aberrantes et extrêmes</h2>
             <p class="custom-p">La donnée de <strong>distance à vol d’oiseau calculée entre la caserne de départ et le lieu d’incident</strong> et la donnée de <strong>temps de trajet</strong> nous avaient permis de <strong>calculer une donnée de vitesse estimée du camion</strong> déployé sur le lieu de l'incident.<br> 
-            Pour une partie des mobilisations de la brigade des pompiers de Londres, nous avons constaté que <strong>la vitesse du camion déployé sur le lieu d'incident dépassait les 100 km/h</strong> (avec un <strong>record à 60 000 km/h</strong> pour la vitesse la plus élevée enregistrée), notamment en raison d'un <strong>délai de trajet</strong> enregistré <strong><span style="color: red;">anormalement faible</span></strong> au regard de la distance séparant la caserne de départ du lieu d'incident.<br><br>
-            Nous avons tout d'abord <strong><span style="color: orange;">supprimé les lignes du DataFrame comportant ces valeurs de vitesse aberrantes</span></strong> , c'est-à-dire <strong>au-dessus de 100 km/h</strong>.<br>
-            Puis le calcul de la <strong><span style="color: orange;">distance de l’itinéraire estimé le plus court</span></strong>  entre la caserne et le lieu d’incident a permis d’affiner l’estimation de la vitesse.<br><br>
-            Afin de <strong>réduire l’effet des valeurs aberrantes</strong> et <strong>rendre le jeu de données plus robuste face aux anomalies</strong> concernant les valeurs de certains temps de trajet enregistrés et la valeur de vitesse en résultant, nous avons utilisé la <strong><span style="color: orange;">technique de winsorisation pour winsoriser (i.e. ajuster) au 5e et au 95e percentile</span></strong>  les valeurs de <strong>vitesses</strong> situées <strong>en dessous du 5e percentile (14 km/h)</strong> et <strong>au-dessus du 95e percentile (55 km/h)</strong>.<br><br>
-            Nous avons ensuite <strong>recalculé une valeur de temps de trajet ajusté</strong> à partir de la valeur de vitesse ajustée et de la valeur de distance de l’itinéraire.<br><br>
-            Ci-dessous un graphe de type boxplot montrant la distribution des valeurs de vitesse avant/après winsorisation</p>
+            Pour une partie des mobilisations de la brigade des pompiers de Londres, nous avons constaté que <span style="color: orange;"><strong>la vitesse du camion déployé sur le lieu d'incident dépassait les 100 km/h</strong></span> (avec un <strong>record à 60 000 km/h</strong> pour la vitesse la plus élevée enregistrée), notamment en raison d'un <strong>délai de trajet</strong> enregistré <strong><span style="color: red;">anormalement faible</span></strong> au regard de la distance séparant la caserne de départ du lieu d'incident.<br><br></p>
+            <ul class="custom-ul">
+            <li>Nous avons tout d'abord <strong><span style="color: orange;">supprimé les lignes du DataFrame comportant ces valeurs de vitesse aberrantes</span></strong> , c'est-à-dire <strong>au-dessus de 100 km/h</strong>.<br></li>
+            <li>Puis le calcul de la <strong><span style="color: orange;">distance de l’itinéraire estimé le plus court</span></strong>  entre la caserne et le lieu d’incident a permis d’affiner l’estimation de la vitesse.<br></li>
+            <li>Afin de <strong>réduire l’effet des valeurs aberrantes</strong> et <strong>rendre le jeu de données plus robuste face aux anomalies</strong> concernant les valeurs de certains temps de trajet enregistrés et la valeur de vitesse en résultant, nous avons utilisé la <strong><span style="color: orange;">technique de winsorisation pour winsoriser (i.e. ajuster) au 5e et au 95e percentile</span></strong>  les valeurs de <strong>vitesses</strong> situées <strong>en dessous du 5e percentile (14 km/h)</strong> et <strong>au-dessus du 95e percentile (55 km/h)</strong>.<br></li>
+            <li>Nous avons ensuite <span style="color: orange;"><strong>recalculé une valeur de temps de trajet ajusté</strong></span> à partir de la valeur de vitesse ajustée et de la valeur de distance de l’itinéraire.<br><br></li></ul>
+            <p class="custom-p">Ci-dessous un graphe de type boxplot montrant la distribution des valeurs de vitesse avant/après winsorisation</p>
             """, unsafe_allow_html=True)
     
         st.image("images/Winsorisation des valeurs extremes de vitesses de trajet.png")
@@ -571,7 +575,7 @@ elif page == pages[6]:
             Pour le modèle le plus performant, <strong>XGBRegressor</strong>,</p>
             <ul class="custom-ul">
             <li>le <strong><span style="color: orange;">R²</span> (coefficient de détermination)</strong> est de <strong><span style="color: orange;">0.66</span></strong>,</li>
-            <li>la <strong><span style="color: orange;">MAE</span> (écart moyen entre le temps d’arrivée prédit et le temps d’arrivée réel)</strong> est de <strong><span style="color: orange;">57,5 secondes</span></strong> pour un <strong>temps d'arrivée moyen de 357 secondes</strong>, soit un <strong>écart moyen d’environ <span style="color: orange;">16%</span></strong> par rapport au temps moyen, ce qui représente un écart significatif, surtout dans un contexte où chaque seconde peut être critique, comme dans les interventions d'urgence.</li>
+            <li>la <strong><span style="color: orange;">MAE</span> (écart moyen entre le temps d’arrivée prédit et le temps d’arrivée réel)</strong> est de <strong><span style="color: orange;">57,5 secondes</span></strong> pour un <strong>temps d'arrivée moyen de 357 secondes</strong>, soit un <strong><span style="color: orange;">écart moyen d’environ 16%</span> par rapport au temps moyen</strong>, ce qui représente un <strong>écart significatif</strong>, surtout dans un contexte où chaque seconde peut être critique, comme dans les interventions d'urgence.</li>
             </ul>
             """, unsafe_allow_html=True)
     
@@ -581,7 +585,7 @@ elif page == pages[6]:
             </style>
             <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Graphe des résidus (écarts entre valeur prédite et valeur réelle)</h4>
             <p class="custom-p">Ci-dessous le <strong><span style="color: orange;">graphe des résidus</span></strong> liés au modèle <strong>XGBRegressor</strong>.<br>
-            On constate que les écarts entre la valeur prédite et la valeur réelle peut être très importante, parfois de quelques centaines de secondes.</p>
+            On constate que les <strong>écarts entre la valeur prédite et la valeur réelle peuvent être très importants</strong>, parfois de quelques centaines de secondes.</p>
             """, unsafe_allow_html=True)
     
         col1, col2 = st.columns([1, 10])
@@ -621,9 +625,9 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
             <ul class="custom-ul">
-            <li><strong>Dist_trajet_Incident_DeployedFromStation</strong> : Distance en m de l'itinéraire le plus court entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
-            <li><strong>Inner_Outer</strong> : Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
-            <li><strong>DeployedFrom_egalA_IncidentGround_Station</strong> : Permet d’identifier si le camion déployé sur le lieu d’incident suite à l’appel au 999 part d'une caserne différente de celle liée au lieu d’incident.</li>  
+            <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
+            <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
+            <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
             </ul>
             """, unsafe_allow_html=True)
 
@@ -692,7 +696,7 @@ elif page == pages[6]:
             <p class="custom-p"><strong><span style="color: orange;">>>></span></strong> Le <strong>modèle de classification le plus performant</strong> est le modèle <strong><span style="color: orange;">XGBClassifier</span></strong>. Avec :<br></p>
             <ul class="custom-ul">
             <li><strong>Exactitude (Accuracy) : <span style="color: orange;">82.93%</span> </strong> - Cela signifie que le modèle <strong>prédit correctement</strong> la classe liée à l’objectif d’un temps d'arrivée inférieur à 6 min <strong>dans environ 83% des cas</strong>.</li>
-            <li><strong>Rappel (Recall) : <span style="color: orange;">88.06%</span> </strong> - Une valeur élevée indique que le modèle est particulièrement bon pour prédire correctement les cas où les camions de pompiers arrivent rapidement (classe positive) et <strong>minimise le nombre de Faux Négatifs</strong> (Nb de positifs classés négatifs lors de la prédiction).</li>
+            <li><strong>Rappel (Recall) : <span style="color: orange;">88.06%</span> </strong> - Une valeur élevée indique que le modèle est <strong>particulièrement bon pour prédire correctement les cas où les camions de pompiers arrivent rapidement (classe positive)</strong> et <strong>minimise le nombre de Faux Négatifs</strong> (Nb de positifs classés négatifs lors de la prédiction).</li>
             <li><strong>Précision : <span style="color: orange;">83.29%</span> </strong> - Cela montre que <strong>parmi les prédictions de classe positive</strong> du modèle, environ <strong>83% sont correctes</strong>.</li>
             <li><strong>F1 Score : <span style="color: orange;">85.61%</span> </strong> - Cette métrique combinant le Recall et la Precision indique une efficacité globale élevée du modèle, de 85.61%.</li>
             <li><strong>AUC-ROC : <span style="color: orange;">82.01%</span> </strong> - Cette métrique, qui mesure la capacité du modèle à distinguer entre les classes, est également assez élevée, à 82.01%.</li>
@@ -729,9 +733,9 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
             <ul class="custom-ul">
-            <li><strong>Dist_trajet_Incident_DeployedFromStation</strong> : Distance en m de l'itinéraire le plus court entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>
-            <li><strong>DeployedFrom_egalA_IncidentGround_Station</strong> : Permet d’identifier si le camion déployé sur le lieu d’incident suite à l’appel au 999 part d'une caserne différente de celle liée au lieu d’incident.</li>  
-            <li><strong>Inner_Outer</strong> : Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
+            <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
+            <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
+            <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
             </ul>
             """, unsafe_allow_html=True)
 

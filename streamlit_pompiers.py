@@ -5,6 +5,14 @@ from st_aggrid import AgGrid, GridOptionsBuilder
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FixedLocator
+import pickle
+import numpy as np
+
+def color_row(row):
+    if row['Classification'] == 1:
+        return ['background-color: lightgreen'] * len(row)
+    else:
+        return [''] * len(row)
 
 date_debut=datetime.strptime("2023-01-01","%Y-%m-%d").date()
 date_fin=datetime.now().date()
@@ -744,7 +752,162 @@ elif page == pages[6]:
 # Prédictions sur de nouvelles données
 ##############################################################
 elif page == pages[7]:
-    st.write("### Prédictions sur de nouvelles données")
+    st.write("### Prédictions sur de nouvelles données, mise en situation")
+
+    X_sim_all=pd.read_csv('./simulation/simulation.csv',sep=';')
+ 
+    tab1, tab2, tab3, tab4, tab5, tab5bis = st.tabs(["Etape 1", "Etape 2", "Etape 3","Etape 4","Etape 5","Etape 5 bis"])
+
+    with tab1:
+        st.image("images/soho2.png")
+
+    with tab2:        
+        #st.audio("sounds/fire.mp3", format="audio/mpeg", autoplay=True)
+        st.audio("sounds/fire.mp3", format="audio/mpeg")
+        st.image("images/bm4.png")
+
+    with tab3:
+        #st.write("### Soho n’a pas les ressources, quelle station choisir ?")
+        st.image("images/soho3.png")
+        st.write("Soho n’a pas les ressources, quelle station choisir ?")
+        st.write("L'objectif de la Brigade des Pompiers de Londres est d'arriver en moins de 6 minutes")
+    
+    with tab4:
+        st.write("Identifier une caserne dont le camion mettra moins de 6 minutes") 
+        st.image("images/stations2.png",width=900)
+
+    with tab5: 
+        # Préparation
+        enc=pickle.load(open("./simulation/sim_enc.pkl", "rb"))
+        sca=pickle.load(open("./simulation/sim_sca.pkl", "rb"))           
+
+        circular_cols3 = ['HourOfCall', 'MonthOfCall', 'WeekOfCall', 'WeekdayOfCall']
+        num_cols3 = ['Easting_rounded', 'Northing_rounded', 'Distance_Incident_IncidentStationGround', 'DepartureOrder', 'Dist_trajet_Incident_DeployedFromStation', 'day_temperature', 'day_sunshine_duration_s', 'day_precipitation_mm', 'day_snow_mm', 'day_nb_precipitation_hours', 'hour_temperature', 'hour_sunshine_duration_s', 'hour_precipitation_mm', 'hour_snow_mm', 'Taux_retard']
+        cat_cols3 = ['IncidentGroup', 'PropertyCategory', 'IncGeo_BoroughName', 'IncidentStationGround', 'DeployedFromStation_Name', 'Inner_Outer', 'DeployedFrom_egalA_IncidentGround_Station']
+
+
+        list_station=['caserne']
+        list_station.extend(X_sim_all['DeployedFromStation_Name'])
+        station = st.selectbox(
+            "##### Choisir une caserne",
+            list_station)
+        if station!='caserne':
+            X_sim=X_sim_all.loc[X_sim_all['DeployedFromStation_Name']==station]
+
+            cat_sim = X_sim[cat_cols3]
+            num_sim = X_sim[num_cols3]
+            circular_sim = X_sim[circular_cols3]
+            cat_sim_encoded = enc.transform(cat_sim)
+
+            if 'HourOfCall' in circular_cols3:
+                circular_sim.loc[:, 'sin_HourOfCall'] = circular_sim.loc[:, 'HourOfCall'].apply(lambda h : np.sin(2 * np.pi * h / 24))
+                circular_sim.loc[:, 'cos_HourOfCall'] = circular_sim.loc[:, 'HourOfCall'].apply(lambda h : np.cos(2 * np.pi * h / 24))
+                circular_sim = circular_sim.drop(['HourOfCall'],axis = 1)
+                            
+            if 'MonthOfCall' in circular_cols3:
+                circular_sim.loc[:, 'sin_MonthOfCall'] = circular_sim.loc[:, 'MonthOfCall'].apply(lambda m : np.sin(2 * np.pi * m / 12))
+                circular_sim.loc[:, 'cos_MonthOfCall'] = circular_sim.loc[:, 'MonthOfCall'].apply(lambda m : np.cos(2 * np.pi * m / 12))
+                circular_sim = circular_sim.drop(['MonthOfCall'],axis = 1)
+                
+            if 'WeekOfCall' in circular_cols3:
+                circular_sim.loc[:, 'sin_WeekOfCall'] = circular_sim.loc[:, 'WeekOfCall'].apply(lambda w : np.sin(2 * np.pi * w / 23))
+                circular_sim.loc[:, 'cos_WeekOfCall'] = circular_sim.loc[:, 'WeekOfCall'].apply(lambda w : np.cos(2 * np.pi * w / 23))
+                circular_sim = circular_sim.drop(['WeekOfCall'],axis = 1)
+                
+            if 'WeekdayOfCall' in circular_cols3:
+                circular_sim.loc[:, 'sin_WeekdayOfCall'] = circular_sim.loc[:, 'WeekdayOfCall'].replace({'Monday' : 1, 'Tuesday' : 2, 'Wednesday' : 3, 'Thursday' : 4, 
+                                                                                                        'Friday' : 5, 'Saturday' : 6, 'Sunday' : 7}).apply(lambda d : np.sin(2 * np.pi * d / 7))
+                circular_sim.loc[:, 'cos_WeekdayOfCall'] = circular_sim.loc[:, 'WeekdayOfCall'].replace({'Monday' : 1, 'Tuesday' : 2, 'Wednesday' : 3, 'Thursday' : 4, 
+                                                                                                        'Friday' : 5, 'Saturday' : 6, 'Sunday' : 7}).apply(lambda d : np.cos(2 * np.pi * d / 7))
+                circular_sim = circular_sim.drop(['WeekdayOfCall'],axis = 1)
+
+            num_sim_scaled=sca.transform(num_sim)
+
+
+            sca.get_feature_names_out(num_cols3)
+            num_sim_scaled=pd.DataFrame(num_sim_scaled, columns = sca.get_feature_names_out(num_cols3))
+            cat_sim_encoded=pd.DataFrame(cat_sim_encoded, columns = enc.get_feature_names_out(cat_cols3))
+            circular_sim=circular_sim.reset_index().drop('index',axis=1)
+
+            X_sim_encoded = pd.concat([pd.DataFrame(num_sim_scaled), pd.DataFrame(cat_sim_encoded), pd.DataFrame(circular_sim)], axis = 1)
+
+            st.write("")
+            st.write("")
+            st.write("##### Modèle de Classification")
+            cla=pickle.load(open("./simulation/sim_class.pkl", "rb"))
+            res_cla=cla.predict(X_sim_encoded)
+            result='Résultat de la prédiction : **objectif atteint**, le camion mettra moins de 6 minutes' if res_cla[0]==1 else 'Résultat de la prédiction : **objectif non atteint**, le camion mettra plus de 6 minutes'
+            st.write(result)         
+
+            st.write("")
+            st.write("##### Modèle de Régression")
+            reg=pickle.load(open("./simulation/sim_reg.pkl", "rb"))
+            res_reg=reg.predict(X_sim_encoded)
+
+            from datetime import timedelta        
+            st.write("Estimation du temps pour se rendre sur le lieu de l'incident depuis " + station)
+            res_sec=int(res_reg[0])
+            td=timedelta(seconds=res_sec)
+            nb_min=td.seconds//60
+            nb_sec=td.seconds%60
+            st.write(str(res_sec) + " secondes soit " + str(nb_min) + " minutes et " + str(nb_sec) + " secondes")           
+
+    with tab5bis:
+        
+        X_sim=X_sim_all
+
+        cat_sim = X_sim[cat_cols3]
+        num_sim = X_sim[num_cols3]
+        circular_sim = X_sim[circular_cols3]
+        cat_sim_encoded = enc.transform(cat_sim)
+
+        if 'HourOfCall' in circular_cols3:
+            circular_sim.loc[:, 'sin_HourOfCall'] = circular_sim.loc[:, 'HourOfCall'].apply(lambda h : np.sin(2 * np.pi * h / 24))
+            circular_sim.loc[:, 'cos_HourOfCall'] = circular_sim.loc[:, 'HourOfCall'].apply(lambda h : np.cos(2 * np.pi * h / 24))
+            circular_sim = circular_sim.drop(['HourOfCall'],axis = 1)
+                        
+        if 'MonthOfCall' in circular_cols3:
+            circular_sim.loc[:, 'sin_MonthOfCall'] = circular_sim.loc[:, 'MonthOfCall'].apply(lambda m : np.sin(2 * np.pi * m / 12))
+            circular_sim.loc[:, 'cos_MonthOfCall'] = circular_sim.loc[:, 'MonthOfCall'].apply(lambda m : np.cos(2 * np.pi * m / 12))
+            circular_sim = circular_sim.drop(['MonthOfCall'],axis = 1)
+            
+        if 'WeekOfCall' in circular_cols3:
+            circular_sim.loc[:, 'sin_WeekOfCall'] = circular_sim.loc[:, 'WeekOfCall'].apply(lambda w : np.sin(2 * np.pi * w / 23))
+            circular_sim.loc[:, 'cos_WeekOfCall'] = circular_sim.loc[:, 'WeekOfCall'].apply(lambda w : np.cos(2 * np.pi * w / 23))
+            circular_sim = circular_sim.drop(['WeekOfCall'],axis = 1)
+            
+        if 'WeekdayOfCall' in circular_cols3:
+            circular_sim.loc[:, 'sin_WeekdayOfCall'] = circular_sim.loc[:, 'WeekdayOfCall'].replace({'Monday' : 1, 'Tuesday' : 2, 'Wednesday' : 3, 'Thursday' : 4, 
+                                                                                                    'Friday' : 5, 'Saturday' : 6, 'Sunday' : 7}).apply(lambda d : np.sin(2 * np.pi * d / 7))
+            circular_sim.loc[:, 'cos_WeekdayOfCall'] = circular_sim.loc[:, 'WeekdayOfCall'].replace({'Monday' : 1, 'Tuesday' : 2, 'Wednesday' : 3, 'Thursday' : 4, 
+                                                                                                    'Friday' : 5, 'Saturday' : 6, 'Sunday' : 7}).apply(lambda d : np.cos(2 * np.pi * d / 7))
+            circular_sim = circular_sim.drop(['WeekdayOfCall'],axis = 1)
+
+        num_sim_scaled=sca.transform(num_sim)
+
+
+        sca.get_feature_names_out(num_cols3)
+        num_sim_scaled=pd.DataFrame(num_sim_scaled, columns = sca.get_feature_names_out(num_cols3))
+        cat_sim_encoded=pd.DataFrame(cat_sim_encoded, columns = enc.get_feature_names_out(cat_cols3))
+        circular_sim=circular_sim.reset_index().drop('index',axis=1)
+
+        X_sim_encoded = pd.concat([pd.DataFrame(num_sim_scaled), pd.DataFrame(cat_sim_encoded), pd.DataFrame(circular_sim)], axis = 1)
+
+        # régression
+        reg=pickle.load(open("./simulation/sim_reg.pkl", "rb"))
+        res_reg=reg.predict(X_sim_encoded)
+
+        # classification        
+        cla=pickle.load(open("./simulation/sim_class.pkl", "rb"))
+        res_cla=cla.predict(X_sim_encoded)
+
+        st.write("##### Identification de la caserne à mobilier")
+        df_res_all=pd.DataFrame({
+            'Caserne':X_sim['DeployedFromStation_Name'],
+            'Classification':res_cla,
+            'Régression':res_reg
+             })
+        st.dataframe(df_res_all.style.apply(color_row, axis=1),hide_index=True)
 
 
 ##############################################################
@@ -752,13 +915,21 @@ elif page == pages[7]:
 ##############################################################
 elif page == pages[8]:
     st.write("### Conclusions métier")
-
+    st.write("(conclusion du projet en reliant au maximum les résultats obtenus à la problématique métier)")
+    st.write("##### Analyse des False Alarms :")
+    st.markdown("- rappel de la proportion des FA dans les appels et particulièrement des AFA")
+    st.markdown("- conséquence sur l'efficacité des ressources + coût pour les pompiers et pour le lieu d'incident")
+    st.markdown("- vérifier que les appareils n'ont pas de défaut, bien placés ...")
+    st.write("##### Modélisation :")
+    st.markdown("- Régression sur le temps d'arrivée: le meilleur modèle (XGBRegressor) atteint les 66% comme coefficient de détermination avec un écart moyen entre la valeur prédite et la valeur réelle de 57,5s, ce qui est énorme dans un contexte d'urgence")
+    st.markdown("- Classification sur le fait que la camion attendra son objectif de 6min")
 
 ##############################################################
 # Perspectives d'amélioration
 ##############################################################
 elif page == pages[9]:
     st.write("### Perspectives d'amélioration")
+    st.write("(critique et perspectives (ce qui aurait pû être fait avec plus de temps))")
 
 elif page == pages[10]:
     st.write("### Page de test")

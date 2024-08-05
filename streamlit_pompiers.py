@@ -33,7 +33,10 @@ st.set_page_config(page_title="Projet DA Pompiers", page_icon=":fire:", layout="
 # Sommaire
 ##############################################################
 st.sidebar.title("Sommaire")
-pages=["Présentation du projet, du contexte et des enjeux","Exploration des données", "Analyse et visualisation des données", "Analyse & Visualisation des corrélations entre variables", "Choix des caractéristiques pertinentes pour la modélisation", "Nettoyage et prétraitement des données","Modélisation / Analyse des résultats", "Prédictions sur de nouvelles données", "Conclusions métier", "Perspectives d'amélioration","Page de Test"]
+pages=["Présentation du projet, du contexte et des enjeux","Exploration des données", 
+       "Analyse et visualisation des données", "Analyse & Visualisation des corrélations entre variables", 
+       "Choix des caractéristiques pertinentes pour la modélisation", "Nettoyage et prétraitement des données",
+       "Modélisation / Analyse des résultats", "Prédictions sur de nouvelles données", "Conclusions métier", "Perspectives d'amélioration"]
 
 page=st.sidebar.radio("Aller vers la page :",pages)
 ##############################################################
@@ -752,7 +755,8 @@ elif page == pages[6]:
 # Prédictions sur de nouvelles données
 ##############################################################
 elif page == pages[7]:
-    st.write("### Prédictions sur de nouvelles données, mise en situation")
+    st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Prédictions sur de nouvelles données, mise en situation</h1>", unsafe_allow_html=True)
+    #st.write("### Prédictions sur de nouvelles données, mise en situation")
 
     X_sim_all=pd.read_csv('./simulation/simulation.csv',sep=';')
  
@@ -914,13 +918,33 @@ elif page == pages[7]:
 # Conclusions métier
 ##############################################################
 elif page == pages[8]:
-    st.write("### Conclusions métier")
-    st.write("(conclusion du projet en reliant au maximum les résultats obtenus à la problématique métier)")
-    st.write("##### Analyse des False Alarms :")
-    st.markdown("- rappel de la proportion des FA dans les appels et particulièrement des AFA")
-    st.markdown("- conséquence sur l'efficacité des ressources + coût pour les pompiers et pour le lieu d'incident")
-    st.markdown("- vérifier que les appareils n'ont pas de défaut, bien placés ...")
-    st.write("##### Modélisation :")
+    st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Conclusions métier</h1>", unsafe_allow_html=True)
+    #st.write("### Conclusions métier")
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Analyse des Fausses Alarmes</h2>", unsafe_allow_html=True)
+    #st.write("#### Analyse des False Alarms :")
+    st.markdown("""
+                - Les Fausses Alarmes représentent près de la moitié des incidents et sont en hausse depuis 2015, en 2023 elles représentent **49,8%** dont :
+                    - **80%** sont des Fausses Alarmes Automatiques (AFA)
+                    - **18%** sont des Bonnes Intentions
+                    - **2%** sont des Mauvaises Intentions
+                """)
+    st.markdown("""
+                - Les conséquences : 
+                    - Sollicitation des pompiers sur des lieux où il n’y a pas d’incidents
+                    - Perturbation sur le lieu de l'incident : évacuation ...
+                    - En 2023, les AFA impliquent la sortie de 92 000 camions pour un coût de presque 20 millions de £ (sur près de 60 millions de £ en tout)
+                """)
+    st.markdown("""
+                - Exemples de propositions d'amélioration métier :
+                    - Améliorer la qualité / fiabilité des données saisies, notamment des temps d'arrivée (valeur aberrantes). Exemple traceur GPS
+                    - Mieux placer ces appareils, éviter le dessus de hottes de cuisine ...
+                    - Mieux former les installateurs
+                    - Revoir la maintenance ...
+                    - Envoyer un drône pour confirmer l'incident                    
+                """)
+    
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Modélisation</h2>", unsafe_allow_html=True)
+    #st.write("#### Modélisation :")
     st.markdown("- Régression sur le temps d'arrivée: le meilleur modèle (XGBRegressor) atteint les 66% comme coefficient de détermination avec un écart moyen entre la valeur prédite et la valeur réelle de 57,5s, ce qui est énorme dans un contexte d'urgence")
     st.markdown("- Classification sur le fait que la camion attendra son objectif de 6min")
 
@@ -928,8 +952,18 @@ elif page == pages[8]:
 # Perspectives d'amélioration
 ##############################################################
 elif page == pages[9]:
-    st.write("### Perspectives d'amélioration")
-    st.write("(critique et perspectives (ce qui aurait pû être fait avec plus de temps))")
+    st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Perspectives d'amélioration</h1>", unsafe_allow_html=True)    
+    #st.write("### Perspectives d'amélioration")
+    st.markdown("""
+                - Enrichir le jeu de données
+                    - Utiliser une méthode de calcul d'itinéraire s'affranchissant des sens interdits
+                    - Intégrer les ralentissements/bouchons, routes fermée, travaux en cours et tout obstacle impactant le temps de trajet"
+                """)
+    st.markdown("""
+                - Améliorer la Feature Engineering et la Modélisation
+                    - Essayer des transformations de features plus complexes (ex : transformations polynomiales, logarithmiques)
+                    - Essayer des Modèles d'Ensemble permettant de combiner plusieurs modèles de machine learning
+                    - Essayer des modèles de Deep Learning 
+                """)
 
-elif page == pages[10]:
-    st.write("### Page de test")
+    

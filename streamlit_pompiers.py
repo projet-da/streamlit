@@ -937,16 +937,21 @@ elif page == pages[8]:
     st.markdown("""
                 - Exemples de propositions d'amélioration métier :
                     - Améliorer la qualité / fiabilité des données saisies, notamment des temps d'arrivée (valeur aberrantes). Exemple traceur GPS
-                    - Mieux placer ces appareils, éviter le dessus de hottes de cuisine ...
-                    - Mieux former les installateurs
-                    - Revoir la maintenance ...
+                    - Comprendre la cause de AFA pour les limiter : 
+                        - Mieux former les installateurs d'appareil de détection de fumée ?
+                        - Contrôler les appareils plus régulièrement ?
                     - Envoyer un drône pour confirmer l'incident                    
                 """)
     
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Modélisation</h2>", unsafe_allow_html=True)
     #st.write("#### Modélisation :")
-    st.markdown("- Régression sur le temps d'arrivée: le meilleur modèle (XGBRegressor) atteint les 66% comme coefficient de détermination avec un écart moyen entre la valeur prédite et la valeur réelle de 57,5s, ce qui est énorme dans un contexte d'urgence")
-    st.markdown("- Classification sur le fait que la camion attendra son objectif de 6min")
+    st.markdown('''
+                Le meilleur modèle de régression (XGBRegressor) atteint 66% comme coefficient de détermination avec un écart moyen entre la valeur prédite et la valeur réelle de 57,5s.                               
+                Ce qui est énorme dans un contexte d'urgence.                             
+                En l'état actuel, le modèle n'est pas pertinent dans une situation réelle.
+                Il nous faudrait des données complémentaires et/ou des traitements supplémentaires pour améliorer ce résultat.
+            ''')
+ 
 
 ##############################################################
 # Perspectives d'amélioration
@@ -954,16 +959,16 @@ elif page == pages[8]:
 elif page == pages[9]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Perspectives d'amélioration</h1>", unsafe_allow_html=True)    
     #st.write("### Perspectives d'amélioration")
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Enrichir le jeu de données</h2>", unsafe_allow_html=True)
     st.markdown("""
-                - Enrichir le jeu de données
-                    - Utiliser une méthode de calcul d'itinéraire s'affranchissant des sens interdits
-                    - Intégrer les ralentissements/bouchons, routes fermée, travaux en cours et tout obstacle impactant le temps de trajet"
+                - Utiliser une méthode de calcul d'itinéraire s'affranchissant des sens interdits
+                - Intégrer les ralentissements/bouchons, routes fermée, travaux en cours et tout obstacle impactant le temps de trajet"
                 """)
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Améliorer la Feature Engineering et la Modélisation</h2>", unsafe_allow_html=True)
     st.markdown("""
-                - Améliorer la Feature Engineering et la Modélisation
-                    - Essayer des transformations de features plus complexes (ex : transformations polynomiales, logarithmiques)
-                    - Essayer des Modèles d'Ensemble permettant de combiner plusieurs modèles de machine learning
-                    - Essayer des modèles de Deep Learning 
+                - Essayer des transformations de features plus complexes (ex : transformations polynomiales, logarithmiques)
+                - Essayer des Modèles d'Ensemble permettant de combiner plusieurs modèles de machine learning
+                - Essayer des modèles de Deep Learning 
                 """)
 
     

@@ -920,7 +920,7 @@ elif page == pages[7]:
 elif page == pages[8]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Conclusions métier</h1>", unsafe_allow_html=True)
     #st.write("### Conclusions métier")
-    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Analyse des Fausses Alarmes</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Fausses Alarmes</h2>", unsafe_allow_html=True)
     #st.write("#### Analyse des False Alarms :")
     st.markdown("""
                 - Les Fausses Alarmes représentent près de la moitié des incidents et sont en hausse depuis 2015, en 2023 elles représentent **49,8%** dont :
@@ -932,25 +932,24 @@ elif page == pages[8]:
                 - Les conséquences : 
                     - Sollicitation des pompiers sur des lieux où il n’y a pas d’incidents
                     - Perturbation sur le lieu de l'incident : évacuation ...
-                    - En 2023, les AFA impliquent la sortie de 92 000 camions pour un coût de presque 20 millions de £ (sur près de 60 millions de £ en tout)
+                    - En 2023, les AFA représentent un coût de presque 25 millions de £ (sur près de 56 millions de £ en tout)
                 """)
     st.markdown("""
                 - Exemples de propositions d'amélioration métier :
-                    - Améliorer la qualité / fiabilité des données saisies, notamment des temps d'arrivée (valeur aberrantes). Exemple traceur GPS
                     - Comprendre la cause de AFA pour les limiter : 
-                        - Mieux former les installateurs d'appareil de détection de fumée ?
-                        - Contrôler les appareils plus régulièrement ?
+                        - Mieux former les installateurs d'appareil de détection de fumée
+                        - Contrôler les appareils plus régulièrement
+                        - Mettre en place des campagnes de communication sur la bonne installation des appareils
                     - Envoyer un drône pour confirmer l'incident                    
                 """)
     
-    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Modélisation</h2>", unsafe_allow_html=True)
-    #st.write("#### Modélisation :")
-    st.markdown('''
-                Le meilleur modèle de régression (XGBRegressor) atteint 66% comme coefficient de détermination avec un écart moyen entre la valeur prédite et la valeur réelle de 57,5s.                               
-                Ce qui est énorme dans un contexte d'urgence.                             
-                En l'état actuel, le modèle n'est pas pertinent dans une situation réelle.
-                Il nous faudrait des données complémentaires et/ou des traitements supplémentaires pour améliorer ce résultat.
-            ''')
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Qualité des données saisies</h2>", unsafe_allow_html=True)
+    #st.write("#### Qualité des données saisies :")
+    st.markdown("""      
+                Certaines valeurs des temps d'arrivée sont **aberrantes** : dans plusieurs cas la vitesse correspondante dépasse les 100 km/h, avec un record à 60 000 km/h.                                        
+                A contrario d'autres valeurs **extrêmes** sont très faibles : plusieurs cas en dessous de 4 km/h (vitesse d'un marcheur).                                        
+                Il faudrait en comprendre la cause pour les limiter : erreur de saisie, problème de calcul ...                                                                  
+                """)
  
 
 ##############################################################
@@ -959,10 +958,15 @@ elif page == pages[8]:
 elif page == pages[9]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Perspectives d'amélioration</h1>", unsafe_allow_html=True)    
     #st.write("### Perspectives d'amélioration")
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Automatiser les traitements</h2>", unsafe_allow_html=True)
+    st.markdown("""
+                - Automatiser la collecte des données sources depuis le site de la LFB (web scrapping)
+                - Créer un pipeline enchainant les traitements de préparation des données, d'entrainement du modèle et de prédiction
+                """)    
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Enrichir le jeu de données</h2>", unsafe_allow_html=True)
     st.markdown("""
                 - Utiliser une méthode de calcul d'itinéraire s'affranchissant des sens interdits
-                - Intégrer les ralentissements/bouchons, routes fermée, travaux en cours et tout obstacle impactant le temps de trajet"
+                - Intégrer les ralentissements/bouchons, routes fermée, travaux en cours et tout obstacle impactant le temps de trajet (ces données sont présentes dans le motif des retards mais pas au moment de la mobilisation)
                 """)
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Améliorer la Feature Engineering et la Modélisation</h2>", unsafe_allow_html=True)
     st.markdown("""

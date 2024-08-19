@@ -5,7 +5,7 @@ from st_aggrid import AgGrid, GridOptionsBuilder
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FixedLocator
-#import pickle
+import pickle
 import numpy as np
 
 def color_row(row):

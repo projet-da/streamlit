@@ -830,8 +830,10 @@ elif page == pages[7]:
 
     with tab5: 
         # Préparation
-        enc=pickle.load(open("./simulation/sim_enc.pkl", "rb"))
-        sca=pickle.load(open("./simulation/sim_sca.pkl", "rb"))           
+        #enc=pickle.load(open("./simulation/sim_enc.pkl", "rb"))
+        enc=pd.read_pickle('./simulation/sim_enc.pkl')
+        sca=pd.read_pickle('./simulation/sim_sca.pkl')
+        #sca=pickle.load(open("./simulation/sim_sca.pkl", "rb"))           
 
         circular_cols3 = ['HourOfCall', 'MonthOfCall', 'WeekOfCall', 'WeekdayOfCall']
         num_cols3 = ['Easting_rounded', 'Northing_rounded', 'Distance_Incident_IncidentStationGround', 'DepartureOrder', 'Dist_trajet_Incident_DeployedFromStation', 'day_temperature', 'day_sunshine_duration_s', 'day_precipitation_mm', 'day_snow_mm', 'day_nb_precipitation_hours', 'hour_temperature', 'hour_sunshine_duration_s', 'hour_precipitation_mm', 'hour_snow_mm', 'Taux_retard']
@@ -886,14 +888,16 @@ elif page == pages[7]:
             st.write("")
             st.write("")
             st.write("##### Modèle de Classification")
-            cla=pickle.load(open("./simulation/sim_class.pkl", "rb"))
+            #cla=pickle.load(open("./simulation/sim_class.pkl", "rb"))
+            cla=pd.read_pickle('./simulation/sim_class.pkl')
             res_cla=cla.predict(X_sim_encoded)
             result='Résultat de la prédiction : **objectif atteint**, le camion mettra moins de 6 minutes' if res_cla[0]==1 else 'Résultat de la prédiction : **objectif non atteint**, le camion mettra plus de 6 minutes'
             st.write(result)         
 
             st.write("")
             st.write("##### Modèle de Régression")
-            reg=pickle.load(open("./simulation/sim_reg.pkl", "rb"))
+            #reg=pickle.load(open("./simulation/sim_reg.pkl", "rb"))
+            reg=pd.read_pickle('./simulation/sim_reg.pkl')
             res_reg=reg.predict(X_sim_encoded)
 
             from datetime import timedelta        
@@ -946,11 +950,13 @@ elif page == pages[7]:
         X_sim_encoded = pd.concat([pd.DataFrame(num_sim_scaled), pd.DataFrame(cat_sim_encoded), pd.DataFrame(circular_sim)], axis = 1)
 
         # régression
-        reg=pickle.load(open("./simulation/sim_reg.pkl", "rb"))
+        #reg=pickle.load(open("./simulation/sim_reg.pkl", "rb"))
+        reg=pd.read_pickle('./simulation/sim_reg.pkl')
         res_reg=reg.predict(X_sim_encoded)
 
         # classification        
-        cla=pickle.load(open("./simulation/sim_class.pkl", "rb"))
+        #cla=pickle.load(open("./simulation/sim_class.pkl", "rb"))
+        cla=pd.read_pickle('./simulation/sim_class.pkl')
         res_cla=cla.predict(X_sim_encoded)
 
         st.write("##### Identification de la caserne à mobilier")

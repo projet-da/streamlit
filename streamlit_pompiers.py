@@ -310,7 +310,7 @@ elif page == pages[4]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Sur la base des analyses de données, des visualisation et des tests statistiques réalisées dans la phase précédente, nous avons décider de sélectionner les <strong><span style="color: orange;"> caractéristiques< /span></strong> suivantes pour construire, entraîner et tester nos modèles :</p>
+        <p class="custom-p">Sur la base des analyses de données, des visualisation et des tests statistiques réalisées dans la phase précédente, nous avons décider de sélectionner les <strong><span style="color: orange;"> caractéristiques</span></strong> suivantes pour construire, entraîner et tester nos modèles :</p>
         """, unsafe_allow_html=True)
 
     with st.expander("**Ajout de caractéristiques utiles liées à des données existantes**"):

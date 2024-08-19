@@ -831,8 +831,6 @@ elif page == pages[7]:
     with tab5: 
         # Préparation
         enc=pickle.load(open("./simulation/sim_enc.pkl", "rb"))
-        #enc=pd.read_pickle('./simulation/sim_enc.pkl')
-        #sca=pd.read_pickle('./simulation/sim_sca.pkl')
         sca=pickle.load(open("./simulation/sim_sca.pkl", "rb"))           
 
         circular_cols3 = ['HourOfCall', 'MonthOfCall', 'WeekOfCall', 'WeekdayOfCall']
@@ -889,7 +887,6 @@ elif page == pages[7]:
             st.write("")
             st.write("##### Modèle de Classification")
             cla=pickle.load(open("./simulation/sim_class.pkl", "rb"))
-            #cla=pd.read_pickle('./simulation/sim_class.pkl')
             res_cla=cla.predict(X_sim_encoded)
             result='Résultat de la prédiction : **objectif atteint**, le camion mettra moins de 6 minutes' if res_cla[0]==1 else 'Résultat de la prédiction : **objectif non atteint**, le camion mettra plus de 6 minutes'
             st.write(result)         
@@ -897,7 +894,6 @@ elif page == pages[7]:
             st.write("")
             st.write("##### Modèle de Régression")
             reg=pickle.load(open("./simulation/sim_reg.pkl", "rb"))
-            #reg=pd.read_pickle('./simulation/sim_reg.pkl')
             res_reg=reg.predict(X_sim_encoded)
 
             from datetime import timedelta        
@@ -951,12 +947,10 @@ elif page == pages[7]:
 
         # régression
         reg=pickle.load(open("./simulation/sim_reg.pkl", "rb"))
-        #reg=pd.read_pickle('./simulation/sim_reg.pkl')
         res_reg=reg.predict(X_sim_encoded)
 
         # classification        
         cla=pickle.load(open("./simulation/sim_class.pkl", "rb"))
-        #cla=pd.read_pickle('./simulation/sim_class.pkl')
         res_cla=cla.predict(X_sim_encoded)
 
         st.write("##### Identification de la caserne à mobilier")

@@ -830,8 +830,8 @@ elif page == pages[7]:
 
     with tab5: 
         # Préparation
-        #enc=pickle.load(open("./simulation/sim_enc.pkl", "rb"))
-        enc=pd.read_pickle('./simulation/sim_enc.pkl')
+        enc=pickle.load(open("./simulation/sim_enc.pkl", "rb"))
+        #enc=pd.read_pickle('./simulation/sim_enc.pkl')
         sca=pd.read_pickle('./simulation/sim_sca.pkl')
         #sca=pickle.load(open("./simulation/sim_sca.pkl", "rb"))           
 

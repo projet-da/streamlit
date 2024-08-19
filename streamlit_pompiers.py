@@ -953,7 +953,7 @@ elif page == pages[7]:
         cla=pickle.load(open("./simulation/sim_class.pkl", "rb"))
         res_cla=cla.predict(X_sim_encoded)
 
-        st.write("##### Identification de la caserne à mobilier")
+        st.write("##### Identification de la caserne à mobiliser")
         df_res_all=pd.DataFrame({
             'Caserne':X_sim['DeployedFromStation_Name'],
             'Classification':res_cla,

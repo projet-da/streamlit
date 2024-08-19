@@ -98,11 +98,11 @@ elif page == pages[1]:
     df1_sample=df.sample(n=100)
     # Afficher 10 lignes du df
     st.dataframe(df1.head(10), width=1200, height=300)
-    # Dimension du df
-    st.write("* Dimensions du dataframe dédupliqué :")
-    st.write(df1.shape)
-    st.write("* Heatmap des valeurs manquantes.")
-    st.image("images/Valeurs manquantes df1.png")
+    ## Dimension du df
+    #st.write("* Dimensions du dataframe dédupliqué :")
+    #st.write(df1.shape)
+    #st.write("* Heatmap des valeurs manquantes.")
+    #st.image("images/Valeurs manquantes df1.png")
 
 ##############################################################
 # Analyse et visualisations des données

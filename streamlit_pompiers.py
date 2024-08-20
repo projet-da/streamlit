@@ -127,7 +127,7 @@ elif page == pages[2]:
     st.write("Les False Alarm sont en progression sur les 5 dernières années, ainsi que les Special Service.")
     st.write("On notera encore une fois que l'année 2020 (Covid) est une année en baisse peu importe la catégorie.")
     if st.checkbox("Coût par incident de 2019 à 2023"):
-        st.image("Couts par incident de 2019 à 2023.png")
+        st.image("images/Couts par incident de 2019 à 2023.png")
     
     st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Histogramme des coûts par types d'incidents sur 5 ans</h1></u>", unsafe_allow_html=True)
     st.image("images/Couts type incidents 2019-2023.png")

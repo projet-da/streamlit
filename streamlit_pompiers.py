@@ -124,14 +124,14 @@ elif page == pages[2]:
 
     st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Histogramme par types d'incidents sur 5 ans</h1></u>", unsafe_allow_html=True)
     st.image("images/incid de 19 à 23.png")
-    st.write("Les False Alarm sont en progression sur les 5 dernières années, ainsi que les Special Service.")
+    st.write("Les False Alarm sont en progression sur les 4 dernières années, ainsi que les Special Service.")
     st.write("On notera encore une fois que l'année 2020 (Covid) est une année en baisse peu importe la catégorie.")
     if st.checkbox("Coût par incident de 2019 à 2023"):
         st.image("images/Couts par incident de 2019 à 2023.png")
     
     st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Histogramme des coûts par types d'incidents sur 5 ans</h1></u>", unsafe_allow_html=True)
     st.image("images/Couts type incidents 2019-2023.png")
-    st.write("La dimininution des False Alarm représente un enjeu important en terme d'économie.")  
+    st.write("La diminution des False Alarm représente un enjeu important en terme d'économie.")  
     st.write("L'année 2022 est atypique pour les feux, plusieurs incendies importants ce sont déclarés entre juillet et août 2022 avec des températures inédites outre-Manche : plus de 40 degrés à Londres.") 
 
     st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Boîtes à moustaches des temps d'intervention par types d'incidents</h1></u>", unsafe_allow_html=True)

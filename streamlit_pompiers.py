@@ -1010,7 +1010,7 @@ elif page == pages[9]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Automatiser les traitements</h2>", unsafe_allow_html=True)
     st.markdown("""
                 - Automatiser la collecte des données sources depuis le site de la LFB (web scrapping)
-                - Créer un pipeline enchainant les traitements de préparation des données, d'entrainement du modèle et de prédiction
+                - Créer un pipeline enchainant les étapes de préparation des données, d'entrainement du modèle et de prédiction
                 """)    
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Enrichir le jeu de données</h2>", unsafe_allow_html=True)
     st.markdown("""

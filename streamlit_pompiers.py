@@ -47,21 +47,21 @@ if page == pages[0]:
     #st.write("### Contexte du projet")
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Présentation et contexte du projet</h1>", unsafe_allow_html=True)
 
-    st.write("L’objectif de ce projet est d’analyser les temps d'arrivée de la Brigade des Pompiers de Londres (LFB) sur le lieu d'incident, ainsi que les incidents de type 'Fausse Alarme' qui représentent plus de la moitié des incidents, puis d'estimer les temps d'arrivée .") 
+    st.write("L’objectif de ce projet est d’analyser les temps d'arrivée de la Brigade des Pompiers de Londres (LFB) dans la limite du Grand Londres, ainsi que les incidents de type 'Fausse Alarme' qui représentent plus de la moitié des incidents, puis d'estimer les temps d'arrivée .") 
     st.write("La brigade des pompiers de Londres est le service d'incendie et de sauvetage le plus actif du Royaume-Uni et l'une des plus grandes organisations de lutte contre l'incendie et de sauvetage au monde.")
-    st.write("Au cours de la période 2005-2023, les pompiers de Londres sont intervenus chaque année sur environ 100 000 incidents à Londres, dont environ la moitié étaient de fausses alarmes. Le projet se concentre sur les incidents survenus dans les limites du Grand Londres et sur la réponse apportée par les camions de pompiers de la London Fire Brigade.")
+    st.write("Les pompiers de Londres sont intervenus chaque année sur environ 100 000 incidents à Londres, dont environ la moitié étaient de fausses alarmes.")
     st.image("images/Carte_incidents_Londres_par_IncidentCategory_2023.png")
     
     st.write("Pour évaluer les performances de la brigade des pompiers de Londres, des normes sont établies pour les différentes parties du processus permettant d'affecter des ressources aux incidents suite à un appel au 999.")
     
-    st.write("* Process d'intervention : de l'appel au 999... à l'intervention.")
+    st.write("* Process d'intervention : de l'appel au 999... jusqu'à l'intervention.")
     st.image("images/shéma intervention caserne.png")
     
     st.write("Les objectifs de temps d'arrivée fixés dans le Plan 2023 de la London Fire Brigade sont les suivants :")
-    st.write("* Que le premier camion de pompiers arrive sur le lieu d’incident dans un délai moyen de 6 minutes après mobilisation de la caserne sollicitée")
-    st.write("* Que le deuxième camion de pompiers (si nécessaire) arrive dans un délai moyen de 8 minutes après mobilisation de la caserne sollicitée")
+    st.write("* Le premier camion de pompiers doit arriver sur le lieu d’incident dans un délai moyen de 6 minutes après mobilisation de la caserne sollicitée")
+    st.write("* Le deuxième camion de pompiers (si nécessaire) doit arriver dans un délai moyen de 8 minutes après mobilisation de la caserne sollicitée")
     
-    st.write("Comme nous le verrons par la suite, l’emplacement des casernes de pompiers et des camions de pompiers détermine la rapidité de réponse de la brigade des pompiers.")
+    st.write("Comme nous le verrons par la suite, l’emplacement des casernes de pompiers et des camions de pompiers détermine la rapidité de réponse de la LFB.")
     #st.write("La Brigade des pompiers de Londres possède actuellement 102 casernes, dont une caserne fluviale (à Lambeth) et une caserne centrale.")
     st.write("La Brigade des pompiers de Londres planifie l'allocation de ses ressources à l'échelle de Londres. Elle planifie l'emplacement des camions de pompiers (et des autres ressources) de sorte qu'ils puissent arriver sur les lieux des incidents le plus rapidement possible, quel que soit l’endroit de l’incident.")
     st.write("La brigade peut envoyer un nombre différent de véhicules et d'appareils de pompiers sur un incident en fonction de la nature de l'incident et du type de bâtiment ou d'emplacement.")
@@ -78,15 +78,15 @@ elif page == pages[1]:
     #st.write("### Le jeu de données")
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Exploration des données</h1>", unsafe_allow_html=True)
     st.write("Pour ce projet, nous avons eu à notre disposition 2 jeux de données : un sur les Incidents et l'autre sur les Mobilisations.")
-    st.write("* Le premier jeu de données fourni, contenait les détails de chaque incident traité entre janvier 2009 et février 2024. Des informations étaient fournies sur la date et le lieu de l'incident ainsi que sur le type d'incident traité. Soit, 2 DataFrames Pandas pour les données d'incidents, pour les périodes 2009-2017 et 2018-2024.")
-    st.write("* Le second jeu de données, contenait les détails de chaque camion de pompiers mobilisé et envoyé sur les lieux d'un incident entre janvier 2009 et février 2024. Des informations étaient fournies sur le camion mobilisé, son lieu de déploiement, les heures et délais d'arrivée sur les lieux de l'incident. Soit, 3 Dataframes Pandas pour les données de mobilisations, pour les périodes 2009-2014,2015-2020, 2021-2024.")
+    st.write("* Le premier jeu de données fourni, contenait les détails de chaque incident traité entre janvier 2009 et février 2024. Des informations étaient fournies sur la date et le lieu de l'incident ainsi que sur le type d'incident traité. Soit, 2 DataFrames.")
+    st.write("* Le second jeu de données, contenait les détails de chaque camion de pompiers mobilisé et envoyé sur les lieux d'un incident entre janvier 2009 et février 2024. Des informations étaient fournies sur le camion mobilisé, son lieu de déploiement, les heures et délais d'arrivée sur les lieux de l'incident. Soit, 3 Dataframes.")
     
     st.write("Une première étape a consisté à comprendre le contexte et le périmètre du projet, et à découvrir et appréhender les données disponibles.")
-    st.write("* Pour cela, nous avons effectué des recherches sur l'organisation de la brigade des pompiers de Londres et sur les différentes étapes du processus permettant d'affecter et de mobiliser des ressources sur les incidents identifiés lors des appels au 999, et avons procédé à une analyse des données disponibles afin d'identifier leur signification, le type de variable (catégorielle ou quantitative, continue ou discrète), d'identifier les différentes modalités/valeurs des données et la distribution de ces modalités/valeurs, la présence éventuelle de valeurs manquantes, de doublons ou de valeurs aberrantes, l'existence éventuelle de disparités de format pour certaines données.")
+    st.write("* Pour cela, nous avons effectué des recherches sur l'organisation de la LFB et sur les différentes étapes du processus permettant d'affecter et de mobiliser des ressources sur les incidents identifiés. Nous avons alors procédé à une analyse des données disponibles afin d'identifier leur signification : le type de variable (catégorielle ou quantitative, continue ou discrète), nous avons identifié les différentes modalités/valeurs des données et leur distribution, la présence éventuelle de valeurs manquantes, de doublons ou de valeurs aberrantes, l'existence éventuelle de disparités de format pour certaines données.")
     st.write("Dans un second temps, nous avons travaillé sur l'exploration, la transformation, l'enrichissement, et le nettoyage des données.")
-    st.write("* Afin de nous assurer une bonne compréhension des données nous avons sollicité à quelques reprises la London Fire Brigade, en la personne de Sophie Prendergast. Pour enrichir les données, nous avons recherché des fonds de carte du Grand Londres, et des fichiers comprenant des coordonées géographiques, par exemple : celles des casernes, ou celles qui permettent d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London, et également de calculer la distance entre la caserne et le lieu d'incident 'Distance_Incident_DeployedFromStation'. Nous avons également effectué des transformations et modifié le type pour certaines variables comme DateOfCall (en datetime64[ns]), ou CalYear (en object)...")
+    st.write("* Afin de nous assurer une bonne compréhension des données nous avons sollicité à quelques reprises la London Fire Brigade, en la personne de Sophie Prendergast. Pour enrichir les données, nous avons recherché des fonds de carte du Grand Londres, et des fichiers comprenant des coordonnées géographiques, par exemple : celles des casernes, ou celles qui permettent d'identifier si le quartier du lieu d'incident fait partie de l'Inner London ou de l'Outer London, et également de calculer les distances entre les casernes et les lieux d'incident. Enfin, nous avons également effectué des transformations et modifié le type de certaines variables.")
     
-    st.write("Enfin, nous avons concaténé les différents DataFrames, pour aboutir à un DataFrame unique des données d'incident et un DataFrame unique des données de mobilisations des pompiers de Londres. Puis nous avons réunis les DataFrames des incidents et des mobilisations en les fusionnants.")
+    st.write("Puis, nous avons concaténé les différents DataFrames, pour aboutir à un DataFrame unique des données d'incident et un DataFrame unique des données de mobilisations. Et, nous avons réunis les DataFrames des incidents et des mobilisations en les fusionnants en un seul DataFrame.")
     
     
 
@@ -116,29 +116,29 @@ elif page == pages[2]:
     st.image("images/Nb incidents par année de 2009 à 2024.png")
     st.write("Après une diminution entre 2009 et 2015, on constate une tendance à la hausse du nombre d'incidents depuis 2015, à l'exception de l'année 2020, année marquée par des périodes de confinement liés à la pandémie de Covid-19.")
 
-    st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Répartition en % par catégories d'incidents</h1></u>", unsafe_allow_html=True)
+    st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Répartition en % par catégories d'incidents de 2019 à 2023</h1></u>", unsafe_allow_html=True)
     st.image("images/Incidents 2019 à 2023 en % plotly.png")
     st.write("Les False Alarm représentent plus de la moitié des interventions.")
     if st.checkbox("Special Service"):
         st.write("Effectuer une entrée/sortie d'un bâtiment: 26%, Inondation : 21%, Collisions de trafic routier : 12%, Déverouillage d'ascenseur : 5%...")
 
-    st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Histogramme par types d'incidents sur 5 ans</h1></u>", unsafe_allow_html=True)
+    st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Histogramme du nombre d'incidents par types d'incidents de 2019 à 2023</h1></u>", unsafe_allow_html=True)
     st.image("images/incid de 19 à 23.png")
     st.write("Les False Alarm sont en progression sur les 4 dernières années, ainsi que les Special Service.")
     st.write("On notera encore une fois que l'année 2020 (Covid) est une année en baisse peu importe la catégorie.")
     if st.checkbox("Coût par incident de 2019 à 2023"):
         st.image("images/Couts par incident de 2019 à 2023.png")
     
-    st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Histogramme des coûts par types d'incidents sur 5 ans</h1></u>", unsafe_allow_html=True)
+    st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Histogramme des coûts par types d'incidents de 2019 à 2023</h1></u>", unsafe_allow_html=True)
     st.image("images/Couts type incidents 2019-2023.png")
     st.write("La diminution des False Alarm représente un enjeu important en terme d'économie.")  
     st.write("L'année 2022 est atypique pour les feux, plusieurs incendies importants ce sont déclarés entre juillet et août 2022 avec des températures inédites outre-Manche : plus de 40 degrés à Londres.") 
 
     st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Boîtes à moustaches des temps d'intervention par types d'incidents</h1></u>", unsafe_allow_html=True)
     st.image("images/Boxplot IncidentGroup Médianes et Moyennes 2019 2023.png")
-    st.write("Les médianes sont proches les unes des autres, elles ont respectivement de 317sec(FA), de 329sec(F) et de 314sec(SS). Les moyennes sont respectivement de 340sec(FA), de 357sec(F) et de 337sec(SS). Elles remplissent le cahier des charges de la LFB de moins de 6min. ")
+    st.write("Les médianes et les moyennes sont proches les unes des autres. Les médianes sont respectivement de 317sec(FA), de 329sec(F) et de 314sec(SS). Les moyennes sont respectivement de 340sec(FA), de 357sec(F) et de 337sec(SS). Elles remplissent le cahier des charges de la LFB, c'est à dire l'arrivée sur le lieu d'incident en moins de 6min. ")
     
-    st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Temps d'arrivee moyen du 1er camion en fonction de la zone d'incident</h1></u>", unsafe_allow_html=True)
+    st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Temps d'arrivee moyen du 1er camion en fonction de la zone d'incident Inner ou Outer</h1></u>", unsafe_allow_html=True)
     st.image("images/Temps d'arrivee moyen du 1er camion en fonction de la zone d'incident (Inner-Outer London) pour chaque année sur la période de 2017 à 2023.png")
     st.write("Les interventions dans le centre de Londres (Inner) sont plus rapides que dans la périphérie (Outer), l'explication réside dans la concentration des casernes dans le centre de Londres. ")
     

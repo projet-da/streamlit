@@ -158,7 +158,7 @@ elif page == pages[3]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Pour visualiser l’existence de relations entre différentes paires de variables catégorielles et numériques et mesurer la force de cette corrélation, nous avons construit une <strong><span style="color: orange;">heatmap de corrélation personnalisée</span></strong>, construite à partir d'une matrice de corrélation basée sur des mesures de corrélation appropriées pour chaque type de variable :</p>
+        <p class="custom-p">Pour visualiser l’existence de relations entre différentes paires de variables catégorielles et numériques et mesurer la force de cette corrélation, nous avons réalisé des tests statistiques entre les différentes variables et construit une <strong><span style="color: orange;">heatmap de corrélation personnalisée :</span></strong></p>
     """, unsafe_allow_html=True)
     
     with st.expander("Détail de la Heatmap de corrélation personnalisée"):

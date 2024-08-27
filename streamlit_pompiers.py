@@ -603,7 +603,7 @@ elif page == pages[6]:
                 <style>
                 .custom-p {margin-bottom: -0.1em;}
                 </style>
-                <p class="custom-p">Dans le cadre de la modélisation de type régression, nous avons entrainé et testé les <strong>modèles de régression</strong> suivants :</p>
+                <p class="custom-p">Dans le cadre de cette modélisation de type régression, nous avons entrainé et testé les <strong>modèles de régression</strong> suivants :</p>
                 <ul class="custom-ul">
                 <li><strong>Régression Linéaire</strong> : Ce modèle suppose une relation linéaire entre les caractéristiques et la cible, ce qui n'est pas toujours le cas dans les données réelles.  Il peut être influencé par les valeurs aberrantes.</li>
                 <li><strong>Régression Polynomiale</strong> : Ce modèle est une extension de la régression linéaire tout en permettant de capturer des relations non linéaires entre les caractéristiques et la variable cible en ajoutant des termes polynomiaux.</li>
@@ -622,7 +622,7 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de régression nous avons utilisé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>MAE, MSE, RMSE, R²</strong>.<br><br>
             <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Résultats / Classement des modèles de régression</h4>
-            Ci-dessous le classement (du plus performant au moins performant) des différents modèles de régression entrainés et testés en fonction du coefficient de détermination R²:</p>
+            Ci-dessous le classement (du plus performant au moins performant) des différents modèles de régression entrainés et testés, en fonction du <strong>coefficient de détermination R²</strong> :</p>
             """, unsafe_allow_html=True)
     
         col1, col2 = st.columns([1, 10])
@@ -708,10 +708,11 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Malgré l'<strong>ajout de nouvelles caractéristiques</strong> par rapport au jeu de données initial de la LFB, telles que la <strong>distance de trajet le plus court</strong> et les <strong>données météo</strong>, malgré l'<strong>optimisation des hyperparamètres</strong> des modèles, malgré l’utilisation de techniques d’<strong>ensemble learning</strong> comme le <strong>bagging</strong>, <span style="color: red;">nous ne sommes pas parvenus à améliorer significativement les performances des modèles de régression</span>.<br><br>
-            Au regard du relativement faible niveau de performance (R², résidus) observé sur les modèles de régression testés, nous avons décidés de compléter notre modélisation par la mise en œuvre de <strong><span style="color: orange;">modèles de classification</span></strong> permettant de <strong>prédire</strong> par exemple <strong>une <span style="color: orange;">classe binaire</span> indiquant si le temps d’arrivée sur un lieu d’incident sera inférieur ou supérieur à 6 min</strong>.<br>
-            Pour ce problème de classification, la <strong><span style="color: orange;">variable cible</span></strong> est <strong><span style="color: orange;">une classe binaire</span> indiquant l'atteinte ou non de l’objectif de temps d’arrivée < 6 min</strong>. <br><br>
-            La <strong>distribution</strong> sur le jeu de données des valeurs de cette <strong>variable cible/</strong> est la suivante :</p>
+            <p class="custom-p">Malgré l'enrichissement du jeu de données initial avec <strong> de nouvelles caractéristiques</strong>, telles que la <strong>distance de trajet le plus court</strong> et les <strong>données météo</strong>, malgré l'<strong>optimisation des hyperparamètres</strong> des modèles de régression, malgré l’utilisation de techniques d’<strong>ensemble learning</strong> comme le <strong>bagging</strong>, <span style="color: red;"><strong>nous ne sommes pas parvenus à améliorer significativement les résultats des modèles de régression</strong></span>.<br><br>
+            Nous avons donc décidés de compléter notre modélisation par l'utilisation de <strong><span style="color: orange;">modèles de classification</span></strong>, afin de <strong>prédire</strong> cette fois-ci une <strong><span style="color: orange;">classe binaire</span> indiquant si le temps d’arrivée sur un lieu d’incident sera inférieur ou supérieur à 6 min</strong>.<br>
+            La <strong><span style="color: orange;">variable cible</span></strong> est alors une<strong><span style="color: orange;">classe binaire</span> indiquant l'atteinte ou non de l’objectif de temps d’arrivée < 6 min</strong>. <br><br>
+            dont la <strong>distribution</strong> sur le jeu de données est la suivante :
+            </p>
             """, unsafe_allow_html=True)
     
         col1, col2 = st.columns([1, 10])
@@ -720,12 +721,12 @@ elif page == pages[6]:
         with col2:
             st.image("images/Distribution des classes.png")
          
-        with st.expander("**Pour résoudre ce problème de régression, nous avons entrainé et testé différents modèles de classification**"):
+        with st.expander("**Nous avons entrainé, testé et évalué différents modèles de classification**"):
             st.markdown("""
                 <style>
                 .custom-p {margin-bottom: -0.1em;}
                 </style>
-                <p class="custom-p">Pour résoudre ce problème de classification, nous avons entrainé et testé les <strong><span style="color: orange;">modèles de classification</span></strong> suivants :</p>
+                <p class="custom-p">Dans le cadre de cette modélisation de type classification, nous avons entrainé et testé les <strong><span style="color: orange;">modèles de classification</span></strong> suivants :</p>
                 <ul class="custom-ul">
                 <li><strong>XGBoostClassifier</strong></li>
                 <li><strong>LogisticRegression</strong></li>
@@ -739,9 +740,9 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p"> Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de classification nous avons calculé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>Exactitude (Accuracy), Rappel (Recall), Précision, F1-Score, AUC-ROC</strong>.<p>
+            <p class="custom-p"> Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de classification nous avons utilisé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>Exactitude (Accuracy), Rappel (Recall), Précision, F1-Score, AUC-ROC</strong>.<p>
             <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Résultats / Classement des modèles de classification</h4>
-            <p>Ci-dessous le classement (du plus performant au moins performant) des modèles de classification finaux entrainés et testés :</p>
+            <p>Ci-dessous le classement (du plus performant au moins performant) des modèles de classification finaux entrainés et testés, en fonction de l'<strong>exactitude (ou accuracy)</strong> :</p>
             """, unsafe_allow_html=True)
     
         col1, col2 = st.columns([1, 10])
@@ -770,41 +771,43 @@ elif page == pages[6]:
             </ul>
             """, unsafe_allow_html=True)
     
-        st.markdown("""
-            <style>
-            .custom-ul {
-                line-height: 1.2;
-            }
-            </style>
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
-            <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBClassifier</strong>.</p>
-            """, unsafe_allow_html=True)
     
-        col1, col2 = st.columns([1, 10])
-        with col1:
-            st.markdown("")
-        with col2:
-            st.image("images/Features Importance XGBoostClassifier.png")
-    
-        st.markdown("""
-            <style>
-            .custom-ul {
-                line-height: 1.2;
-            }
-            </style>
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
-            <ul class="custom-ul">
-            <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
-            <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
-            <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
-            </ul>
-            """, unsafe_allow_html=True)
+        with st.expander("**Graphe des caractéristiques les plus importantes/influentes**"):
+            st.markdown("""
+                <style>
+                .custom-ul {
+                    line-height: 1.2;
+                }
+                </style>
+                <style>
+                .custom-p {margin-bottom: -0.1em;}
+                </style>
+                <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
+                <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBClassifier</strong>.</p>
+                """, unsafe_allow_html=True)
+        
+            col1, col2 = st.columns([1, 10])
+            with col1:
+                st.markdown("")
+            with col2:
+                st.image("images/Features Importance XGBoostClassifier.png")
+        
+            st.markdown("""
+                <style>
+                .custom-ul {
+                    line-height: 1.2;
+                }
+                </style>
+                <style>
+                .custom-p {margin-bottom: -0.1em;}
+                </style>
+                <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
+                <ul class="custom-ul">
+                <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
+                <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
+                <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
+                </ul>
+                """, unsafe_allow_html=True)
 
 
 ##############################################################

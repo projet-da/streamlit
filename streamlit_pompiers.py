@@ -529,31 +529,31 @@ elif page == pages[6]:
     ######################################################################################################################
     with tab2:
     ######## Séparation des différents types de caractéristiques (catégorielles, numériques, cycliques) ################
-        st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Séparation des différents types de caractéristiques (catégorielles, numériques, cycliques)</h2>", unsafe_allow_html=True)
-        st.markdown("""
-            <style>
-            .custom-ul {
-                line-height: 1.2;
-            }
-            </style>
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <p class="custom-p">Les caractéristiques candidates retenues pour construire nos modèles de régression et de classification peuvent être classées en différents types principaux que nous nous sommes attachés à identifier :</p>
-            <ul class="custom-ul">
-            <li>Caractéristiques <strong><span style="color: orange;">numériques quantitatives</span></strong> représentant une mesure (continues ou discrètes).</li>
-            <li>Caractéristiques <strong><span style="color: orange;">catégorielles qualitatives</span></strong> représentant des catégories ou des classes.</li>
-            <li>Caractéristiques <strong><span style="color: orange;">cycliques</span></strong> qui se répètent de manière périodique, comme les jours de la semaine, les mois, les heures de la journée, les numéros de semaines liés à une saison.</li>
-            </ul>
-            """, unsafe_allow_html=True)
+        # st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Séparation des différents types de caractéristiques (catégorielles, numériques, cycliques)</h2>", unsafe_allow_html=True)
+        # st.markdown("""
+        #     <style>
+        #     .custom-ul {
+        #         line-height: 1.2;
+        #     }
+        #     </style>
+        #     <style>
+        #     .custom-p {margin-bottom: -0.1em;}
+        #     </style>
+        #     <p class="custom-p">En fonction Les caractéristiques candidates retenues pour construire nos modèles de régression et de classification peuvent être classées en différents types principaux que nous nous sommes attachés à identifier :</p>
+        #     <ul class="custom-ul">
+        #     <li>Caractéristiques <strong><span style="color: orange;">numériques quantitatives</span></strong> représentant une mesure (continues ou discrètes).</li>
+        #     <li>Caractéristiques <strong><span style="color: orange;">catégorielles qualitatives</span></strong> représentant des catégories ou des classes.</li>
+        #     <li>Caractéristiques <strong><span style="color: orange;">cycliques</span></strong> qui se répètent de manière périodique, comme les jours de la semaine, les mois, les heures de la journée, les numéros de semaines liés à une saison.</li>
+        #     </ul>
+        #     """, unsafe_allow_html=True)
             
-        st.markdown("""
-            Une fois les types identifiés, nous avons découpé les jeux de données d’entraînement et de test, contenant les données des différentes caractéristiques, en sous-ensembles liés à chaque type de donnée, afin de pouvoir leur appliquer un traitement différencié (<strong><span style="color: orange;">standardisation</span></strong>  des caractéristiques <strong>numériques et cycliques</strong>, <strong><span style="color: orange;">encodage</span></strong> des caractéristiques <strong>catégorielles</strong>).<br>
-            L'objectif de cette démarche est de traiter chaque type de caractéristique de manière optimale pour améliorer la performance du modèle de machine learning, tout en conservant les informations importantes et en réduisant les biais potentiels.<br>
-            """, unsafe_allow_html=True)
+        # st.markdown("""
+        #     Une fois les types identifiés, nous avons découpé les jeux de données d’entraînement et de test, contenant les données des différentes caractéristiques, en sous-ensembles liés à chaque type de donnée, afin de pouvoir leur appliquer un traitement différencié (<strong><span style="color: orange;">standardisation</span></strong>  des caractéristiques <strong>numériques et cycliques</strong>, <strong><span style="color: orange;">encodage</span></strong> des caractéristiques <strong>catégorielles</strong>).<br>
+        #     L'objectif de cette démarche est de traiter chaque type de caractéristique de manière optimale pour améliorer la performance du modèle de machine learning, tout en conservant les informations importantes et en réduisant les biais potentiels.<br>
+        #     """, unsafe_allow_html=True)
 
     ######## Transformation des données (standardisation, encodage) ################
-        st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Transformation des données (standardisation, encodage)</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Transformation des données avant modélisation (standardisation, encodage)</h2>", unsafe_allow_html=True)
         st.markdown("""
             <style>
             .custom-ul {
@@ -563,16 +563,12 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Les transformations suivantes ont été effectuées sur les caractéristiques des jeux de données destinées à entraîner et tester les modèles de Machine Learning :</p>
+            <p class="custom-p">Les transformations suivantes ont été effectuées sur les caractéristiques des jeux de données destinées à entraîner et tester les modèles de Machine Learning, afin qu'elles soient exploitables par les modèles de Machine Learning.  :</p>
             <ul class="custom-ul">
             <li><strong><span style="color: orange;">Standardiser les caractéristiques numériques et cycliques </span></strong> (de nature périodique) pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des variables.</li>
-            <li><strong><span style="color: orange;">Encoder les variables catégorielles </span></strong> en utilisant le <strong>One-Hot Encoding</strong> (conversion en caractéristiques binaires) pour qu’elles soient exploitables par les modèles de Machine Learning.<br>
-            Cela concerne les caractéristiques catégorielles comme le nom de la caserne de départ, l'existence de retards associés aux mobilisations de la caserne, la nature d'incident, etc</li>
+            <li><strong><span style="color: orange;">Encoder les variables catégorielles </span></strong> en utilisant le <strong>One-Hot Encoding</strong> (conversion en caractéristiques binaires).<br>
+            Cela concerne par exemple les caractéristiques catégorielles comme le nom de la caserne de départ, l'existence de retards associés aux mobilisations de la caserne, ou la nature d'incident, etc</li>
             </ul>
-            """, unsafe_allow_html=True)
-            
-        st.markdown("""
-            Une fois ces traitements réalisés nous avons réassemblé les caractéristiques transformées en un seul DataFrame utilisé pour entrainer, optimiser et tester les modèles de machine learning.<br>
             """, unsafe_allow_html=True)
         
     

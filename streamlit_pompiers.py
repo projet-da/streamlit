@@ -159,7 +159,8 @@ elif page == pages[3]:
         .custom-p {margin-bottom: -0.1em;}
         </style>
         <p class="custom-p">Pour visualiser l’existence de relations entre les différentes paires de variables, catégorielles et numériques, et mesurer la force de cette corrélation, nous avons réalisé des tests statistiques entre les différentes variables et construit une <strong><span style="color: orange;">heatmap de corrélation personnalisée.</span></strong></p>
-        <p class="custom-p">Chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre elles. La valeur de chaque cellule représente la force et la direction de la corrélation, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</p>
+        <p class="custom-p">Chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre elles. </p>
+        <p class="custom-p">La valeur de chaque cellule représente la force et la direction de la corrélation, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</p>
     """, unsafe_allow_html=True)
     
     with st.expander("Détail de la Heatmap de corrélation personnalisée"):
@@ -311,7 +312,7 @@ elif page == pages[4]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Sur la base des analyses de données, des visualisations et des tests statistiques réalisés dans la phase précédente, nous avons décidé de sélectionner les <strong><span style="color: orange;"> caractéristiques</span></strong> suivantes pour construire, entraîner et tester des modèles de Machine Learning en vue de prédire les temps d'arrivée des pompiers sur le lieu d'incident :</p>
+        <p class="custom-p">Sur la base de cette analyse et visualisation de corrélations entre variables réalisées dans la phase précédente, nous avons sélectionné un certain nombre de <strong><span style="color: orange;"> caractéristiques</span></strong> pertinentes pour construire, entraîner et tester des modèles de Machine Learning en vue de pouvoir prédire les temps d'arrivée des pompiers sur le lieu d'incident :</p>
         """, unsafe_allow_html=True)
 
     with st.expander("**Ajout de caractéristiques utiles liées à des données existantes**"):

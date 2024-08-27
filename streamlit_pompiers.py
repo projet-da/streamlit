@@ -196,7 +196,7 @@ elif page == pages[3]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">On constate des <strong><span style="color: orange;">corrélations fortes (coefficient de corrélation > 0.7)</span></strong> entre les paires de données suivantes :</p>
+        <p class="custom-p"><strong>On constate des <span style="color: orange;">corrélations très fortes (coefficient de corrélation > 0.7)</span>entre les paires de données suivantes :</strong></p>
         """, unsafe_allow_html=True)
     
     st.markdown("""
@@ -252,7 +252,7 @@ elif page == pages[3]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p"><br>On constate également des <strong><span style="color: orange;">corrélations modérées (coefficient de corrélation compris entre 0.25 et 0.7)</span></strong> entre les paires de données suivantes :</p>
+        <p class="custom-p"><br><strong>On constate également des <span style="color: orange;">corrélations modérées à fortes (coefficient de corrélation compris entre 0.25 et 0.7)</span>entre les paires de données suivantes :</strong></p>
         """, unsafe_allow_html=True)
     
     st.markdown("""
@@ -484,13 +484,14 @@ elif page == pages[5]:
             <ul class="custom-ul">
             <li><strong><span style="color: orange;">Supprimer les lignes du DataFrame comportant des valeurs de vitesse aberrantes</span></strong> (<strong>au-dessus de 100 km/h</strong>) liées à des <strong>temps de trajet très faibles</strong><br></li>
             <li><strong><span style="color: orange;">Evaluer la distance de l’itinéraire le plus court</span></strong> entre la caserne et le lieu d’incident.<br></li>
-            <li><strong><span style="color: orange;">Ajuster à la valeur du 5e percentile (14 km/h) et du 95e percentile (55 km/h)</span></strong> les valeurs de <strong>vitesses</strong> situées <strong>en dessous du 5e percentile/strong>
+            <li><strong><span style="color: orange;">Ajuster (par winsorisation) à la valeur du 5e percentile (14 km/h) et du 95e percentile (55 km/h)</span></strong> les valeurs de <strong>vitesses</strong> situées <strong>en dessous du 5e percentile</strong>
             et <strong>au-dessus du 95e percentile</strong>.<br></li>
             <li><span style="color: orange;"><strong>Recalculer la valeur de temps de trajet</strong></span> sur la base de la valeur de distance de l'itinéraire et de la vleur de vitesse ajustée<br><br></li></ul>
             <p class="custom-p">Ci-dessous un graphe de type boxplot illustrant la distribution des valeurs de vitesse avant/après ajustement des valeurs</p>
             """, unsafe_allow_html=True)
     
-        st.image("images/Winsorisation des valeurs extremes de vitesses de trajet.png")
+        with st.expander("**Distribution des valeurs de vitesse Avant/Après ajustement (winsorisation)**"):
+            st.image("images/Winsorisation des valeurs extremes de vitesses de trajet.png")
 
 
 ##############################################################

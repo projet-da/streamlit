@@ -595,8 +595,8 @@ elif page == pages[6]:
             .custom-p {margin-bottom: -0.1em;}
             </style>
             <p class="custom-p">Dans un premier temps, nous avons utilisé des <strong><span style="color: orange;">modèles de régression</span></strong> afin de <strong>prédire la valeur du temps d’arrivée d’un camion de pompiers sur le lieu d’incident</strong>. <br>
-            Pour ce type de modélisation, il s'agit d'une <strong><span style="color: orange;">variable cible de type numérique</span></strong>, en l'occurence la variable <strong>AttendanceTimeSeconds</strong> correspondant au <strong>Temps d'arrivée des pompiers sur le lieu d'incident</strong>, incluant le temps de mobilisation de l’équipage et le temps de trajet entre la caserne et le lieu de l’incident. <br>
-            dont la <strong>distribution</strong> sur le jeu de données est la suivante :
+            Pour ce type de modélisation, il s'agit d'une <strong><span style="color: orange;">variable cible de type numérique</span></strong>, en l'occurence la variable <strong>AttendanceTimeSeconds</strong> correspondant au <strong>Temps d'arrivée des pompiers sur le lieu d'incident</strong>, incluant le temps de mobilisation de l’équipage et le temps de trajet entre la caserne et le lieu de l’incident,
+             dont la <strong>distribution</strong> sur le jeu de données est la suivante :
             </p>
             """, unsafe_allow_html=True)
     
@@ -718,8 +718,8 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Malgré l'enrichissement du jeu de données initial avec <strong> de nouvelles caractéristiques</strong>, telles que la <strong>distance de trajet le plus court</strong> et les <strong>données météo</strong>, malgré l'<strong>optimisation des hyperparamètres</strong> des modèles de régression, malgré l’utilisation de techniques d’<strong>ensemble learning</strong> comme le <strong>bagging</strong>, <span style="color: red;"><strong>nous ne sommes pas parvenus à améliorer significativement les résultats des modèles de régression</strong></span>.<br><br>
             Nous avons donc décidés de compléter notre modélisation par l'utilisation de <strong><span style="color: orange;">modèles de classification</span></strong>, afin de <strong>prédire</strong> cette fois-ci une <strong><span style="color: orange;">classe binaire</span> indiquant si le temps d’arrivée sur un lieu d’incident sera inférieur ou supérieur à 6 min</strong>.<br>
-            La <strong><span style="color: orange;">variable cible</span></strong> est alors une<strong><span style="color: orange;">classe binaire</span> indiquant l'atteinte ou non de l’objectif de temps d’arrivée < 6 min</strong>. <br><br>
-            dont la <strong>distribution</strong> sur le jeu de données est la suivante :
+            La <strong><span style="color: orange;">variable cible</span></strong> est alors une <strong><span style="color: orange;">classe binaire</span> indiquant l'atteinte (classe 1) ou non (classe 0) de l’objectif de temps d’arrivée < 6 min</strong>, 
+             dont la <strong>distribution</strong> sur le jeu de données est la suivante :
             </p>
             """, unsafe_allow_html=True)
     

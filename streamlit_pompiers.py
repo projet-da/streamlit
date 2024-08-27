@@ -970,10 +970,7 @@ elif page == pages[8]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Fausses Alarmes</h2>", unsafe_allow_html=True)
     #st.write("#### Analyse des False Alarms :")
     st.markdown("""
-                - Les Fausses Alarmes représentent près de la moitié des incidents et sont en hausse depuis 2015. En 2023 leur répartition est la suivante :
-                    - **80%** sont des Fausses Alarmes Automatiques (AFA)
-                    - **18%** sont des Bonnes Intentions
-                    - **2%** sont des Mauvaises Intentions
+                - Les Fausses Alarmes représentent près de la moitié des incidents dont 80% sont des Fausses Alarmes Automatiques (AFA)
                 """)
     st.markdown("""
                 - Les conséquences : 
@@ -986,8 +983,7 @@ elif page == pages[8]:
                     - Comprendre la cause de AFA pour les limiter : 
                         - Mieux former les installateurs d'appareil de détection de fumée
                         - Contrôler les appareils plus régulièrement
-                        - Mettre en place des campagnes de communication sur la bonne installation des appareils
-                    - Envoyer un drône pour confirmer l'incident                    
+                    - Envoyer un drône pour confirmer l'incident
                 """)
     
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Qualité des données saisies</h2>", unsafe_allow_html=True)
@@ -1013,12 +1009,11 @@ elif page == pages[9]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Enrichir le jeu de données</h2>", unsafe_allow_html=True)
     st.markdown("""
                 - Utiliser une méthode de calcul d'itinéraire s'affranchissant des sens interdits
-                - Intégrer les ralentissements/bouchons, routes fermée, travaux en cours et tout obstacle impactant le temps de trajet (ces données sont présentes dans le motif des retards mais pas au moment de la mobilisation)
+                - Intégrer les ralentissements, routes fermée, travaux en cours et tout obstacle impactant le temps de trajet (ces données sont présentes dans le motif des retards mais pas au moment de la mobilisation)
                 """)
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Améliorer la Feature Engineering et la Modélisation</h2>", unsafe_allow_html=True)
     st.markdown("""
                 - Essayer d'autres transformations de features que celles déjà tentées (transformations polynomiales, logarithmiques)
-                - Essayer d'autres Modèles d'Ensemble combinant plusieurs modèles de Machine Learning
                 - Essayer d'autres modèles de Deep Learning 
                 """)
 

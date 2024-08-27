@@ -507,7 +507,8 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Pour la phase de modélisations, nous avons utilisé un jeu de données contenant les caractéristiques liées à <strong>60 000 mobilisations sélectionnées aléatoirement sur 2023</strong>, pour lesquelles nous avons calculé la distance de l'itinéraire le plus court entre la caserne de départ et le lieu d'incident.</p>
+            <p class="custom-p">Pour la phase de modélisations, nous nous sommes basés sur un jeu de données restreint à <strong>60 000 mobilisations sélectionnées aléatoirement sur 2023</strong>, 
+            pour lesquelles nous avons pu calculer la distance de l'itinéraire le plus court entre la caserne de départ et le lieu d'incident.</p>
             """, unsafe_allow_html=True)
         
         ######## Séparation du jeu de données liées aux caractéristiques sélectionnées en un jeu d’entraînement et un jeu de test ################
@@ -523,9 +524,10 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Nous avons découpé notre ensemble de données en :</p>
             <ul class="custom-ul">
-            <li>Un <strong><span style="color: orange;">jeu de données d’entraînement</span></strong> contenant des données exemples pour les caractéristiques et pour la variable cible utilisées pour entraîner/ajuster les modèles à l’aide d’un algorithme d’apprentissage supervisé.</li>
-            <li>Un <strong><span style="color: orange;">jeu de données de test</span></strong> contenant des données exemples pour les caractéristiques et pour la variable cible utilisées pour fournir une évaluation des performances du modèle précédemment entraîné à partir des données d’entraînement/apprentissage.<br>
-            Les valeurs des caractéristiques du jeu de test sont utilisées pour effectuer des prédictions sur la valeur de la variable cible et les comparer aux véritables valeurs de la variable cible du jeu de test, ce qui permet d’évaluer la précision du modèle.</li>
+            <li>Un <strong><span style="color: orange;">jeu de données d’entraînement</span></strong> contenant 80% des données, à la fois les valeurs des caractéristiques d'entrée et de la variable cible, utilisées
+            pour entraîner les modèles de Machine Learning à l’aide d’un algorithme d’apprentissage supervisé.</li>
+            <li>Un <strong><span style="color: orange;">jeu de données de test</span></strong> contenant 20% des données, à la fois les valeurs des caractéristiques d'entrée et de la variable cible, utilisées, utilisées 
+            pour évaluer les performances des modèles entraînés, par comparaison entre les valeurs réelles et les valeurs prédites entre les modèles.<br></li>
             </ul>
             """, unsafe_allow_html=True)
 
@@ -584,8 +586,10 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Nous avons dans un premier temps choisi de travailler sur un <strong><span style="color: orange;">problème de régression</span></strong> pour <strong>prédire le temps d’arrivée d’un camion de pompiers sur le lieu d’incident</strong> à partir du moment où la caserne a été sollicitée pour intervenir. <br>
-            Pour ce problème de régression, la <strong><span style="color: orange;">variable cible</span></strong> est la variable <strong>AttendanceTimeSeconds</strong>, <strong>Temps d'arrivée des pompiers sur le lieu d'incident</strong>, incluant le temps de mobilisation de l’équipage et le temps de trajet entre la caserne mobilisée et le lieu de l’incident. <br>La <strong>distribution</strong> sur le jeu de données des valeurs de cette <strong>variable cible AttendanceTimeSeconds</strong> est la suivante :</p>
+            <p class="custom-p">Dans un premier temps, nous avons utilisé des <strong><span style="color: orange;">modèles de régression</span></strong> afin de <strong>prédire la valeur du temps d’arrivée d’un camion de pompiers sur le lieu d’incident</strong>. <br>
+            Pour ce type de modélisation, il s'agit d'une <strong><span style="color: orange;">variable cible de type numérique</span></strong>, en l'occurence la variable <strong>AttendanceTimeSeconds</strong> correspondant au <strong>Temps d'arrivée des pompiers sur le lieu d'incident</strong>, incluant le temps de mobilisation de l’équipage et le temps de trajet entre la caserne et le lieu de l’incident. <br>
+            dont la <strong>distribution</strong> sur le jeu de données est la suivante :
+            </p>
             """, unsafe_allow_html=True)
     
         col1, col2 = st.columns([1, 10])
@@ -594,12 +598,12 @@ elif page == pages[6]:
         with col2:
             st.image("images/Boxplot Distribution des temps d'arrivée du 1er camion sur 2023_annotations.png")
 
-        with st.expander("**Pour résoudre ce problème de régression, nous avons entrainé et testé différents modèles de régression**"):
+        with st.expander("**Nous avons entrainé, testé et évalué différents modèles de régression**"):
             st.markdown("""
                 <style>
                 .custom-p {margin-bottom: -0.1em;}
                 </style>
-                <p class="custom-p">Pour résoudre ce problème de régression, nous avons entrainé et testé les <strong>modèles de régression</strong> suivants :</p>
+                <p class="custom-p">Dans le cadre de la modélisation de type régression, nous avons entrainé et testé les <strong>modèles de régression</strong> suivants :</p>
                 <ul class="custom-ul">
                 <li><strong>Régression Linéaire</strong> : Ce modèle suppose une relation linéaire entre les caractéristiques et la cible, ce qui n'est pas toujours le cas dans les données réelles.  Il peut être influencé par les valeurs aberrantes.</li>
                 <li><strong>Régression Polynomiale</strong> : Ce modèle est une extension de la régression linéaire tout en permettant de capturer des relations non linéaires entre les caractéristiques et la variable cible en ajoutant des termes polynomiaux.</li>
@@ -616,9 +620,9 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de régression nous avons calculé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>MAE, MSE, RMSE, R²</strong>.<br><br>
+            <p class="custom-p">Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de régression nous avons utilisé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>MAE, MSE, RMSE, R²</strong>.<br><br>
             <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Résultats / Classement des modèles de régression</h4>
-            Ci-dessous le classement (du plus performant au moins performant) des différents modèles de régression entrainés et testés :</p>
+            Ci-dessous le classement (du plus performant au moins performant) des différents modèles de régression entrainés et testés en fonction du coefficient de détermination R²:</p>
             """, unsafe_allow_html=True)
     
         col1, col2 = st.columns([1, 10])
@@ -632,65 +636,67 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p"><strong><span style="color: orange;">>>></span></strong>  Le <strong>modèle de régression le plus performant</strong> est le modèle <strong><span style="color: orange;">XGBRegressor</span></strong>, suivi des modèles DecisionTreeRegressor et RandomForestRegressor.<br>
+            <p class="custom-p"><strong><span style="color: orange;">>>></span></strong>  Le <strong>modèle de régression le plus performant</strong> (avec le meilleur R²) est le modèle <strong><span style="color: orange;">XGBRegressor</span></strong>, suivi des modèles DecisionTreeRegressor et RandomForestRegressor.<br>
             Pour le modèle le plus performant, <strong>XGBRegressor</strong>,</p>
             <ul class="custom-ul">
-            <li>le <strong><span style="color: orange;">R²</span> (coefficient de détermination)</strong> est de <strong><span style="color: orange;">0.66</span></strong>,</li>
-            <li>la <strong><span style="color: orange;">MAE</span> (écart moyen entre le temps d’arrivée prédit et le temps d’arrivée réel)</strong> est de <strong><span style="color: orange;">57,5 secondes</span></strong> pour un <strong>temps d'arrivée moyen de 357 secondes</strong>, soit un <strong><span style="color: orange;">écart moyen d’environ 16%</span> par rapport au temps moyen</strong>, ce qui représente un <strong>écart significatif</strong>, surtout dans un contexte où chaque seconde peut être critique, comme dans les interventions d'urgence.</li>
+            <li>le <strong><span style="color: orange;">R²</span> (i.e. coefficient de détermination)</strong> est de <strong><span style="color: orange;">0.66</span></strong>,</li>
+            <li>la <strong><span style="color: orange;">MAE</span> (i.e. écart moyen entre les valeurs prédites et réelles de temps d’arrivée)</strong> est de <strong><span style="color: orange;">57,5 secondes</span></strong> pour un <strong>temps d'arrivée moyen de 357 secondes</strong>, soit un <strong><span style="color: orange;">écart moyen d’environ 16%</span> par rapport au temps moyen</strong>, ce qui représente un <strong>écart significatif</strong>, surtout dans un contexte où chaque seconde peut être critique, comme dans les interventions d'urgence.</li>
             </ul>
             """, unsafe_allow_html=True)
     
-        st.markdown("""
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Graphe des résidus (écarts entre valeur prédite et valeur réelle)</h4>
-            <p class="custom-p">Ci-dessous le <strong><span style="color: orange;">graphe des résidus</span></strong> liés au modèle <strong>XGBRegressor</strong>.<br>
-            On constate que les <strong>écarts entre la valeur prédite et la valeur réelle peuvent être très importants</strong>, parfois de quelques centaines de secondes.</p>
-            """, unsafe_allow_html=True)
+        with st.expander("**Graphe des résidus (écarts entre valeur prédite et valeur réelle)**"):
+            st.markdown("""
+                <style>
+                .custom-p {margin-bottom: -0.1em;}
+                </style>
+                <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Graphe des résidus (écarts entre valeur prédite et valeur réelle)</h4>
+                <p class="custom-p">Ci-dessous le <strong><span style="color: orange;">graphe des résidus</span></strong> liés au modèle <strong>XGBRegressor</strong>.<br>
+                On constate que les <strong>écarts entre la valeur prédite et la valeur réelle peuvent être très importants</strong>, parfois de quelques centaines de secondes.</p>
+                """, unsafe_allow_html=True)
+        
+            col1, col2 = st.columns([1, 10])
+            with col1:
+                st.markdown("")
+            with col2:
+                st.image("images/Graphe des residus XGBoostRegressor.png")
     
-        col1, col2 = st.columns([1, 10])
-        with col1:
-            st.markdown("")
-        with col2:
-            st.image("images/Graphe des residus XGBoostRegressor.png")
     
-    
-        st.markdown("""
-            <style>
-            .custom-ul {
-                line-height: 1.2;
-            }
-            </style>
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
-            <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBRegressor</strong>.</p>
-            """, unsafe_allow_html=True)
-    
-        col1, col2 = st.columns([1, 10])
-        with col1:
-            st.markdown("")
-        with col2:
-            st.image("images/Features Importance XGBoostRegressor.png")
-    
-        st.markdown("""
-            <style>
-            .custom-ul {
-                line-height: 1.2;
-            }
-            </style>
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
-            <ul class="custom-ul">
-            <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
-            <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
-            <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
-            </ul>
-            """, unsafe_allow_html=True)
+        with st.expander("**Graphe des caractéristiques les plus importantes/influentes**"):
+            st.markdown("""
+                <style>
+                .custom-ul {
+                    line-height: 1.2;
+                }
+                </style>
+                <style>
+                .custom-p {margin-bottom: -0.1em;}
+                </style>
+                <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
+                <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBRegressor</strong>.</p>
+                """, unsafe_allow_html=True)
+        
+            col1, col2 = st.columns([1, 10])
+            with col1:
+                st.markdown("")
+            with col2:
+                st.image("images/Features Importance XGBoostRegressor.png")
+        
+            st.markdown("""
+                <style>
+                .custom-ul {
+                    line-height: 1.2;
+                }
+                </style>
+                <style>
+                .custom-p {margin-bottom: -0.1em;}
+                </style>
+                <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
+                <ul class="custom-ul">
+                <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
+                <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
+                <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
+                </ul>
+                """, unsafe_allow_html=True)
 
 
     ###########################################################################

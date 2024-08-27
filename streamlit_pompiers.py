@@ -312,7 +312,7 @@ elif page == pages[4]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Sur la base de cette analyse et visualisation de corrélations entre variables réalisées dans la phase précédente, nous avons sélectionné un certain nombre de <strong><span style="color: orange;"> caractéristiques</span></strong> pertinentes pour construire, entraîner et tester des modèles de Machine Learning en vue de pouvoir prédire les temps d'arrivée des pompiers sur le lieu d'incident :</p>
+        <p class="custom-p">Sur la base de cette analyse et visualisation de corrélations entre variables, nous avons sélectionné un certain nombre de <strong><span style="color: orange;"> caractéristiques</span></strong> pertinentes pour construire, entraîner et tester des modèles de Machine Learning en vue de pouvoir prédire les temps d'arrivée des pompiers sur le lieu d'incident :</p>
         """, unsafe_allow_html=True)
 
     with st.expander("**Ajout de caractéristiques utiles liées à des données existantes**"):

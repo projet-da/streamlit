@@ -464,7 +464,7 @@ elif page == pages[5]:
 
     ###########################################################################
     ## Gestion des valeurs aberrantes et extrêmes
-    ##################################
+    #############################################
     with tab2:
         st.markdown("""
             <style>
@@ -477,14 +477,17 @@ elif page == pages[5]:
             </style>
             <h2 style='text-align: left; color: black; font-size: 22px;'>Gestion des valeurs aberrantes et extrêmes</h2>
             <p class="custom-p">
-            Pour une partie des mobilisations de la brigade des pompiers de Londres, nous avons constaté des <span style="color: orange;"><strong>valeurs aberrantes sur la vitesse du camion déployé sur le lieu d'incident</strong></span>, calculée à partir de la donnée de <strong>distance à vol d'oiseau calculée entre la caserne de départ et le lieu d’incident</strong> et de la donnée de <strong>temps de trajet</strong>, cette vitesse pouvant <span style="color: orange;"><strong>dépasser les 100 km/h</strong></span> (avec un <strong>record à 60 000 km/h</strong> pour la vitesse la plus élevée calculée), notamment en raison d'un <span style="color: orange;"><strong>délai de trajet</span> enregistré <span style="color: red;">anormalement faible</span></strong> au regard de la distance séparant la caserne de départ du lieu d'incident.<br><br></p>
-            <p class="custom-p">La stratégie adoptée a été de :</p>
+            Pour une partie des mobilisations de la brigade des pompiers de Londres, nous avons constaté des <span style="color: orange;"><strong>valeurs aberrantes sur la vitesse du camion de pompiers déployé</span> sur le lieu d'incident</strong>, calculée à partir de la <strong>distance à vol d'oiseau entre la caserne de départ et le lieu d’incident</strong> et du <strong>temps de trajet</strong><br>
+            Plusieurs valeurs de vitesse <span style="color: orange;"><strong>dépassent les 100 km/h</strong></span> (avec un <strong>record à 60 000 km/h</strong> pour la plus élevée), notamment en raison d'un 
+            <span style="color: orange;"><strong>temps de trajet</span> enregistré <span style="color: red;">anormalement faible</span></strong> dans le jeu de données initial.<br><br></p>
+            <p class="custom-p">Afin de <strong>réduire l’effet des valeurs aberrantes</strong> et <strong>rendre le jeu de données plus robuste</strong>, la stratégie adoptée a été de :</p>
             <ul class="custom-ul">
-            <li><strong><span style="color: orange;">Supprimer les lignes du DataFrame comportant des valeurs de vitesse aberrantes</span></strong> , c'est-à-dire <strong>au-dessus de 100 km/h</strong>.<br></li>
-            <li><strong><span style="color: orange;">Evaluer la distance de l’itinéraire estimé le plus court</span></strong>  entre la caserne et le lieu d’incident a permis d’affiner l’estimation de la vitesse.<br></li>
-            <li><strong><span style="color: orange;">Winsoriser (i.e. ajuster) au 5e et au 95e percentile</span></strong>  les valeurs de <strong>vitesses</strong> situées <strong>en dessous du 5e percentile (14 km/h)</strong> et <strong>au-dessus du 95e percentile (55 km/h)</strong> afin de <strong>réduire l’effet des valeurs aberrantes</strong> et <strong>rendre le jeu de données plus robuste face aux anomalies</strong>.<br></li>
-            <li><span style="color: orange;"><strong>Recalculer une valeur de temps de trajet</strong></span>, ajusté à partir de la valeur de vitesse ajustée et de la valeur de distance de l’itinéraire estimé le plus court.<br><br></li></ul>
-            <p class="custom-p">Ci-dessous un graphe de type boxplot montrant la distribution des valeurs de vitesse avant/après winsorisation</p>
+            <li><strong><span style="color: orange;">Supprimer les lignes du DataFrame comportant des valeurs de vitesse aberrantes</span></strong> (<strong>au-dessus de 100 km/h</strong>) liées à des <strong>temps de trajet très faibles</strong><br></li>
+            <li><strong><span style="color: orange;">Evaluer la distance de l’itinéraire le plus court</span></strong> entre la caserne et le lieu d’incident.<br></li>
+            <li><strong><span style="color: orange;">Ajuster à la valeur du 5e percentile (14 km/h) et du 95e percentile (55 km/h)</span></strong> les valeurs de <strong>vitesses</strong> situées <strong>en dessous du 5e percentile/strong>
+            et <strong>au-dessus du 95e percentile</strong>.<br></li>
+            <li><span style="color: orange;"><strong>Recalculer la valeur de temps de trajet</strong></span> sur la base de la valeur de distance de l'itinéraire et de la vleur de vitesse ajustée<br><br></li></ul>
+            <p class="custom-p">Ci-dessous un graphe de type boxplot illustrant la distribution des valeurs de vitesse avant/après ajustement des valeurs</p>
             """, unsafe_allow_html=True)
     
         st.image("images/Winsorisation des valeurs extremes de vitesses de trajet.png")

@@ -159,7 +159,7 @@ elif page == pages[3]:
         .custom-p {margin-bottom: -0.1em;}
         </style>
         <p class="custom-p">Pour visualiser l’existence de <strong><span style="color: orange;">relations entre les différentes paires de variables</span></strong>, catégorielles et numériques, et mesurer la force de cette corrélation, nous avons réalisé des <strong><span style="color: orange;">tests statistiques</span></strong> entre les différentes variables et construit une <strong><span style="color: orange;">heatmap de corrélation personnalisée.</span></strong></p>
-        <p class="custom-p">Sur cette heatmap, chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre elles. </p>
+        <p class="custom-p">Sur cette heatmap, chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre variables. </p>
         <p class="custom-p">La valeur de chaque cellule représente la force et la direction de la corrélation, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</p>
     """, unsafe_allow_html=True)
     
@@ -312,7 +312,7 @@ elif page == pages[4]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Sur la base de cette analyse et visualisation de corrélations entre variables, nous avons sélectionné un certain nombre de <strong><span style="color: orange;"> caractéristiques</span></strong> pertinentes pour construire, entraîner et tester des modèles de Machine Learning en vue de pouvoir prédire les temps d'arrivée des pompiers sur le lieu d'incident :</p>
+        <p class="custom-p">Sur la base de cette analyse et visualisation de corrélations entre variables, nous avons sélectionné un certain nombre de <strong><span style="color: orange;"> caractéristiques pertinentes</span></strong> pour <strong><span style="color: orange;">construire, entraîner et tester des modèles de Machine Learning</span></strong> en vue de pouvoir <strong> prédire les temps d'arrivée</strong>  des pompiers sur le lieu d'incident :</p>
         """, unsafe_allow_html=True)
 
     with st.expander("**Ajout de caractéristiques utiles liées à des données existantes**"):
@@ -410,10 +410,10 @@ elif page == pages[5]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Dans le but de conserver un maximum de données fiables et cohérentes, nous avons procédé à un <strong>nettoyage</strong> et à un <strong>prétraitement des données</strong>, en particulier en</p>
+        <p class="custom-p">Dans le but de conserver un maximum de <strong>données fiables et cohérentes</strong>, nous avons procédé à un <strong>nettoyage</strong> et à un <strong>prétraitement des données</strong>, en particulier en</p>
         <ul class="custom-ul">
-        <li>Traitant les <strong><span style="color: orange;">valeurs manquantes</span></strong> résiduelles par suppression ou remplacement.</li>
-        <li>Traitant les <strong><span style="color: orange;">erreurs ou valeurs aberrantes/extrêmes</span></strong> dans les données, par suppression ou remplacement des valeurs.</li>
+        <li><strong>Traitant les <span style="color: orange;">valeurs manquantes</span> résiduelles</strong>, par <span style="color: orange;"><strong>suppression</span></strong> ou par <span style="color: orange;"><strong>remplacement</span></strong>.</li>
+        <li><strong>Traitant les <span style="color: orange;">erreurs ou valeurs aberrantes/extrêmes</span></strong> dans les données, par <span style="color: orange;"><strong>suppression</span></strong> ou <span style="color: orange;"><strong>remplacement</span></strong>.</li>
         </ul>
         """, unsafe_allow_html=True)
         
@@ -426,7 +426,7 @@ elif page == pages[5]:
         st.markdown("""
             <h2 style='text-align: left; color: black; font-size: 22px;'>Gestion des valeurs manquantes</h2>
     
-            L'utilisation de la méthode heatmap de la bibliothèque seaborn permet de visualiser la répartition des valeurs manquantes du DataFrame, en nous limitant ci-dessous aux colonnes comportant des valeurs manquantes :
+            Ci-dessous est visualisée la <strong><span style="color: orange;">répartition des valeurs manquantes</span></strong> du DataFrame initial, en nous limitant aux <strong>colonnes comportant des valeurs manquantes</strong> :
             """, unsafe_allow_html=True)
         
         st.image("images/Heatmap valeurs manquantes.png")
@@ -477,13 +477,13 @@ elif page == pages[5]:
             </style>
             <h2 style='text-align: left; color: black; font-size: 22px;'>Gestion des valeurs aberrantes et extrêmes</h2>
             <p class="custom-p">
-            Pour une partie des mobilisations de la brigade des pompiers de Londres, nous avons constaté des <span style="color: orange;"><strong>valeurs aberrantes sur la vitesse du camion déployé sur le lieu d'incident</strong></span>, calculée à partir de la donnée de <strong>distance à vol d'oiseau calculée entre la caserne de départ et le lieu d’incident</strong> et de la donnée de <strong>temps de trajet</strong>, cette vitesse pouvant dépasser les 100 km/h</strong></span> (avec un <strong>record à 60 000 km/h</strong> pour la vitesse la plus élevée calculée), notamment en raison d'un <span style="color: orange;"><strong>délai de trajet</span> enregistré <span style="color: red;">anormalement faible</span></strong> au regard de la distance séparant la caserne de départ du lieu d'incident.<br><br></p>
+            Pour une partie des mobilisations de la brigade des pompiers de Londres, nous avons constaté des <span style="color: orange;"><strong>valeurs aberrantes sur la vitesse du camion déployé sur le lieu d'incident</strong></span>, calculée à partir de la donnée de <strong>distance à vol d'oiseau calculée entre la caserne de départ et le lieu d’incident</strong> et de la donnée de <strong>temps de trajet</strong>, cette vitesse pouvant <span style="color: orange;"><strong>dépasser les 100 km/h</strong></span> (avec un <strong>record à 60 000 km/h</strong> pour la vitesse la plus élevée calculée), notamment en raison d'un <span style="color: orange;"><strong>délai de trajet</span> enregistré <span style="color: red;">anormalement faible</span></strong> au regard de la distance séparant la caserne de départ du lieu d'incident.<br><br></p>
             <p class="custom-p">La stratégie adoptée a été de :</p>
             <ul class="custom-ul">
             <li><strong><span style="color: orange;">Supprimer les lignes du DataFrame comportant des valeurs de vitesse aberrantes</span></strong> , c'est-à-dire <strong>au-dessus de 100 km/h</strong>.<br></li>
             <li><strong><span style="color: orange;">Evaluer la distance de l’itinéraire estimé le plus court</span></strong>  entre la caserne et le lieu d’incident a permis d’affiner l’estimation de la vitesse.<br></li>
             <li><strong><span style="color: orange;">Winsoriser (i.e. ajuster) au 5e et au 95e percentile</span></strong>  les valeurs de <strong>vitesses</strong> situées <strong>en dessous du 5e percentile (14 km/h)</strong> et <strong>au-dessus du 95e percentile (55 km/h)</strong> afin de <strong>réduire l’effet des valeurs aberrantes</strong> et <strong>rendre le jeu de données plus robuste face aux anomalies</strong>.<br></li>
-            <li><span style="color: orange;"><strong>Recalculer une valeur de temps de trajet ajusté</strong></span> à partir de la valeur de vitesse ajustée et de la valeur de distance de l’itinéraire estimé le plus court.<br><br></li></ul>
+            <li><span style="color: orange;"><strong>Recalculer une valeur de temps de trajet</strong></span>, ajusté à partir de la valeur de vitesse ajustée et de la valeur de distance de l’itinéraire estimé le plus court.<br><br></li></ul>
             <p class="custom-p">Ci-dessous un graphe de type boxplot montrant la distribution des valeurs de vitesse avant/après winsorisation</p>
             """, unsafe_allow_html=True)
     

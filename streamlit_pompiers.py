@@ -191,18 +191,20 @@ elif page == pages[3]:
         <style>
         .custom-ul {
             line-height: 1.2;
+            margin-left: 20px;
         }
         </style>
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p"><strong>On constate des <span style="color: orange;">corrélations très fortes (coefficient de corrélation > 0.7)</span>entre les paires de données suivantes :</strong></p>
+        <p class="custom-p"><strong>On constate des <span style="color: orange;">corrélations très fortes (coefficient de corrélation > 0.7)</span> entre les paires de données suivantes :</strong></p>
         """, unsafe_allow_html=True)
     
     st.markdown("""
         <style>
         .custom-ul {
             line-height: 1.2;
+            margin-left: 20px; 
         }
         </style>
         <style>
@@ -221,6 +223,7 @@ elif page == pages[3]:
                 <style>
                 .custom-ul {
                     line-height: 1.2;
+                    margin-left: 20px; 
                 }
                 </style>
                 <style>
@@ -237,6 +240,7 @@ elif page == pages[3]:
         <style>
         .custom-ul {
             line-height: 1.2;
+            margin-left: 20px; 
         }
         </style>
         <ul class="custom-ul">
@@ -247,18 +251,19 @@ elif page == pages[3]:
 
     st.markdown("""
         <style>
-        .custom-ul {line-height: 1.2;}
+        .custom-ul {line-height: 1.2;margin-left: 20px;}
         </style>
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p"><br><strong>On constate également des <span style="color: orange;">corrélations modérées à fortes (coefficient de corrélation compris entre 0.25 et 0.7)</span>entre les paires de données suivantes :</strong></p>
+        <p class="custom-p"><br><strong>On constate également des <span style="color: orange;">corrélations modérées à fortes (coefficient de corrélation compris entre 0.25 et 0.7)</span> entre les paires de données suivantes :</strong></p>
         """, unsafe_allow_html=True)
     
     st.markdown("""
         <style>
         .custom-ul {
             line-height: 1.2;
+            margin-left: 20px;
         }
         </style>
         <ul class="custom-ul">
@@ -275,6 +280,7 @@ elif page == pages[3]:
                 <style>
                 .custom-ul {
                     line-height: 1.2;
+                    margin-left: 20px;
                 }
                 </style>
                 <style>
@@ -290,6 +296,7 @@ elif page == pages[3]:
         <style>
         .custom-ul {
             line-height: 1.2;
+            margin-left: 20px;
         }
         </style>
         <ul class="custom-ul">        

@@ -158,7 +158,7 @@ elif page == pages[3]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Pour visualiser l’existence de relations entre différentes paires de variables, catégorielles et numériques, et mesurer la force de cette corrélation, nous avons réalisé des tests statistiques entre les différentes variables et construit une <strong><span style="color: orange;">heatmap de corrélation personnalisée.</span></strong></p>
+        <p class="custom-p">Pour visualiser l’existence de relations entre les différentes paires de variables, catégorielles et numériques, et mesurer la force de cette corrélation, nous avons réalisé des tests statistiques entre les différentes variables et construit une <strong><span style="color: orange;">heatmap de corrélation personnalisée.</span></strong></p>
         <p class="custom-p">Chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre elles. La valeur de chaque cellule représente la force et la direction de la corrélation, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</p>
     """, unsafe_allow_html=True)
     

@@ -972,7 +972,7 @@ elif page == pages[8]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Fausses Alarmes</h2>", unsafe_allow_html=True)
     #st.write("#### Analyse des False Alarms :")
     st.markdown("""
-                - Les Fausses Alarmes représentent près de la moitié des incidents et sont en hausse depuis 2015, en 2023 elles représentent **49,8%** dont :
+                - Les Fausses Alarmes représentent près de la moitié des incidents et sont en hausse depuis 2015. En 2023 leur répartition est la suivante :
                     - **80%** sont des Fausses Alarmes Automatiques (AFA)
                     - **18%** sont des Bonnes Intentions
                     - **2%** sont des Mauvaises Intentions
@@ -1019,9 +1019,9 @@ elif page == pages[9]:
                 """)
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Améliorer la Feature Engineering et la Modélisation</h2>", unsafe_allow_html=True)
     st.markdown("""
-                - Essayer des transformations de features plus complexes (ex : transformations polynomiales, logarithmiques)
-                - Essayer des Modèles d'Ensemble permettant de combiner plusieurs modèles de machine learning
-                - Essayer des modèles de Deep Learning 
+                - Essayer d'autres transformations de features que celles déjà tentées (transformations polynomiales, logarithmiques)
+                - Essayer d'autres Modèles d'Ensemble combinant plusieurs modèles de Machine Learning
+                - Essayer d'autres modèles de Deep Learning 
                 """)
 
     

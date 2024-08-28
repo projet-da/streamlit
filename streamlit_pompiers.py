@@ -493,7 +493,7 @@ elif page == pages[5]:
             <li><strong><span style="color: orange;">Evaluer la distance de l’itinéraire le plus court</span></strong> entre la caserne et le lieu d’incident.<br></li>
             <li><strong><span style="color: orange;">Ajuster (par winsorisation) à la valeur du 5e percentile (14 km/h) et du 95e percentile (55 km/h)</span></strong> les valeurs de <strong>vitesses</strong> situées <strong>en dessous du 5e percentile</strong>
             et <strong>au-dessus du 95e percentile</strong>.<br></li>
-            <li><span style="color: orange;"><strong>Recalculer la valeur de temps de trajet</strong></span> sur la base de la valeur de distance de l'itinéraire et de la vleur de vitesse ajustée<br><br></li></ul>
+            <li><span style="color: orange;"><strong>Recalculer la valeur de temps de trajet</strong></span> sur la base de la valeur de distance de l'itinéraire et de la valeur de vitesse ajustée<br><br></li></ul>
             <p class="custom-p">Ci-dessous un graphe de type boxplot illustrant la distribution des valeurs de vitesse avant/après ajustement des valeurs</p>
             """, unsafe_allow_html=True)
     
@@ -535,7 +535,7 @@ elif page == pages[6]:
             <li>Un <strong><span style="color: orange;">jeu de données d’entraînement</span></strong> contenant 80% des données, à la fois les valeurs des caractéristiques d'entrée et de la variable cible, utilisées
             pour entraîner les modèles de Machine Learning à l’aide d’un algorithme d’apprentissage supervisé.</li>
             <li>Un <strong><span style="color: orange;">jeu de données de test</span></strong> contenant 20% des données, à la fois les valeurs des caractéristiques d'entrée et de la variable cible, utilisées, utilisées 
-            pour évaluer les performances des modèles entraînés, par comparaison entre les valeurs réelles et les valeurs prédites entre les modèles.<br></li>
+            pour évaluer les performances des modèles entraînés, par comparaison entre les valeurs réelles et les valeurs prédites par les modèles.<br></li>
             </ul>
             """, unsafe_allow_html=True)
 

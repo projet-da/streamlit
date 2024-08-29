@@ -135,7 +135,7 @@ elif page == pages[2]:
     st.image("images/Incidents 2019 à 2023 en % plotly.png")
     st.write("Les False Alarm représentent en volume plus de la moitié des interventions.")
     if st.checkbox("Special Service"):
-        st.write("Effectuer une entrée/sortie d'un bâtiment: 26%, Inondation : 21%, Collisions de trafic routier : 12%, Déverouillage d'ascenseur : 5%...")
+        st.write("Effectuer une entrée/sortie d'un bâtiment: 26%, Inondation : 21%, Accidents de la route : 12%, Déverouillage d'ascenseur : 5%...")
 
     st.markdown("<u><h1 style='text-align: left; color: black; font-size: 26px;'>Histogramme par types d'incidents sur 5 ans</h1></u>", unsafe_allow_html=True)
     st.image("images/incid de 19 à 23.png")

@@ -1008,7 +1008,7 @@ elif page == pages[8]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Fausses Alarmes</h2>", unsafe_allow_html=True)
     #st.write("#### Analyse des False Alarms :")
     st.markdown("""
-                - Les Fausses Alarmes représentent près de la moitié des incidents <span style="color:orange;">dont 80% sont des Fausses Alarmes Automatiques (AFA)</span>
+                - Les Fausses Alarmes représentent près de la moitié des incidents <strong><span style="color:orange;">dont 80% sont des Fausses Alarmes Automatiques (AFA)</span></strong>
                 """, unsafe_allow_html=True)
     st.markdown("""
                 - Les conséquences : 
@@ -1027,8 +1027,8 @@ elif page == pages[8]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Qualité des données saisies</h2>", unsafe_allow_html=True)
     #st.write("#### Qualité des données saisies :")
     st.markdown("""      
-                Certaines valeurs des temps d'arrivée sont <span style="color:orange;">aberrantes</span> : dans plusieurs cas la vitesse correspondante dépasse les 100 km/h, avec un record à 60 000 km/h.                                        
-                A contrario d'autres valeurs <span style="color:orange;">extrêmes</span> sont très faibles : plusieurs cas en dessous de 4 km/h (vitesse d'un marcheur).                                        
+                Certaines valeurs des temps d'arrivée sont <strong><span style="color:orange;">aberrantes</span></strong> : dans plusieurs cas la vitesse correspondante dépasse les 100 km/h, avec un record à 60 000 km/h.                                        
+                A contrario d'autres valeurs <strong><span style="color:orange;">extrêmes</span></strong> sont très faibles : plusieurs cas en dessous de 4 km/h (vitesse d'un marcheur).                                        
                 Il faudrait en comprendre la cause pour les limiter : erreur de saisie, problème de calcul ...                                                                  
                 """, unsafe_allow_html=True)
  

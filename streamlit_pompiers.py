@@ -1009,7 +1009,7 @@ elif page == pages[8]:
     #st.write("#### Analyse des False Alarms :")
     st.markdown("""
                 - Les Fausses Alarmes représentent près de la moitié des incidents <span style="color:orange;">dont 80% sont des Fausses Alarmes Automatiques (AFA)</span>
-                """)
+                """, unsafe_allow_html=True)
     st.markdown("""
                 - Les conséquences : 
                     - Sollicitation des pompiers sur des lieux où il n’y a pas d’incidents

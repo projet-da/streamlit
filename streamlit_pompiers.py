@@ -1030,7 +1030,7 @@ elif page == pages[8]:
                 Certaines valeurs des temps d'arrivée sont <span style="color:orange;">aberrantes</span> : dans plusieurs cas la vitesse correspondante dépasse les 100 km/h, avec un record à 60 000 km/h.                                        
                 A contrario d'autres valeurs <span style="color:orange;">extrêmes</span> sont très faibles : plusieurs cas en dessous de 4 km/h (vitesse d'un marcheur).                                        
                 Il faudrait en comprendre la cause pour les limiter : erreur de saisie, problème de calcul ...                                                                  
-                """)
+                """, unsafe_allow_html=True)
  
 
 ##############################################################

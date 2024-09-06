@@ -508,7 +508,7 @@ elif page == pages[5]:
             <p class="custom-p">
             En analysant la <span style="color: orange;"><strong>vitesse des camions de pompiers</strong></span>, calculée à partir du <strong>temps de trajet enregistré</strong></span>
             et de la <strong>distance à vol d'oiseau entre la caserne de départ et le lieu d’incident</strong>, on a constaté des <span style="color: orange;"><strong>valeurs aberrantes</span></strong>, 
-            avec des valeurs de vitesse <span style="color: orange;"><strong>dépassent les 100 km/h</strong></span> (<strong>record à 60 000 km/h</strong> pour la plus élevée).<br><br></p>
+            avec des valeurs de vitesse <span style="color: orange;"><strong>dépassant les 100 km/h</strong></span> (<strong>record à 60 000 km/h</strong> pour la plus élevée).<br><br></p>
             <p class="custom-p">Afin de <strong>réduire l’effet de ces valeurs aberrantes</strong> nous avons :</p>
             <ul class="custom-ul">
             <li><strong><span style="color: orange;">Evalué la distance de l’itinéraire routier</span></strong> entre la caserne et le lieu d’incident, à partir des données des réseaux routiers.<br></li>

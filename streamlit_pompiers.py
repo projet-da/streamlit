@@ -647,7 +647,7 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de régression nous avons utilisé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>MAE, MSE, RMSE, R²</strong>.<br><br>
             <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Résultats / Classement des modèles de régression</h4>
-            Ci-dessous le classement (du plus performant au moins performant) des différents modèles de régression entrainés et testés, en fonction du <strong>coefficient de détermination R²</strong> :</p>
+            Ci-dessous le classement (du plus performant au moins performant) des différents modèles de régression entrainés et testés, en fonction du <strong><span style="color: orange;">coefficient de détermination R²</span></strong> :</p>
             """, unsafe_allow_html=True)
     
         col1, col2 = st.columns([1, 10])
@@ -733,8 +733,15 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Malgré l'enrichissement du jeu de données initial avec <strong> de nouvelles caractéristiques</strong>, telles que la <strong>distance de trajet le plus court</strong> et les <strong>données météo</strong>, malgré l'<strong>optimisation des hyperparamètres</strong> des modèles de régression, malgré l’utilisation de techniques d’<strong>ensemble learning</strong> comme le <strong>bagging</strong>, <span style="color: red;"><strong>nous ne sommes pas parvenus à améliorer significativement les résultats des modèles de régression</strong></span>.<br><br>
-            Nous avons donc décidés de compléter notre modélisation par l'utilisation de <strong><span style="color: orange;">modèles de classification</span></strong>, afin de <strong>prédire</strong> cette fois-ci une <strong><span style="color: orange;">classe binaire</span> indiquant si le temps d’arrivée sur un lieu d’incident sera inférieur ou supérieur à 6 min</strong>.<br>
+            <p class="custom-p">Malgré</p>
+            <ul class="custom-ul">
+            <li>l'enrichissement du jeu de données initial avec <strong> de nouvelles caractéristiques</strong> (ex : <strong>distance de trajet le plus court</strong>, <strong>données météo</strong>),</li> 
+            <li>l'<strong>optimisation des hyperparamètres</strong> des modèles de régression,</li> 
+            <li>l’utilisation de techniques d’<strong>ensemble learning</strong> comme le <strong>bagging</strong>,</li> 
+            </ul>
+            <span style="color: red;"><strong>Nous ne sommes pas parvenus à améliorer significativement les résultats des modèles de régression</strong></span>.<br><br>
+            Nous avons alors complété notre modélisation par l'utilisation de <strong><span style="color: orange;">modèles de classification</span></strong>, 
+            afin de <strong>prédire</strong> cette fois-ci une <strong><span style="color: orange;">classe binaire</span> indiquant si le temps d’arrivée sur un lieu d’incident sera inférieur ou supérieur à 6 min</strong>.<br>
             La <strong><span style="color: orange;">variable cible</span></strong> est alors une <strong><span style="color: orange;">classe binaire</span> indiquant l'atteinte (classe 1) ou non (classe 0) de l’objectif de temps d’arrivée < 6 min</strong>, 
              dont la <strong>distribution</strong> sur le jeu de données est la suivante :
             </p>
@@ -767,7 +774,7 @@ elif page == pages[6]:
             </style>
             <p class="custom-p"> Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de classification nous avons utilisé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>Exactitude (Accuracy), Rappel (Recall), Précision, F1-Score, AUC-ROC</strong>.<p>
             <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Résultats / Classement des modèles de classification</h4>
-            <p>Ci-dessous le classement (du plus performant au moins performant) des modèles de classification finaux entrainés et testés, en fonction de l'<strong>exactitude (ou accuracy)</strong> :</p>
+            <p>Ci-dessous le classement (du plus performant au moins performant) des modèles de classification finaux entrainés et testés, en fonction de l'<strong><span style="color: orange;">exactitude (ou accuracy)</span></strong> :</p>
             """, unsafe_allow_html=True)
     
         col1, col2 = st.columns([1, 10])

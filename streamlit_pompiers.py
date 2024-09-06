@@ -35,7 +35,7 @@ st.set_page_config(page_title="Projet DA Pompiers", page_icon=":fire:", layout="
 st.sidebar.title("Sommaire")
 pages=["Présentation du projet, du contexte et des enjeux","Exploration des données", 
        "Analyse et visualisation des données", "Analyse & Visualisation des corrélations entre variables", 
-       "Choix des caractéristiques pertinentes pour la modélisation", "Nettoyage et prétraitement des données",
+       "Choix des caractéristiques pertinentes pour la modélisation", "Traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles",
        "Modélisation / Analyse des résultats", "Prédictions sur de nouvelles données", "Conclusions métier", "Perspectives d'amélioration"]
 
 page=st.sidebar.radio("Aller vers la page :",pages)
@@ -337,10 +337,10 @@ elif page == pages[4]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Sur la base de cette analyse et visualisation de corrélations entre variables, nous avons sélectionné un certain nombre de <strong><span style="color: orange;"> caractéristiques pertinentes</span></strong> pour <strong><span style="color: orange;">construire, entraîner et tester des modèles de Machine Learning</span></strong> en vue de pouvoir <strong> prédire les temps d'arrivée</strong>  des pompiers sur le lieu d'incident :</p>
+        <p class="custom-p">L'analyse des corrélations entre variables entre variables identifiées, nous a permis d'identifier les <strong><span style="color: orange;">caractéristiques pertinentes</span></strong> à considérer pour <strong><span style="color: orange;">construire, entraîner et tester des modèles de Machine Learning</span></strong>, en vue de pouvoir <strong> prédire les temps d'arrivée</strong>  des pompiers sur le lieu d'incident :</p>
         """, unsafe_allow_html=True)
 
-    with st.expander("**Ajout de caractéristiques utiles liées à des données existantes**"):
+    with st.expander("**1 - Caractéristiques liées à des données du jeu de données initial**"):
         st.markdown("""
             <style>
             .custom-ul {
@@ -351,7 +351,7 @@ elif page == pages[4]:
             .custom-p {margin-bottom: -0.1em;}
             </style>
             <ul class="custom-ul">
-            <h2 style='text-align: left; color: black; font-size: 22px;'>Ajout de caractéristiques utiles liées à des données existantes</h2>
+            <h2 style='text-align: left; color: black; font-size: 22px;'>Caractéristiques liées à des données du jeu de données initial</h2>
             <li><strong>IncidentGroup</strong>  (ex : False Alarm, Fire, Special service) : Nature de l’incident</li>
             <li><strong>DeployedFromStation_Name</strong> : indicateur de départ depuis une autre caserne que celle liée à l’incident. Permet d’identifier si le camion déployé sur le lieu d’incident suite à l’appel au 999 part d'une caserne différente de celle liée au lieu d’incident.</li>
             <li><strong>IncGeo_BoroughName</strong> : Nom d'arrondissement / circonscription administrative de Londres (borough) du lieu d'incident</li>
@@ -362,7 +362,7 @@ elif page == pages[4]:
             <li><strong>HourOfCall</strong> : Heure de l'appel au 999</li></ul>
             """, unsafe_allow_html=True)
         
-    with st.expander("**Ajout de nouvelles caractéristiques utiles créées à partir des données existantes**"):
+    with st.expander("**2 - Caractéristiques créées à partir de données du jeu de données initial**"):
         st.markdown("""
             <style>
             .custom-ul {
@@ -373,7 +373,7 @@ elif page == pages[4]:
             .custom-p {margin-bottom: -0.1em;}
             </style>   
             <ul class="custom-ul">
-            <h2 style='text-align: left; color: black; font-size: 22px;'>Ajout de nouvelles caractéristiques utiles créées à partir des données existantes </h2>
+            <h2 style='text-align: left; color: black; font-size: 22px;'>Caractéristiques créées à partir de données du jeu de données initial</h2>
             <li><strong>Distance_Incident_DeployedFromStation</strong> : Distance à vol d’oiseau en m calculée entre la caserne de départ et le lieu d’incident. Il s’agit de la distance orthodromique entre les 2 points, sur la base de la latitude et de la longitude à l'aide de la formule Haversine.</li>
             <li><strong>Distance_Incident_IncidentStationGround</strong> : Distance à vol d’oiseau en m entre la caserne de la zone d'incident et le lieu de l'incident.</li>
             <li><strong>DeployedFrom_egalA_IncidentGround_Station</strong> : Permet d’identifier si le camion déployé sur le lieu d’incident suite à l’appel au 999 part d'une caserne différente de celle liée au lieu d’incident.</li>        
@@ -385,7 +385,7 @@ elif page == pages[4]:
             <li><strong>Taux_retard</strong>  : Taux de mobilisations ayant subi un retard associé à la caserne mobilisée sur l’incident suite à l’appel au 999</li></ul>
             """, unsafe_allow_html=True)
         
-    with st.expander("**Ajout de nouvelles données non existantes ayant une influence sur la variable cible et sur les performances des modèles de Machine Learning**"):
+    with st.expander("**3 - Caractéristiques liées à des nouvelles données non présentes dans le jeu de données initial et ayant une influence sur la variable cible**"):
         st.markdown("""
             <style>
             .custom-ul {
@@ -396,8 +396,12 @@ elif page == pages[4]:
             .custom-p {margin-bottom: -0.1em;}
             </style>
             <ul class="custom-ul">
-            <h2 style='text-align: left; color: black; font-size: 22px;'>Ajout de nouvelles données non existantes ayant une influence sur la variable cible et sur les performances des modèles de Machine Learning</h2>
-            <li><strong>Dist_trajet_Incident_DeployedFromStation</strong> : Distance en m du trajet entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident. Il s’agit de la distance la plus courte de l’itinéraire calculé entre les 2 points en s’appuyant sur les données OpenStreetMap (OSM) de représentation des réseaux routiers et des infrastructures urbaines du monde entier, notamment du Grand Londres, en utilisant les packages python OSMnx, Networkx.<br>La distance de cet itinéraire est calculée en additionnant les longueurs des segments entre les nœuds consécutifs.<br>Ci-dessous un exemple de calcul de distance d’itinéraire entre la caserne de départ (Dagenham) et le lieu d’un incident survenu le 03/05/2023 dans le Newham, en se basant sur le réseau routier OpenStreetMap du Grand Londres (en bleu la distance à vol d’oiseau - 8655m dans l’exemple, en rouge la distance totale de l’itinéraire - 10068 m dans l’exemple)<br></li>
+            <h2 style='text-align: left; color: black; font-size: 22px;'>Caractéristiques liées à des nouvelles données non présentes dans le jeu de données initial et récupérées à partir de sources tierces</h2>
+            <li><strong><span style="color: orange;">Coordonnées</span> des 102 casernes du Grand Londres</strong></li>
+            <li><strong>Distance_Incident_DeployedFromStation</strong> : <strong><span style="color: orange;">Distance à vol d'oiseau</span></strong> (en m) entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident. <br>
+            <li><strong>Données OpenStreetMap de représentation des <span style="color: orange;">réseaux routiers et des infrastructures urbaines</span> du Grand Londres</strong></li>
+            <li><strong>Dist_trajet_Incident_DeployedFromStation</strong> : <strong><span style="color: orange;">Distance</span> (en m) de l'<span style="color: orange;">itinéraire routier le plus court</strong></span> entre la caserne de départ et le lieu de l'incident. <br>
+            Ci-dessous un exemple de calcul de distance d’itinéraire routier entre la caserne de départ (Dagenham) et le lieu d’un incident survenu le 03/05/2023 dans le Newham (en bleu la distance à vol d’oiseau - 8655m dans l’exemple, en rouge la distance totale de l’itinéraire - 10068 m dans l’exemple)<br></li>
             """, unsafe_allow_html=True)
    
 
@@ -421,11 +425,11 @@ elif page == pages[4]:
             """, unsafe_allow_html=True)
 
 
-##############################################################
-# Nettoyage & Prétraitement des données
-##############################################################
+#######################################################################################
+# Traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles
+#######################################################################################
 elif page == pages[5]:
-    st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Nettoyage & Prétraitement des données</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles</h1>", unsafe_allow_html=True)
     st.markdown("""
         <style>
         .custom-ul {
@@ -435,10 +439,10 @@ elif page == pages[5]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Dans le but de conserver un maximum de <strong>données fiables et cohérentes</strong>, nous avons procédé à un <strong>nettoyage</strong> et à un <strong>prétraitement des données</strong>, en particulier en</p>
+        <p class="custom-p">Dans le but de <strong>fiabiliser</strong> les données conservées, nous avons procédé à un <strong>traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles</strong></p>
         <ul class="custom-ul">
-        <li><strong>Traitant les <span style="color: orange;">valeurs manquantes</span> résiduelles</strong>, par <span style="color: orange;"><strong>suppression</span></strong> ou par <span style="color: orange;"><strong>remplacement</span></strong>.</li>
-        <li><strong>Traitant les <span style="color: orange;">erreurs ou valeurs aberrantes/extrêmes</span></strong> dans les données, par <span style="color: orange;"><strong>suppression</span></strong> ou <span style="color: orange;"><strong>remplacement</span></strong>.</li>
+        <li><strong>Traitement des <span style="color: orange;">valeurs manquantes</span> résiduelles</strong>, par <span style="color: orange;"><strong>suppression</span></strong> ou par <span style="color: orange;"><strong>remplacement</span></strong>.</li>
+        <li><strong>Traitement des <span style="color: orange;">valeurs aberrantes et extrêmes</span></strong> dans certaines données, par <span style="color: orange;"><strong>suppression</span></strong> ou <span style="color: orange;"><strong>remplacement</span></strong>.</li>
         </ul>
         """, unsafe_allow_html=True)
         
@@ -481,7 +485,7 @@ elif page == pages[5]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">La majorité des <strong>valeurs manquantes</strong> ont été traitées par :</p>
+            <p class="custom-p">Les <strong>valeurs manquantes</strong> ont été traitées par :</p>
             <ul class="custom-ul">
             <li><strong><span style="color: orange;">suppression des colonnes</span></strong> comportant une <strong>proportion importante de valeurs manquantes et/ou</strong> ayant un <strong>intérêt limité pour la modélisation</strong></li>
             <li>ou par <strong><span style="color: orange;">remplacement (ou imputation)</span></strong> des valeurs manquantes <strong>par des valeurs bien choisies</strong>. </li></ul>
@@ -502,21 +506,16 @@ elif page == pages[5]:
             </style>
             <h2 style='text-align: left; color: black; font-size: 22px;'>Gestion des valeurs aberrantes et extrêmes</h2>
             <p class="custom-p">
-            Pour une partie des mobilisations de la brigade des pompiers de Londres, nous avons constaté des <span style="color: orange;"><strong>valeurs aberrantes sur la vitesse du camion de pompiers déployé</span> sur le lieu d'incident</strong>, calculée à partir de la <strong>distance à vol d'oiseau entre la caserne de départ et le lieu d’incident</strong> et du <strong>temps de trajet</strong><br>
-            Plusieurs valeurs de vitesse <span style="color: orange;"><strong>dépassent les 100 km/h</strong></span> (avec un <strong>record à 60 000 km/h</strong> pour la plus élevée), notamment en raison d'un 
-            <span style="color: orange;"><strong>temps de trajet</span> enregistré <span style="color: red;">anormalement faible</span></strong> dans le jeu de données initial.<br><br></p>
-            <p class="custom-p">Afin de <strong>réduire l’effet des valeurs aberrantes</strong> et <strong>rendre le jeu de données plus robuste</strong>, la stratégie adoptée a été de :</p>
+            En analysant la <span style="color: orange;"><strong>vitesse des camions de pompiers</strong></span>, calculée à partir du <strong>temps de trajet enregistré</strong></span>
+            et de la <strong>distance à vol d'oiseau entre la caserne de départ et le lieu d’incident</strong>, on a constaté des <span style="color: orange;"><strong>valeurs aberrantes</span></strong>, 
+            avec des valeurs de vitesse <span style="color: orange;"><strong>dépassent les 100 km/h</strong></span> (<strong>record à 60 000 km/h</strong> pour la plus élevée).<br><br></p>
+            <p class="custom-p">Afin de <strong>réduire l’effet de ces valeurs aberrantes</strong> nous avons :</p>
             <ul class="custom-ul">
-            <li><strong><span style="color: orange;">Supprimer les lignes du DataFrame comportant des valeurs de vitesse aberrantes</span></strong> (<strong>au-dessus de 100 km/h</strong>) liées à des <strong>temps de trajet très faibles</strong><br></li>
-            <li><strong><span style="color: orange;">Evaluer la distance de l’itinéraire le plus court</span></strong> entre la caserne et le lieu d’incident.<br></li>
-            <li><strong><span style="color: orange;">Ajuster (par winsorisation) à la valeur du 5e percentile (14 km/h) et du 95e percentile (55 km/h)</span></strong> les valeurs de <strong>vitesses</strong> situées <strong>en dessous du 5e percentile</strong>
-            et <strong>au-dessus du 95e percentile</strong>.<br></li>
-            <li><span style="color: orange;"><strong>Recalculer la valeur de temps de trajet</strong></span> sur la base de la valeur de distance de l'itinéraire et de la valeur de vitesse ajustée<br><br></li></ul>
-            <p class="custom-p">Ci-dessous un graphe de type boxplot illustrant la distribution des valeurs de vitesse avant/après ajustement des valeurs</p>
+            <li><strong><span style="color: orange;">Evalué la distance de l’itinéraire routier</span></strong> entre la caserne et le lieu d’incident, à partir des données des réseaux routiers.<br></li>
+            <li><strong><span style="color: orange;">Supprimé les lignes du DataFrame comportant des valeurs de vitesse très aberrantes</span></strong> liées à des valeurs de <strong>temps de trajet erronnées</strong><br></li>
+            <li><strong><span style="color: orange;">Ajusté les valeurs extrêmes basses à la valeur du 5e percentile (14 km/h) et les valeurs extrêmes hautes à la valeur du 95e percentile (55 km/h)</span></strong>.<br></li>
+            <li><span style="color: orange;"><strong>Recalculé la valeur de temps de trajet</strong></span> sur la base de la valeur de distance de l'itinéraire et de la valeur de vitesse ajustée<br><br></li></ul>
             """, unsafe_allow_html=True)
-    
-        with st.expander("**Distribution des valeurs de vitesse Avant/Après ajustement (winsorisation)**"):
-            st.image("images/Winsorisation des valeurs extremes de vitesses de trajet.png")
 
 
 ##############################################################
@@ -533,8 +532,8 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Pour la phase de modélisations, nous nous sommes basés sur un jeu de données restreint à <strong>60 000 mobilisations sélectionnées aléatoirement sur 2023</strong>, 
-            pour lesquelles nous avons pu calculer la distance de l'itinéraire le plus court entre la caserne de départ et le lieu d'incident.</p>
+            <p class="custom-p">Pour entraîner les différents modèles de Machine Learning, nous nous sommes basés sur un jeu de données limité à <strong>60 000 mobilisations sélectionnées aléatoirement sur 2023</strong>, 
+            pour lesquelles nous avions calculé l'itinéraire le plus court entre la caserne de départ et le lieu d'incident et la distance associée.</p>
             """, unsafe_allow_html=True)
         
         ######## Séparation du jeu de données liées aux caractéristiques sélectionnées en un jeu d’entraînement et un jeu de test ################
@@ -548,11 +547,11 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Nous avons découpé notre ensemble de données en :</p>
+            <p class="custom-p">Nous avons découpé cet ensemble de données en :</p>
             <ul class="custom-ul">
             <li>Un <strong><span style="color: orange;">jeu de données d’entraînement</span></strong> contenant 80% des données, à la fois les valeurs des caractéristiques d'entrée et de la variable cible, utilisées
-            pour entraîner les modèles de Machine Learning à l’aide d’un algorithme d’apprentissage supervisé.</li>
-            <li>Un <strong><span style="color: orange;">jeu de données de test</span></strong> contenant 20% des données, à la fois les valeurs des caractéristiques d'entrée et de la variable cible, utilisées, utilisées 
+            pour entraîner les modèles de Machine Learning.</li>
+            <li>Un <strong><span style="color: orange;">jeu de données de test</span></strong> contenant 20% des données, à la fois les valeurs des caractéristiques d'entrée et de la variable cible, utilisées 
             pour évaluer les performances des modèles entraînés, par comparaison entre les valeurs réelles et les valeurs prédites par les modèles.<br></li>
             </ul>
             """, unsafe_allow_html=True)
@@ -594,10 +593,10 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Les transformations suivantes ont été effectuées sur les caractéristiques des jeux de données destinées à entraîner et tester les modèles de Machine Learning, afin qu'elles soient exploitables par les modèles de Machine Learning.  :</p>
+            <p class="custom-p">Afin que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons :</p>
             <ul class="custom-ul">
-            <li><strong><span style="color: orange;">Standardiser les caractéristiques numériques et cycliques </span></strong> (de nature périodique) pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des variables.</li>
-            <li><strong><span style="color: orange;">Encoder les variables catégorielles </span></strong> en utilisant le <strong>One-Hot Encoding</strong> (conversion en caractéristiques binaires).<br>
+            <li><strong><span style="color: orange;">Standardisé les caractéristiques numériques et cycliques </span></strong> (de nature périodique) pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des variables.</li>
+            <li><strong><span style="color: orange;">Encodé les variables catégorielles nominales</span></strong>, pour les convertir en variables binaires (0 ou 1), en utilisant le <strong>One-Hot Encoding</strong>.<br>
             Cela concerne par exemple les caractéristiques catégorielles comme le nom de la caserne de départ, l'existence de retards associés aux mobilisations de la caserne, ou la nature d'incident, etc</li>
             </ul>
             """, unsafe_allow_html=True)

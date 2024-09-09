@@ -171,15 +171,16 @@ elif page == pages[3]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Analyse & Visualisation des corrélations entre variables</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Heatmap de Corrélation entre variables</h2>", unsafe_allow_html=True)
     # st.header("Heatmap de Corrélation entre variables") 
-    # st.write("Afin de construire un modèle d'apprentissage automatique et de prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons analysé les corrélations entre les données disponibles, 
-    en particulier avec le temps d'arrivée :")
+    # st.write("Afin de construire un modèle d'apprentissage automatique et de prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons analysé les corrélations entre les différentes données disponibles, 
+    en particulier avec le temps d'arrivée sur le lieu d'incident :")
     st.markdown("""
         <style>
         .custom-p {margin-bottom: -0.1em;}
-        </style>
-        <p class="custom-p">La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>, </p>
-        <p class="custom-p">Chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre variables. </p>
-        <p class="custom-p">La valeur de chaque cellule représente la force et la direction de la corrélation, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</p>
+        <ul class="custom-ul">
+        <li>La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>,</li>
+        <li>Chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre variables.</li>
+        <li>La valeur de chaque cellule représente la force et la direction de la corrélation, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte
+        </span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</li></ul>
     """, unsafe_allow_html=True)
     
     with st.expander("Détail de la Heatmap de corrélation personnalisée"):
@@ -233,26 +234,26 @@ elif page == pages[3]:
         <li><strong>TravelTimeSeconds</strong> (temps de trajet entre la caserne de départ et le lieu d’incident) / <strong>Distance_Incident_DeployedFromStation</strong> (Distance entre caserne de départ et lieu d’incident)<br></li></ul>
         """, unsafe_allow_html=True)
    
-    col1, col2 = st.columns([1, 15])
-    with col1:
-        st.markdown("")
-    with col2:
-        with st.expander("**Pour illustrer cette corrélation**"):
-            st.markdown("""
-                <style>
-                .custom-ul {
-                    line-height: 1.2;
-                    margin-left: 20px; 
-                }
-                </style>
-                <style>
-                .custom-p {margin-bottom: -0.1em;}
-                </style>
-                <p class="custom-p">Pour illustrer cette corrélation, ci-dessous une visualisation sous forme de nuage de points du temps de trajet et de la distance pour l'ensemble des mobilisations du premier camion de pompiers jusqu'au lieu d'incident sur l'année 2023, en distinguant le cas où la caserne de départ se situe dans le centre de Londres (Inner London) ou dans la périphérie (Outer London). <br>
-                On constate que les temps de trajet sont plus élevés en périphérie que dans le centre, ce qui est principalement dû à des distances parcourues entre la caserne de départ et le lieu d'incident plus importantes dans les arrondissements de la périphérie de Londres (Outer London) par rapport à ceux du centre de Londres (Inner London).</p><br>
-                """, unsafe_allow_html=True)
+    # col1, col2 = st.columns([1, 15])
+    # with col1:
+    #     st.markdown("")
+    # with col2:
+    #     with st.expander("**Pour illustrer cette corrélation**"):
+    #         st.markdown("""
+    #             <style>
+    #             .custom-ul {
+    #                 line-height: 1.2;
+    #                 margin-left: 20px; 
+    #             }
+    #             </style>
+    #             <style>
+    #             .custom-p {margin-bottom: -0.1em;}
+    #             </style>
+    #             <p class="custom-p">Pour illustrer cette corrélation, ci-dessous une visualisation sous forme de nuage de points du temps de trajet et de la distance pour l'ensemble des mobilisations du premier camion de pompiers jusqu'au lieu d'incident sur l'année 2023, en distinguant le cas où la caserne de départ se situe dans le centre de Londres (Inner London) ou dans la périphérie (Outer London). <br>
+    #             On constate que les temps de trajet sont plus élevés en périphérie que dans le centre, ce qui est principalement dû à des distances parcourues entre la caserne de départ et le lieu d'incident plus importantes dans les arrondissements de la périphérie de Londres (Outer London) par rapport à ceux du centre de Londres (Inner London).</p><br>
+    #             """, unsafe_allow_html=True)
 
-            st.image("images/Nuage de points entre le temps de trajet et la distance pour les mobilisations du 1er camion sur 2023 en fonction de la zone incident.png")
+    #         st.image("images/Nuage de points entre le temps de trajet et la distance pour les mobilisations du 1er camion sur 2023 en fonction de la zone incident.png")
 
         
     st.markdown("""
@@ -290,26 +291,26 @@ elif page == pages[3]:
         <li><strong>DeployedFrom_egalA_IncidentGround_Station</strong> (Mobilisation ou non de la caserne de liée à la zone de l’incident) / <strong>TravelTimeSeconds</strong> (temps de trajet entre la caserne de départ et le lieu d’incident)<br></li></ul>
         """, unsafe_allow_html=True)
    
-    col1, col2 = st.columns([1, 15])
-    with col1:
-        st.markdown("")
-    with col2:
-        with st.expander("**Pour illustrer cette corrélation**"):
-            st.markdown("""
-                <style>
-                .custom-ul {
-                    line-height: 1.2;
-                    margin-left: 20px;
-                }
-                </style>
-                <style>
-                .custom-p {margin-bottom: -0.1em;}
-                </style>
-                <p class="custom-p">Pour illustrer cette corrélation, ci-dessous une visualisation sous forme de nuage de points du temps de trajet et de la distance pour l'ensemble des mobilisations du premier camion sur l'année 2023, en distinguant le cas où la caserne de départ se situe dans la zone d'incident (Cas True) et le cas où la caserne de départ ne se situe pas dans la zone d’incident (Cas False). <br>
-                On constate que les temps de trajet sont plus élevés lorsque le camion part d'une caserne en dehors de la zone d'incident, en raison d'une distance généralement plus élevée.</p><br>
-                """, unsafe_allow_html=True)
+    # col1, col2 = st.columns([1, 15])
+    # with col1:
+    #     st.markdown("")
+    # with col2:
+    #     with st.expander("**Pour illustrer cette corrélation**"):
+    #         st.markdown("""
+    #             <style>
+    #             .custom-ul {
+    #                 line-height: 1.2;
+    #                 margin-left: 20px;
+    #             }
+    #             </style>
+    #             <style>
+    #             .custom-p {margin-bottom: -0.1em;}
+    #             </style>
+    #             <p class="custom-p">Pour illustrer cette corrélation, ci-dessous une visualisation sous forme de nuage de points du temps de trajet et de la distance pour l'ensemble des mobilisations du premier camion sur l'année 2023, en distinguant le cas où la caserne de départ se situe dans la zone d'incident (Cas True) et le cas où la caserne de départ ne se situe pas dans la zone d’incident (Cas False). <br>
+    #             On constate que les temps de trajet sont plus élevés lorsque le camion part d'une caserne en dehors de la zone d'incident, en raison d'une distance généralement plus élevée.</p><br>
+    #             """, unsafe_allow_html=True)
 
-            st.image("images/Nuage de points entre le temps de trajet et la distance pour les mobilisations du 1er camion sur 2023 en fonction de la caserne de départ.png")
+    #         st.image("images/Nuage de points entre le temps de trajet et la distance pour les mobilisations du 1er camion sur 2023 en fonction de la caserne de départ.png")
     
     st.markdown("""
         <style>
@@ -333,12 +334,13 @@ elif page == pages[3]:
 ##############################################################
 elif page == pages[4]:
     # st.title("Choix des caractéristiques pertinentes pour la modélisation")
-    st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Sélection des caractéristiques pertinentes pour la modélisation</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Sélection des données pertinentes pour la modélisation</h1>", unsafe_allow_html=True)
     st.markdown("""
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">L'analyse des corrélations entre variables entre variables identifiées, nous a permis d'identifier les <strong><span style="color: orange;">caractéristiques pertinentes</span></strong> à considérer pour <strong><span style="color: orange;">construire, entraîner et tester des modèles de Machine Learning</span></strong>, en vue de pouvoir <strong> prédire les temps d'arrivée</strong>  des pompiers sur le lieu d'incident :</p>
+        <p class="custom-p">Cette analyse des corrélations entre les données a permis d'identifier les <strong><span style="color: orange;">données ayant potentiellement une influence</span></strong> et à considérer  
+        <strong><span style="color: orange;"> en entrée de modèles de Machine Learning</span></strong>, pour <strong> prédire le temps d'arrivée</strong> des pompiers sur le lieu d'incident :</p>
         """, unsafe_allow_html=True)
 
     with st.expander("**1 - Caractéristiques liées à des données du jeu de données initial**"):

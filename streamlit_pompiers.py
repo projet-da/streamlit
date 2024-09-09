@@ -171,11 +171,14 @@ elif page == pages[3]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Analyse & Visualisation des corrélations entre variables</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Heatmap de Corrélation entre variables</h2>", unsafe_allow_html=True)
     # st.header("Heatmap de Corrélation entre variables") 
-    # st.write("Afin de construire un modèle d'apprentissage automatique et de prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons analysé les corrélations entre les différentes données disponibles, 
-    en particulier avec le temps d'arrivée sur le lieu d'incident :")
+    # st.write("Afin de construire un modèle d'apprentissage automatique et de prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons <span style="color: orange;">heatmap</span></strong>analysé 
+    # les corrélations entre les différentes données </span></strong> disponibles, en particulier avec le temps d'arrivée sur le lieu d'incident :")
     st.markdown("""
         <style>
         .custom-p {margin-bottom: -0.1em;}
+        </style>
+        <p class="custom-p">Afin de construire un modèle d'apprentissage automatique et de prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons analysé les <strong><span style="color: orange;">
+        corrélations entre les différentes données disponibles, en particulier avec le temps d'arrivée sur le lieu d'incident :</p>
         <ul class="custom-ul">
         <li>La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>,</li>
         <li>Chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre variables.</li>

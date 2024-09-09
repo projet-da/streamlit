@@ -181,7 +181,7 @@ elif page == pages[3]:
         corrélations entre les différentes données disponibles, en particulier avec le temps d'arrivée sur le lieu d'incident :</p>
         <ul class="custom-ul">
         <li>La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>,</li>
-        <li>Chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre variables.</li>
+        <li>Chaque <span style="color: orange;"><strong>donnée est représentée par <span style="color: orange;"><strong>une ligne</strong></span> et <span style="color: orange;"><strong>une colonne</strong></span>, et les <span style="color: orange;"><strong>cellules</strong></span> contiennent l'information de corrélation entre variables.</li>
         <li>La <strong><span style="color: orange;">valeur</span> de chaque cellule représente la <span style="color: orange;">force</span> et la <span style="color: orange;">direction</span> de la corrélation</strong>, 
         plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</li></ul>
     """, unsafe_allow_html=True)
@@ -626,9 +626,8 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Dans un premier temps, nous avons utilisé des <strong><span style="color: orange;">modèles de régression</span></strong> afin de <strong>prédire la valeur du temps d’arrivée d’un camion de pompiers sur le lieu d’incident</strong>. <br>
-            Pour ce type de modélisation, il s'agit d'une <strong><span style="color: orange;">variable cible de type numérique</span></strong>, en l'occurence la variable <strong>AttendanceTimeSeconds</strong> correspondant au <strong>Temps d'arrivée des pompiers sur le lieu d'incident</strong>, incluant le temps de mobilisation de l’équipage et le temps de trajet entre la caserne et le lieu de l’incident,
-             dont la <strong>distribution</strong> sur le jeu de données est la suivante :
+            <p class="custom-p">Dans un premier temps, nous avons utilisé des <strong><span style="color: orange;">modèles de régression</span></strong> afin de <strong>prédire la valeur du temps d’arrivée d’un camion de pompiers sur le lieu d’incident</strong>, <br>
+            dont la <strong>distribution</strong> sur le jeu de données est la suivante :
             </p>
             """, unsafe_allow_html=True)
     

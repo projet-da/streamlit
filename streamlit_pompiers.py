@@ -35,7 +35,7 @@ st.set_page_config(page_title="Projet DA Pompiers", page_icon=":fire:", layout="
 st.sidebar.title("Sommaire")
 pages=["Présentation du projet, du contexte et des enjeux","Exploration des données", 
        "Analyse et visualisation des données", "Analyse & Visualisation des corrélations entre variables", 
-       "Choix des caractéristiques pertinentes pour la modélisation", "Traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles",
+       "Choix des données pertinentes pour la modélisation", "Traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles",
        "Modélisation / Analyse des résultats", "Prédictions sur de nouvelles données", "Conclusions métier", "Perspectives d'amélioration"]
 
 page=st.sidebar.radio("Aller vers la page :",pages)
@@ -171,19 +171,19 @@ elif page == pages[3]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Analyse & Visualisation des corrélations entre variables</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Heatmap de Corrélation entre variables</h2>", unsafe_allow_html=True)
     # st.header("Heatmap de Corrélation entre variables") 
-    # st.write("Afin de construire un modèle d'apprentissage automatique et de prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons <span style="color: orange;">heatmap</span></strong>analysé 
+    # st.write("Afin de construire un modèle de Machine Learning pour la prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons <span style="color: orange;">heatmap</span></strong>analysé 
     # les corrélations entre les différentes données </span></strong> disponibles, en particulier avec le temps d'arrivée sur le lieu d'incident :")
     st.markdown("""
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Afin de construire un modèle d'apprentissage automatique et de prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons analysé les <strong><span style="color: orange;">
+        <p class="custom-p">Afin de construire un modèle de Machine Learning pour la prédiction du temps d'arrivée des pompiers sur le lieu d'incident, nous avons analysé les <strong><span style="color: orange;">
         corrélations entre les différentes données disponibles, en particulier avec le temps d'arrivée sur le lieu d'incident :</p>
         <ul class="custom-ul">
         <li>La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>,</li>
         <li>Chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre variables.</li>
-        <li>La valeur de chaque cellule représente la force et la direction de la corrélation, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte
-        </span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</li></ul>
+        <li>La <strong><span style="color: orange;">valeur</span> de chaque cellule représente la <span style="color: orange;">force</span> et la <span style="color: orange;">direction</span> de la corrélation</strong>, 
+        plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</li></ul>
     """, unsafe_allow_html=True)
     
     with st.expander("Détail de la Heatmap de corrélation personnalisée"):
@@ -234,7 +234,11 @@ elif page == pages[3]:
         .custom-p {margin-bottom: -0.1em;}
         </style>
         <ul class="custom-ul">
-        <li><strong>TravelTimeSeconds</strong> (temps de trajet entre la caserne de départ et le lieu d’incident) / <strong>Distance_Incident_DeployedFromStation</strong> (Distance entre caserne de départ et lieu d’incident)<br></li></ul>
+        <li><strong>TravelTimeSeconds</strong> (temps de trajet entre la caserne de départ et le lieu d’incident) / <strong>Distance_Incident_DeployedFromStation</strong> (Distance entre caserne de départ et lieu 
+        d’incident)<br></li>
+        <li><strong>AttendanceTimeSeconds</strong> (Temps d’arrivée entre la caserne de départ et le lieu d’incident une fois la caserne sollicitée) / <strong>Distance_Incident_DeployedFromStation</strong> (Distance entre caserne de départ et lieu d’incident)</li>
+        <li><strong>IncGeo_WardNameNew</strong> (Nom du quartier de Londres où se situe l’incident) / <strong>Distance_Incident_DeployedFromStation</strong> (Distance entre caserne de départ et lieu d’incident)</li>
+        </ul>
         """, unsafe_allow_html=True)
    
     # col1, col2 = st.columns([1, 15])
@@ -259,18 +263,18 @@ elif page == pages[3]:
     #         st.image("images/Nuage de points entre le temps de trajet et la distance pour les mobilisations du 1er camion sur 2023 en fonction de la zone incident.png")
 
         
-    st.markdown("""
-        <style>
-        .custom-ul {
-            line-height: 1.2;
-            margin-left: 20px; 
-        }
-        </style>
-        <ul class="custom-ul">
-        <li><strong>AttendanceTimeSeconds</strong> (Temps d’arrivée entre la caserne de départ et le lieu d’incident une fois la caserne sollicitée) / <strong>Distance_Incident_DeployedFromStation</strong> (Distance entre caserne de départ et lieu d’incident)</li>
-        <li><strong>IncGeo_WardNameNew</strong> (Nom du quartier de Londres où se situe l’incident) / <strong>Distance_Incident_DeployedFromStation</strong> (Distance entre caserne de départ et lieu d’incident)</li>
-        </ul>
-        """, unsafe_allow_html=True)
+    # st.markdown("""
+    #     <style>
+    #     .custom-ul {
+    #         line-height: 1.2;
+    #         margin-left: 20px; 
+    #     }
+    #     </style>
+    #     <ul class="custom-ul">
+    #     <li><strong>AttendanceTimeSeconds</strong> (Temps d’arrivée entre la caserne de départ et le lieu d’incident une fois la caserne sollicitée) / <strong>Distance_Incident_DeployedFromStation</strong> (Distance entre caserne de départ et lieu d’incident)</li>
+    #     <li><strong>IncGeo_WardNameNew</strong> (Nom du quartier de Londres où se situe l’incident) / <strong>Distance_Incident_DeployedFromStation</strong> (Distance entre caserne de départ et lieu d’incident)</li>
+    #     </ul>
+    #     """, unsafe_allow_html=True)
 
     st.markdown("""
         <style>
@@ -291,7 +295,14 @@ elif page == pages[3]:
         </style>
         <ul class="custom-ul">
         <li><strong>DelayCode_Description</strong> (Cause de retard éventuelle) / <strong>AttendanceTimeSeconds</strong> (Temps d’arrivée entre la caserne de départ et le lieu d’incident une fois la caserne sollicitée)</li>
-        <li><strong>DeployedFrom_egalA_IncidentGround_Station</strong> (Mobilisation ou non de la caserne de liée à la zone de l’incident) / <strong>TravelTimeSeconds</strong> (temps de trajet entre la caserne de départ et le lieu d’incident)<br></li></ul>
+        <li><strong>DeployedFrom_egalA_IncidentGround_Station</strong> (Mobilisation ou non de la caserne de liée à la zone de l’incident) / <strong>TravelTimeSeconds</strong> 
+        (temps de trajet entre la caserne de départ et le lieu d’incident)<br></li>
+        <li><strong>PropertyType</strong> (Type de propriété) / <strong>Inner_Outer</strong> (Situation dans le centre ou en périphérie de Londres)</li>
+        <li><strong>PropertyCategory</strong> (Catégorie de propriété) / <strong>IncidentGroup</strong> (Catégorie d’incident)</li>
+        <li><strong>PropertyCategory</strong> (Catégorie de propriété) / <strong>stopCodeDescription</strong> (Sous-catégorie d’incident)</li>
+        <li><strong>PropertyCategory</strong> (Catégorie de propriété) / <strong>SpecialServiceType</strong> (Type de service spécial)</li>
+        <li><strong>IncGeo_WardNameNew</strong> (Nom du quartier de Londres où se situe l’incident) / <strong>DeployedFromStation_Name</strong> (Nom caserne de départ)</li>
+        </ul>
         """, unsafe_allow_html=True)
    
     # col1, col2 = st.columns([1, 15])
@@ -315,28 +326,28 @@ elif page == pages[3]:
 
     #         st.image("images/Nuage de points entre le temps de trajet et la distance pour les mobilisations du 1er camion sur 2023 en fonction de la caserne de départ.png")
     
-    st.markdown("""
-        <style>
-        .custom-ul {
-            line-height: 1.2;
-            margin-left: 20px;
-        }
-        </style>
-        <ul class="custom-ul">        
-        <li><strong>PropertyType</strong> (Type de propriété) / <strong>Inner_Outer</strong> (Situation dans le centre ou en périphérie de Londres)</li>
-        <li><strong>PropertyCategory</strong> (Catégorie de propriété) / <strong>IncidentGroup</strong> (Catégorie d’incident)</li>
-        <li><strong>PropertyCategory</strong> (Catégorie de propriété) / <strong>stopCodeDescription</strong> (Sous-catégorie d’incident)</li>
-        <li><strong>PropertyCategory</strong> (Catégorie de propriété) / <strong>SpecialServiceType</strong> (Type de service spécial)</li>
-        <li><strong>IncGeo_WardNameNew</strong> (Nom du quartier de Londres où se situe l’incident) / <strong>DeployedFromStation_Name</strong> (Nom caserne de départ)</li>
-        </ul>
-        """, unsafe_allow_html=True)
+    # st.markdown("""
+    #     <style>
+    #     .custom-ul {
+    #         line-height: 1.2;
+    #         margin-left: 20px;
+    #     }
+    #     </style>
+    #     <ul class="custom-ul">        
+    #     <li><strong>PropertyType</strong> (Type de propriété) / <strong>Inner_Outer</strong> (Situation dans le centre ou en périphérie de Londres)</li>
+    #     <li><strong>PropertyCategory</strong> (Catégorie de propriété) / <strong>IncidentGroup</strong> (Catégorie d’incident)</li>
+    #     <li><strong>PropertyCategory</strong> (Catégorie de propriété) / <strong>stopCodeDescription</strong> (Sous-catégorie d’incident)</li>
+    #     <li><strong>PropertyCategory</strong> (Catégorie de propriété) / <strong>SpecialServiceType</strong> (Type de service spécial)</li>
+    #     <li><strong>IncGeo_WardNameNew</strong> (Nom du quartier de Londres où se situe l’incident) / <strong>DeployedFromStation_Name</strong> (Nom caserne de départ)</li>
+    #     </ul>
+    #     """, unsafe_allow_html=True)
 
 
 ##############################################################
 # Choix des caractéristiques pertinentes pour la modélisation
 ##############################################################
 elif page == pages[4]:
-    # st.title("Choix des caractéristiques pertinentes pour la modélisation")
+    # st.title("Choix des données pertinentes pour la modélisation")
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Sélection des données pertinentes pour la modélisation</h1>", unsafe_allow_html=True)
     st.markdown("""
         <style>
@@ -538,8 +549,8 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Pour entraîner les différents modèles de Machine Learning, nous nous sommes basés sur un jeu de données limité à <strong>60 000 mobilisations sélectionnées aléatoirement sur 2023</strong>, 
-            pour lesquelles nous avions calculé l'itinéraire le plus court entre la caserne de départ et le lieu d'incident et la distance associée.</p>
+            <p class="custom-p">Pour entraîner les différents modèles de Machine Learning, nous nous sommes basés sur un <strong><span style="color: orange;">jeu de données limité à 60 000 mobilisations sélectionnées 
+            aléatoirement sur 2023</strong></span>, pour lesquelles nous avions calculé l'itinéraire le plus court entre la caserne de départ et le lieu d'incident et la distance associée.</p>
             """, unsafe_allow_html=True)
         
         ######## Séparation du jeu de données liées aux caractéristiques sélectionnées en un jeu d’entraînement et un jeu de test ################
@@ -555,10 +566,9 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Nous avons découpé cet ensemble de données en :</p>
             <ul class="custom-ul">
-            <li>Un <strong><span style="color: orange;">jeu de données d’entraînement</span></strong> contenant 80% des données, à la fois les valeurs des caractéristiques d'entrée et de la variable cible, utilisées
-            pour entraîner les modèles de Machine Learning.</li>
-            <li>Un <strong><span style="color: orange;">jeu de données de test</span></strong> contenant 20% des données, à la fois les valeurs des caractéristiques d'entrée et de la variable cible, utilisées 
-            pour évaluer les performances des modèles entraînés, par comparaison entre les valeurs réelles et les valeurs prédites par les modèles.<br></li>
+            <li>Un <strong><span style="color: orange;">jeu de données d’entraînement</span></strong> contenant 80% des données, utilisées pour <strong>entraîner les modèles de Machine Learning</strong>.</li>
+            <li>Un <strong><span style="color: orange;">jeu de données de test</span></strong> contenant 20% des données, utilisées pour <strong>évaluer les performances</strong> des modèles entraînés, 
+            par comparaison entre les valeurs réelles et les valeurs prédites par les modèles.<br></li>
             </ul>
             """, unsafe_allow_html=True)
 
@@ -601,9 +611,8 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Afin que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons :</p>
             <ul class="custom-ul">
-            <li><strong><span style="color: orange;">Standardisé les caractéristiques numériques et cycliques </span></strong> (de nature périodique) pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des variables.</li>
-            <li><strong><span style="color: orange;">Encodé les variables catégorielles nominales</span></strong>, pour les convertir en variables binaires (0 ou 1), en utilisant le <strong>One-Hot Encoding</strong>.<br>
-            Cela concerne par exemple les caractéristiques catégorielles comme le nom de la caserne de départ, l'existence de retards associés aux mobilisations de la caserne, ou la nature d'incident, etc</li>
+            <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des variables.</li>
+            <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
             </ul>
             """, unsafe_allow_html=True)
         

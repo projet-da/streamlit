@@ -626,8 +626,8 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Dans un premier temps, nous avons utilisé des <strong><span style="color: orange;">modèles de régression</span></strong> afin de <strong>prédire la valeur du temps d’arrivée d’un camion de pompiers sur le lieu d’incident</strong>, <br>
-            dont la <strong>distribution</strong> sur le jeu de données est la suivante :
+            <p class="custom-p">Dans un premier temps, nous avons utilisé des <strong><span style="color: orange;">modèles de régression</span></strong> afin de <strong><span style="color: orange;">prédire 
+            la valeur du temps d’arrivée d’un camion de pompiers sur le lieu d’incident</span></strong>, dont la <strong>distribution</strong> sur le jeu de données est la suivante :
             </p>
             """, unsafe_allow_html=True)
     
@@ -637,7 +637,7 @@ elif page == pages[6]:
         with col2:
             st.image("images/Boxplot Distribution des temps d'arrivée du 1er camion sur 2023_annotations.png")
 
-        with st.expander("**Nous avons entrainé, testé et évalué différents modèles de régression**"):
+        with st.expander("**Une dizaine de modèles de régression entraînés et évalués**"):
             st.markdown("""
                 <style>
                 .custom-p {margin-bottom: -0.1em;}
@@ -767,7 +767,7 @@ elif page == pages[6]:
         with col2:
             st.image("images/Distribution des classes.png")
          
-        with st.expander("**Nous avons entrainé, testé et évalué différents modèles de classification**"):
+        with st.expander("**Différents modèles de classification entraînés et évalués**"):
             st.markdown("""
                 <style>
                 .custom-p {margin-bottom: -0.1em;}

@@ -171,13 +171,14 @@ elif page == pages[3]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Analyse & Visualisation des corrélations entre variables</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Heatmap de Corrélation entre variables</h2>", unsafe_allow_html=True)
     # st.header("Heatmap de Corrélation entre variables") 
-    # st.write("Pour visualiser l’existence de relations entre différentes paires de variables catégorielles et numériques et mesurer la force de cette corrélation, nous avons construit une **heatmap de corrélation personnalisée**, construite à partir d'une matrice de corrélation basée sur des mesures de corrélation appropriées pour chaque type de variable :")
+    # st.write("Afin de construire un modèle d'apprentissage automatique et de prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons analysé les corrélations entre les données disponibles, 
+    en particulier avec le temps d'arrivée :")
     st.markdown("""
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Pour visualiser l’existence de <strong><span style="color: orange;">relations entre les différentes paires de variables</span></strong>, catégorielles et numériques, et mesurer la force de cette corrélation, nous avons réalisé des <strong><span style="color: orange;">tests statistiques</span></strong> entre les différentes variables et construit une <strong><span style="color: orange;">heatmap de corrélation personnalisée.</span></strong></p>
-        <p class="custom-p">Sur cette heatmap, chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre variables. </p>
+        <p class="custom-p">La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>, </p>
+        <p class="custom-p">Chaque variable est représentée par une ligne et une colonne, et les cellules contiennent l'information de corrélation entre variables. </p>
         <p class="custom-p">La valeur de chaque cellule représente la force et la direction de la corrélation, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</p>
     """, unsafe_allow_html=True)
     

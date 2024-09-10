@@ -457,7 +457,7 @@ elif page == pages[5]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Dans le but de <strong>fiabiliser</strong> les données conservées, nous avons procédé à un <strong>traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles</strong></p>
+        <p class="custom-p">Dans le but de <strong>fiabiliser</strong> les données sélectionnées précédemment, nous avons procédé à un <strong>traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles</strong></p>
         <ul class="custom-ul">
         <li><strong>Traitement des <span style="color: orange;">valeurs manquantes</span> résiduelles</strong>, par <span style="color: orange;"><strong>suppression</span></strong> ou par <span style="color: orange;"><strong>remplacement</span></strong>.</li>
         <li><strong>Traitement des <span style="color: orange;">valeurs aberrantes et extrêmes</span></strong> dans certaines données, par <span style="color: orange;"><strong>suppression</span></strong> ou <span style="color: orange;"><strong>remplacement</span></strong>.</li>
@@ -473,7 +473,7 @@ elif page == pages[5]:
         st.markdown("""
             <h2 style='text-align: left; color: black; font-size: 22px;'>Gestion des valeurs manquantes</h2>
     
-            Ci-dessous est visualisée la <strong><span style="color: orange;">répartition des valeurs manquantes</span></strong> du DataFrame initial, en nous limitant aux <strong>colonnes comportant des valeurs manquantes</strong> :
+            Ci-dessous la <strong><span style="color: orange;">répartition des valeurs manquantes</span></strong> du DataFrame initial (en se limitant aux <strong>colonnes comportant des valeurs manquantes</strong>) :
             """, unsafe_allow_html=True)
         
         st.image("images/Heatmap valeurs manquantes.png")
@@ -541,81 +541,110 @@ elif page == pages[5]:
 ##############################################################
 elif page == pages[6]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Modélisation</h1>", unsafe_allow_html=True)
+    st.markdown("""
+        <style>
+        .custom-ul {
+            line-height: 1.2;
+        }
+        </style>
+        <style>
+        .custom-p {margin-bottom: -0.1em;}
+        </style>
+        <p class="custom-p">A partir des données sélectionnées précédemment, nous avons <strong><span style="color: orange;">entrainé et évalué différents modèles de Machine Learning</span></strong> en nous basant 
+        sur les mobilisations de l'<strong><span style="color: orange;">année 2023</span></strong>.</p>
+        """, unsafe_allow_html=True)
+
+    with st.expander("**Pour illustrer cette corrélation**"):    
+    st.markdown("""
+        <style>
+        .custom-ul {
+            line-height: 1.2;
+        }
+        </style>
+        <style>
+        .custom-p {margin-bottom: -0.1em;}
+        </style>
+        <p class="custom-p">Pour que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons :</p>
+            <ul class="custom-ul">
+            <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des données.</li>
+            <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
+            </ul>
+        """, unsafe_allow_html=True)
 
     tab1, tab2, tab3, tab4 = st.tabs(["Jeux d'entrainement/test", "Standardisation/Encodage", "Modèles de régression", "Modèles de classification"])
     
     ###########################################################################
-    with tab1:
-        st.markdown("""
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <p class="custom-p">Pour entraîner les différents modèles de Machine Learning, nous nous sommes basés sur un <strong><span style="color: orange;">jeu de données limité à 60 000 mobilisations sélectionnées 
-            aléatoirement sur 2023</strong></span>, pour lesquelles nous avions calculé l'itinéraire le plus court entre la caserne de départ et le lieu d'incident et la distance associée.</p>
-            """, unsafe_allow_html=True)
+    # with tab1:
+    #     st.markdown("""
+    #         <style>
+    #         .custom-p {margin-bottom: -0.1em;}
+    #         </style>
+    #         <p class="custom-p">Pour entraîner les différents modèles de Machine Learning, nous nous sommes basés sur un <strong><span style="color: orange;">jeu de données limité à 60 000 mobilisations sélectionnées 
+    #         aléatoirement sur 2023</strong></span>, pour lesquelles nous avions calculé l'itinéraire le plus court entre la caserne de départ et le lieu d'incident et la distance associée.</p>
+    #         """, unsafe_allow_html=True)
         
-        ######## Séparation du jeu de données liées aux caractéristiques sélectionnées en un jeu d’entraînement et un jeu de test ################
-        st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Séparation du jeu de données liées aux caractéristiques sélectionnées en un jeu d’entraînement et un jeu de test</h2>", unsafe_allow_html=True)
-        st.markdown("""  
-            <style>
-            .custom-ul {
-                line-height: 1.2;
-            }
-            </style>
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <p class="custom-p">Nous avons découpé cet ensemble de données en :</p>
-            <ul class="custom-ul">
-            <li>Un <strong><span style="color: orange;">jeu de données d’entraînement</span></strong> contenant 80% des données, utilisées pour <strong>entraîner les modèles de Machine Learning</strong>.</li>
-            <li>Un <strong><span style="color: orange;">jeu de données de test</span></strong> contenant 20% des données, utilisées pour <strong>évaluer les performances</strong> des modèles entraînés, 
-            par comparaison entre les valeurs réelles et les valeurs prédites par les modèles.<br></li>
-            </ul>
-            """, unsafe_allow_html=True)
+    #     ######## Séparation du jeu de données liées aux caractéristiques sélectionnées en un jeu d’entraînement et un jeu de test ################
+    #     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Séparation du jeu de données liées aux caractéristiques sélectionnées en un jeu d’entraînement et un jeu de test</h2>", unsafe_allow_html=True)
+    #     st.markdown("""  
+    #         <style>
+    #         .custom-ul {
+    #             line-height: 1.2;
+    #         }
+    #         </style>
+    #         <style>
+    #         .custom-p {margin-bottom: -0.1em;}
+    #         </style>
+    #         <p class="custom-p">Nous avons découpé cet ensemble de données en :</p>
+    #         <ul class="custom-ul">
+    #         <li>Un <strong><span style="color: orange;">jeu de données d’entraînement</span></strong> contenant 80% des données, utilisées pour <strong>entraîner les modèles de Machine Learning</strong>.</li>
+    #         <li>Un <strong><span style="color: orange;">jeu de données de test</span></strong> contenant 20% des données, utilisées pour <strong>évaluer les performances</strong> des modèles entraînés, 
+    #         par comparaison entre les valeurs réelles et les valeurs prédites par les modèles.<br></li>
+    #         </ul>
+    #         """, unsafe_allow_html=True)
 
     ######################################################################################################################
-    with tab2:
-    ######## Séparation des différents types de caractéristiques (catégorielles, numériques, cycliques) ################
-        # st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Séparation des différents types de caractéristiques (catégorielles, numériques, cycliques)</h2>", unsafe_allow_html=True)
-        # st.markdown("""
-        #     <style>
-        #     .custom-ul {
-        #         line-height: 1.2;
-        #     }
-        #     </style>
-        #     <style>
-        #     .custom-p {margin-bottom: -0.1em;}
-        #     </style>
-        #     <p class="custom-p">En fonction Les caractéristiques candidates retenues pour construire nos modèles de régression et de classification peuvent être classées en différents types principaux que nous nous sommes attachés à identifier :</p>
-        #     <ul class="custom-ul">
-        #     <li>Caractéristiques <strong><span style="color: orange;">numériques quantitatives</span></strong> représentant une mesure (continues ou discrètes).</li>
-        #     <li>Caractéristiques <strong><span style="color: orange;">catégorielles qualitatives</span></strong> représentant des catégories ou des classes.</li>
-        #     <li>Caractéristiques <strong><span style="color: orange;">cycliques</span></strong> qui se répètent de manière périodique, comme les jours de la semaine, les mois, les heures de la journée, les numéros de semaines liés à une saison.</li>
-        #     </ul>
-        #     """, unsafe_allow_html=True)
+    # with tab2:
+    # ######## Séparation des différents types de caractéristiques (catégorielles, numériques, cycliques) ################
+    #     # st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Séparation des différents types de caractéristiques (catégorielles, numériques, cycliques)</h2>", unsafe_allow_html=True)
+    #     # st.markdown("""
+    #     #     <style>
+    #     #     .custom-ul {
+    #     #         line-height: 1.2;
+    #     #     }
+    #     #     </style>
+    #     #     <style>
+    #     #     .custom-p {margin-bottom: -0.1em;}
+    #     #     </style>
+    #     #     <p class="custom-p">En fonction Les caractéristiques candidates retenues pour construire nos modèles de régression et de classification peuvent être classées en différents types principaux que nous nous sommes attachés à identifier :</p>
+    #     #     <ul class="custom-ul">
+    #     #     <li>Caractéristiques <strong><span style="color: orange;">numériques quantitatives</span></strong> représentant une mesure (continues ou discrètes).</li>
+    #     #     <li>Caractéristiques <strong><span style="color: orange;">catégorielles qualitatives</span></strong> représentant des catégories ou des classes.</li>
+    #     #     <li>Caractéristiques <strong><span style="color: orange;">cycliques</span></strong> qui se répètent de manière périodique, comme les jours de la semaine, les mois, les heures de la journée, les numéros de semaines liés à une saison.</li>
+    #     #     </ul>
+    #     #     """, unsafe_allow_html=True)
             
-        # st.markdown("""
-        #     Une fois les types identifiés, nous avons découpé les jeux de données d’entraînement et de test, contenant les données des différentes caractéristiques, en sous-ensembles liés à chaque type de donnée, afin de pouvoir leur appliquer un traitement différencié (<strong><span style="color: orange;">standardisation</span></strong>  des caractéristiques <strong>numériques et cycliques</strong>, <strong><span style="color: orange;">encodage</span></strong> des caractéristiques <strong>catégorielles</strong>).<br>
-        #     L'objectif de cette démarche est de traiter chaque type de caractéristique de manière optimale pour améliorer la performance du modèle de machine learning, tout en conservant les informations importantes et en réduisant les biais potentiels.<br>
-        #     """, unsafe_allow_html=True)
+    #     # st.markdown("""
+    #     #     Une fois les types identifiés, nous avons découpé les jeux de données d’entraînement et de test, contenant les données des différentes caractéristiques, en sous-ensembles liés à chaque type de donnée, afin de pouvoir leur appliquer un traitement différencié (<strong><span style="color: orange;">standardisation</span></strong>  des caractéristiques <strong>numériques et cycliques</strong>, <strong><span style="color: orange;">encodage</span></strong> des caractéristiques <strong>catégorielles</strong>).<br>
+    #     #     L'objectif de cette démarche est de traiter chaque type de caractéristique de manière optimale pour améliorer la performance du modèle de machine learning, tout en conservant les informations importantes et en réduisant les biais potentiels.<br>
+    #     #     """, unsafe_allow_html=True)
 
-    ######## Transformation des données (standardisation, encodage) ################
-        st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Transformation des données avant modélisation (standardisation, encodage)</h2>", unsafe_allow_html=True)
-        st.markdown("""
-            <style>
-            .custom-ul {
-                line-height: 1.2;
-            }
-            </style>
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <p class="custom-p">Afin que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons :</p>
-            <ul class="custom-ul">
-            <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des variables.</li>
-            <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
-            </ul>
-            """, unsafe_allow_html=True)
+    # ######## Transformation des données (standardisation, encodage) ################
+    #     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Transformation des données avant modélisation (standardisation, encodage)</h2>", unsafe_allow_html=True)
+    #     st.markdown("""
+    #         <style>
+    #         .custom-ul {
+    #             line-height: 1.2;
+    #         }
+    #         </style>
+    #         <style>
+    #         .custom-p {margin-bottom: -0.1em;}
+    #         </style>
+    #         <p class="custom-p">Afin que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons :</p>
+    #         <ul class="custom-ul">
+    #         <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des variables.</li>
+    #         <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
+    #         </ul>
+    #         """, unsafe_allow_html=True)
         
     
     ###########################################################################

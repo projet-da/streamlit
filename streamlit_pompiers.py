@@ -784,9 +784,10 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Malgré</p>
             <ul class="custom-ul">
-            <li>l'enrichissement du jeu de données initial avec <strong> de nouvelles caractéristiques</strong> (ex : <strong>distance de trajet le plus court</strong>, <strong>données météo</strong>),</li> 
-            <li>l'<strong>optimisation des hyperparamètres</strong> des modèles de régression,</li> 
-            <li>l’utilisation de techniques d’<strong>ensemble learning</strong> comme le <strong>bagging</strong>,</li> 
+            <li>l'<strong><span style="color: orange;">enrichissement</span></strong> du jeu de données initial avec <strong> de <span style="color: orange;">nouvelles données<span></strong> 
+            (ex : <strong>distance de trajet le plus court</strong>, <strong>données météo</strong>),</li> 
+            <li>l'<strong><span style="color: orange;">optimisation des hyperparamètres</span></strong> des modèles de régression,</li> 
+            <li>la <strong><span style="color: orange;">combinaison de différents algorithmes de Machine Learning<strong>>/span> (techniques d’<strong>ensemble learning</strong>)</li> 
             </ul>
             <span style="color: red;"><strong>Nous ne sommes pas parvenus à améliorer significativement les résultats des modèles de régression</strong></span>.<br><br>
             Nous avons alors complété notre modélisation par l'utilisation de <strong><span style="color: orange;">modèles de classification</span></strong>, 

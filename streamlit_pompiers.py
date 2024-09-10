@@ -181,7 +181,8 @@ elif page == pages[3]:
         corrélations entre les données</span></strong> disponibles, en particulier avec le <strong><span style="color: orange;">temps d'arrivée</span></strong> sur le lieu d'incident :</p>
         <ul class="custom-ul">
         <li>La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>,</li>
-        <li>Chaque <span style="color: orange;"><strong>donnée</span></strong> est représentée par <span style="color: orange;"><strong>une ligne</strong></span> et <span style="color: orange;"><strong>une colonne</strong></span>, et les <span style="color: orange;"><strong>cellules</strong></span> contiennent l'information de corrélation entre variables.</li>
+        <li>Chaque <span style="color: orange;"><strong>donnée</span></strong> est représentée par <span style="color: orange;"><strong>une ligne</strong></span> et <span style="color: orange;"><strong>une colonne
+        </strong></span>, et les <span style="color: orange;"><strong>cellules</strong></span> contiennent l'<span style="color: orange;"><strong>information de corrélation</strong></span> entre données.</li>
         <li>La <strong><span style="color: orange;">valeur</span></strong> de chaque cellule représente la <span style="color: orange;"><strong> force</strong> </span> et la 
         <span style="color: orange;"><strong>direction</strong> </span> de la corrélation</strong>, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte
         </span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</li></ul>
@@ -554,8 +555,8 @@ elif page == pages[6]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">A partir des données sélectionnées précédemment, nous avons <strong><span style="color: orange;">entrainé et évalué différents modèles de Machine Learning</span></strong> en nous basant 
-        sur les mobilisations de l'<strong><span style="color: orange;">année 2023</span></strong>.</p>
+        <p class="custom-p">A partir des données d'entrée sélectionnées précédemment, nous avons <strong><span style="color: orange;">entrainé et évalué différents modèles de Machine Learning</span></strong> en nous basant 
+        sur les mobilisations des pompiers sur l'<strong><span style="color: orange;">année 2023</span></strong>.</p>
         """, unsafe_allow_html=True)
 
     with st.expander("**Pour que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons standardisé et encodé les données d'entrée**"):    

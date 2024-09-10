@@ -394,8 +394,6 @@ elif page == pages[4]:
             </style>   
             <ul class="custom-ul">
             <h2 style='text-align: left; color: black; font-size: 22px;'>Caractéristiques créées à partir de données du jeu de données initial</h2>
-            <li><strong>Distance_Incident_DeployedFromStation</strong> : Distance à vol d’oiseau en m calculée entre la caserne de départ et le lieu d’incident. Il s’agit de la distance orthodromique entre les 2 points, sur la base de la latitude et de la longitude à l'aide de la formule Haversine.</li>
-            <li><strong>Distance_Incident_IncidentStationGround</strong> : Distance à vol d’oiseau en m entre la caserne de la zone d'incident et le lieu de l'incident.</li>
             <li><strong>DeployedFrom_egalA_IncidentGround_Station</strong> : Permet d’identifier si le camion déployé sur le lieu d’incident suite à l’appel au 999 part d'une caserne différente de celle liée au lieu d’incident.</li>        
             <li><strong>Inner_Outer</strong> : Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
             <li><strong>DepartureOrder</strong>  : Ordre de départ du camion mobilisé sur un incident suite à l’appel au 999</li>

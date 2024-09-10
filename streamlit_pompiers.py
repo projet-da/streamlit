@@ -555,21 +555,21 @@ elif page == pages[6]:
         """, unsafe_allow_html=True)
 
     with st.expander("**Pour illustrer cette corrélation**"):    
-    st.markdown("""
-        <style>
-        .custom-ul {
-            line-height: 1.2;
-        }
-        </style>
-        <style>
-        .custom-p {margin-bottom: -0.1em;}
-        </style>
-        <p class="custom-p">Pour que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons :</p>
-            <ul class="custom-ul">
-            <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des données.</li>
-            <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
-            </ul>
-        """, unsafe_allow_html=True)
+        st.markdown("""
+            <style>
+            .custom-ul {
+                line-height: 1.2;
+            }
+            </style>
+            <style>
+            .custom-p {margin-bottom: -0.1em;}
+            </style>
+            <p class="custom-p">Pour que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons :</p>
+                <ul class="custom-ul">
+                <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des données.</li>
+                <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
+                </ul>
+            """, unsafe_allow_html=True)
 
     tab1, tab2, tab3, tab4 = st.tabs(["Jeux d'entrainement/test", "Standardisation/Encodage", "Modèles de régression", "Modèles de classification"])
     

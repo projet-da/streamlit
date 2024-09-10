@@ -178,10 +178,10 @@ elif page == pages[3]:
         .custom-p {margin-bottom: -0.1em;}
         </style>
         <p class="custom-p">Afin de construire un modèle de Machine Learning pour la prédiction du temps d'arrivée des pompiers sur le lieu d'incident, nous avons analysé les <strong><span style="color: orange;">
-        corrélations entre les différentes données disponibles, en particulier avec le temps d'arrivée sur le lieu d'incident :</p>
+        corrélations entre les données</span></strong> disponibles, en particulier avec le temps d'arrivée sur le lieu d'incident :</p>
         <ul class="custom-ul">
         <li>La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>,</li>
-        <li>Chaque <span style="color: orange;"><strong>donnée est représentée par <span style="color: orange;"><strong>une ligne</strong></span> et <span style="color: orange;"><strong>une colonne</strong></span>, et les <span style="color: orange;"><strong>cellules</strong></span> contiennent l'information de corrélation entre variables.</li>
+        <li>Chaque <span style="color: orange;"><strong>donnée</span></strong> est représentée par <span style="color: orange;"><strong>une ligne</strong></span> et <span style="color: orange;"><strong>une colonne</strong></span>, et les <span style="color: orange;"><strong>cellules</strong></span> contiennent l'information de corrélation entre variables.</li>
         <li>La <strong><span style="color: orange;">valeur</span> de chaque cellule représente la <span style="color: orange;">force</span> et la <span style="color: orange;">direction</span> de la corrélation</strong>, 
         plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</li></ul>
     """, unsafe_allow_html=True)
@@ -353,8 +353,9 @@ elif page == pages[4]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Cette analyse des corrélations entre les données a permis d'identifier les <strong><span style="color: orange;">données ayant potentiellement une influence</span></strong> et à considérer  
-        <strong><span style="color: orange;"> en entrée de modèles de Machine Learning</span></strong>, pour <strong> prédire le temps d'arrivée</strong> des pompiers sur le lieu d'incident :</p>
+        <p class="custom-p">Cette analyse des corrélations entre données a permis d'identifier les <strong><span style="color: orange;">données ayant une influence</span></strong> 
+        potentielle sur le <strong><span style="color: orange;">temps d'arrivée</span></strong> des pompiers sur le lieu d'incident et à <strong><span style="color: orange;">sélectionner</span></strong>   
+        <strong>en entrée de modèles de Machine Learning</strong>, pour <strong>prédire ce temps d'arrivée</strong> :</p>
         """, unsafe_allow_html=True)
 
     with st.expander("**1 - Caractéristiques liées à des données du jeu de données initial**"):

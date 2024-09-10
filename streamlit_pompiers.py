@@ -782,12 +782,12 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Malgré</p>
+            <p class="custom-p"><strong>Malgré</strong></p>
             <ul class="custom-ul">
             <li>l'<strong><span style="color: orange;">enrichissement</span></strong> du jeu de données initial avec <strong> de <span style="color: orange;">nouvelles données<span></strong> 
             (ex : <strong>distance de trajet le plus court</strong>, <strong>données météo</strong>),</li> 
             <li>l'<strong><span style="color: orange;">optimisation des hyperparamètres</span></strong> des modèles de régression,</li> 
-            <li>la <strong><span style="color: orange;">combinaison de différents algorithmes de Machine Learning<strong>>/span> (techniques d’<strong>ensemble learning</strong>)</li> 
+            <li>la <strong><span style="color: orange;">combinaison de différents algorithmes de Machine Learning</strong>/span> (techniques d’<strong>ensemble learning</strong>)</li> 
             </ul>
             <span style="color: red;"><strong>Nous ne sommes pas parvenus à améliorer significativement les résultats des modèles de régression</strong></span>.<br><br>
             Nous avons alors complété notre modélisation par l'utilisation de <strong><span style="color: orange;">modèles de classification</span></strong>, 

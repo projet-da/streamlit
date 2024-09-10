@@ -172,7 +172,7 @@ elif page == pages[3]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Heatmap de Corrélation entre variables</h2>", unsafe_allow_html=True)
     # st.header("Heatmap de Corrélation entre variables") 
     # st.write("Afin de construire un modèle de Machine Learning pour la prédiction des temps d'arrivée des pompiers sur le lieu d'incident, nous avons <span style="color: orange;">heatmap</span></strong>analysé 
-    # les corrélations entre les différentes données </span></strong> disponibles, en particulier avec le temps d'arrivée sur le lieu d'incident :")
+    # les corrélations entre les différentes données </span></strong> disponibles, en particulier avec le <strong><span style="color: orange;">temps d'arrivée</span></strong> sur le lieu d'incident :")
     st.markdown("""
         <style>
         .custom-p {margin-bottom: -0.1em;}
@@ -182,8 +182,9 @@ elif page == pages[3]:
         <ul class="custom-ul">
         <li>La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>,</li>
         <li>Chaque <span style="color: orange;"><strong>donnée</span></strong> est représentée par <span style="color: orange;"><strong>une ligne</strong></span> et <span style="color: orange;"><strong>une colonne</strong></span>, et les <span style="color: orange;"><strong>cellules</strong></span> contiennent l'information de corrélation entre variables.</li>
-        <li>La <strong><span style="color: orange;">valeur</span> de chaque cellule représente la <span style="color: orange;">force</span> et la <span style="color: orange;">direction</span> de la corrélation</strong>, 
-        plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte</span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</li></ul>
+        <li>La <strong><span style="color: orange;">valeur</span></strong> de chaque cellule représente la <span style="color: orange;"><strong> force</strong> </span> et la 
+        <span style="color: orange;"><strong>direction</strong> </span> de la corrélation</strong>, plus elle est <strong><span style="color: orange;">proche de 1 (couleur rouge) plus la corrélation est forte
+        </span></strong>, si la <strong>valeur est négative la corrélation est négative</strong>.</li></ul>
     """, unsafe_allow_html=True)
     
     with st.expander("Détail de la Heatmap de corrélation personnalisée"):
@@ -354,8 +355,8 @@ elif page == pages[4]:
         .custom-p {margin-bottom: -0.1em;}
         </style>
         <p class="custom-p">Cette analyse des corrélations entre données a permis d'identifier les <strong><span style="color: orange;">données ayant une influence</span></strong> 
-        potentielle sur le <strong><span style="color: orange;">temps d'arrivée</span></strong> des pompiers sur le lieu d'incident et à <strong><span style="color: orange;">sélectionner</span></strong>   
-        <strong>en entrée de modèles de Machine Learning</strong>, pour <strong>prédire ce temps d'arrivée</strong> :</p>
+        potentielle sur le <strong><span style="color: orange;">temps d'arrivée</span></strong> des pompiers sur le lieu d'incident, à <strong><span style="color: orange;">considérer en entrée 
+        de modèles de Machine Learning</span></strong> dans l'optique de prédire le temps d'arrivée</strong> :</p>
         """, unsafe_allow_html=True)
 
     with st.expander("**1 - Caractéristiques liées à des données du jeu de données initial**"):
@@ -416,9 +417,9 @@ elif page == pages[4]:
             <ul class="custom-ul">
             <h2 style='text-align: left; color: black; font-size: 22px;'>Caractéristiques liées à des nouvelles données non présentes dans le jeu de données initial et récupérées à partir de sources tierces</h2>
             <li><strong><span style="color: orange;">Coordonnées</span> des 102 casernes du Grand Londres</strong></li>
-            <li><strong>Distance_Incident_DeployedFromStation</strong> : <strong><span style="color: orange;">Distance à vol d'oiseau</span></strong> (en m) entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident. <br>
-            <li><strong>Données OpenStreetMap de représentation des <span style="color: orange;">réseaux routiers et des infrastructures urbaines</span> du Grand Londres</strong></li>
-            <li><strong>Dist_trajet_Incident_DeployedFromStation</strong> : <strong><span style="color: orange;">Distance</span> (en m) de l'<span style="color: orange;">itinéraire routier le plus court</strong></span> entre la caserne de départ et le lieu de l'incident. <br>
+            <li><strong><span style="color: orange;">Distance à vol d'oiseau</span></strong> (en m) <strong>Distance_Incident_DeployedFromStation</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident. <br>
+            <li><strong><span style="color: orange;">Données OpenStreetMap</span> de représentation des <span style="color: orange;">réseaux routiers et des infrastructures urbaines</span> du Grand Londres</strong></li>
+            <li><strong><span style="color: orange;">Distance</span> (en m) <strong>Dist_trajet_Incident_DeployedFromStation</strong> de l'<span style="color: orange;">itinéraire routier le plus court</strong></span> entre la caserne de départ et le lieu de l'incident. <br>
             Ci-dessous un exemple de calcul de distance d’itinéraire routier entre la caserne de départ (Dagenham) et le lieu d’un incident survenu le 03/05/2023 dans le Newham (en bleu la distance à vol d’oiseau - 8655m dans l’exemple, en rouge la distance totale de l’itinéraire - 10068 m dans l’exemple)<br></li>
             """, unsafe_allow_html=True)
    
@@ -437,8 +438,10 @@ elif page == pages[4]:
             }
             </style>
             <ul class="custom-ul">
-            <li><strong>day_temperature,day_sunshine_duration_s,day_precipitation_mm, day_snow_mm, day_nb_precipitation_hours</strong>  : données météo quotidiennes (température moyenne, durée d’ensoleillement, cumul de précipitations en mm, cumul de chute de neige en mm, nombre d’heures de précipitations)</li>
-            <li><strong>hour_temperature,hour_sunshine_duration_s, hour_precipitation_mm, hour_snow_mm</strong>  : données météo quotidiennes (température moyenne, durée d’ensoleillement, cumul de précipitations en mm, cumul de chute de neige en mm, nombre d’heures de précipitations)</li>
+            <li><strong><span style="color: orange;">Données Meteo quotidiennes</span> : day_temperature,day_sunshine_duration_s,day_precipitation_mm, day_snow_mm, day_nb_precipitation_hours</strong>  
+            (température moyenne, durée d’ensoleillement, cumul de précipitations en mm, cumul de chute de neige en mm, nombre d’heures de précipitations)</li>
+            <li><strong><span style="color: orange;">Données Meteo horaires</span> : hour_temperature,hour_sunshine_duration_s, hour_precipitation_mm, hour_snow_mm</strong> 
+            (température moyenne, durée d’ensoleillement, cumul de précipitations en mm, cumul de chute de neige en mm, nombre d’heures de précipitations)</li>
             </ul>
             """, unsafe_allow_html=True)
 
@@ -457,7 +460,8 @@ elif page == pages[5]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Dans le but de <strong>fiabiliser</strong> les données sélectionnées précédemment, nous avons procédé à un <strong>traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles</strong></p>
+        <p class="custom-p">Dans le but de <strong>fiabiliser</strong> les données sélectionnées précédemment, nous avons procédé à un 
+        <strong><span style="color: orange;">traitement des valeurs manquantes et des valeurs aberrantes/extrêmes résiduelles</span></strong></p>
         <ul class="custom-ul">
         <li><strong>Traitement des <span style="color: orange;">valeurs manquantes</span> résiduelles</strong>, par <span style="color: orange;"><strong>suppression</span></strong> ou par <span style="color: orange;"><strong>remplacement</span></strong>.</li>
         <li><strong>Traitement des <span style="color: orange;">valeurs aberrantes et extrêmes</span></strong> dans certaines données, par <span style="color: orange;"><strong>suppression</span></strong> ou <span style="color: orange;"><strong>remplacement</span></strong>.</li>
@@ -473,7 +477,7 @@ elif page == pages[5]:
         st.markdown("""
             <h2 style='text-align: left; color: black; font-size: 22px;'>Gestion des valeurs manquantes</h2>
     
-            Ci-dessous la <strong><span style="color: orange;">répartition des valeurs manquantes</span></strong> du DataFrame initial (en se limitant aux <strong>colonnes comportant des valeurs manquantes</strong>) :
+            Ci-dessous la <strong><span style="color: orange;">répartition des valeurs manquantes</span></strong> du jeu de données initial (en se limitant aux <strong>colonnes comportant des valeurs manquantes</strong>) :
             """, unsafe_allow_html=True)
         
         st.image("images/Heatmap valeurs manquantes.png")
@@ -554,7 +558,7 @@ elif page == pages[6]:
         sur les mobilisations de l'<strong><span style="color: orange;">année 2023</span></strong>.</p>
         """, unsafe_allow_html=True)
 
-    with st.expander("**Pour illustrer cette corrélation**"):    
+    with st.expander("**Pour que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons standardisé et encodé les données d'entrée**"):    
         st.markdown("""
             <style>
             .custom-ul {
@@ -564,14 +568,14 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p">Pour que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons :</p>
-                <ul class="custom-ul">
-                <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des données.</li>
-                <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
-                </ul>
+            <ul class="custom-ul">
+            <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des données.</li>
+            <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
+            </ul>
             """, unsafe_allow_html=True)
 
-    tab1, tab2, tab3, tab4 = st.tabs(["Jeux d'entrainement/test", "Standardisation/Encodage", "Modèles de régression", "Modèles de classification"])
+    # tab1, tab2, tab3, tab4 = st.tabs(["Jeux d'entrainement/test", "Standardisation/Encodage", "Modèles de régression", "Modèles de classification"])
+    tab3, tab4 = st.tabs(["Modèles de régression", "Modèles de classification"])
     
     ###########################################################################
     # with tab1:

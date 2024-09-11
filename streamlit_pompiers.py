@@ -179,9 +179,9 @@ elif page == pages[3]:
         </style>
         <p class="custom-p">On constate une <strong> variation importante des temps d'arrivée</strong> des pompiers sur le lieu d'incident<br>
         Pour identifier les facteurs de variation, nous avons <strong><span style="color: orange;">analysé les corrélations entre les données</span></strong> disponibles, et en particulier avec le 
-        <strong><span style="color: orange;">temps d'arrivée</span></strong> sur le lieu d'incident :</p>
+        <strong><span style="color: orange;">temps d'arrivée</span></strong> sur le lieu d'incident.<br>
+        Sur la <strong><span style="color: orange;">heatmap de corrélation</span></strong> ci-dessous,</p>
         <ul class="custom-ul">
-        <li>La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>,</li>
         <li>Chaque <span style="color: orange;"><strong>donnée</span></strong> est représentée par <span style="color: orange;"><strong>une ligne</strong></span> et <span style="color: orange;"><strong>une colonne
         </strong></span>, et les <span style="color: orange;"><strong>cellules</strong></span> contiennent l'<span style="color: orange;"><strong>information de corrélation</strong></span> entre données.</li>
         <li>La <strong><span style="color: orange;">valeur</span></strong> de chaque cellule représente la <span style="color: orange;"><strong> force</strong> </span> et la 

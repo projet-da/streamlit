@@ -177,8 +177,9 @@ elif page == pages[3]:
         <style>
         .custom-p {margin-bottom: -0.1em;}
         </style>
-        <p class="custom-p">Afin de construire un modèle de Machine Learning pour la prédiction du temps d'arrivée des pompiers sur le lieu d'incident, nous avons <strong><span style="color: orange;">analysé les 
-        corrélations entre les données</span></strong> disponibles, en particulier avec le <strong><span style="color: orange;">temps d'arrivée</span></strong> sur le lieu d'incident :</p>
+        <p class="custom-p">On constate une <strong> variation importante des temps d'arrivée</strong> des pompiers sur le lieu d'incident<br>
+        Pour identifier les facteurs de variation, nous avons <strong><span style="color: orange;">analysé les corrélations entre les données</span></strong> disponibles, et en particulier avec le 
+        <strong><span style="color: orange;">temps d'arrivée</span></strong> sur le lieu d'incident :</p>
         <ul class="custom-ul">
         <li>La <strong><span style="color: orange;">heatmap</span></strong> ci-dessous permet de visualiser les <strong><span style="color: orange;">corrélations entre les différentes données</span></strong>,</li>
         <li>Chaque <span style="color: orange;"><strong>donnée</span></strong> est représentée par <span style="color: orange;"><strong>une ligne</strong></span> et <span style="color: orange;"><strong>une colonne

@@ -1078,7 +1078,7 @@ elif page == pages[8]:
                     - Envoyer un drône pour confirmer l'incident
                 """)
     
-    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Qualité des données saisies</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Qualité des données</h2>", unsafe_allow_html=True)
     #st.write("#### Qualité des données saisies :")
     st.markdown("""      
                 - Valeurs <strong><span style="color:orange;">aberrantes</span></strong> : vitesses > 100 km/h                                        
@@ -1093,20 +1093,22 @@ elif page == pages[8]:
 elif page == pages[9]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Perspectives d'amélioration</h1>", unsafe_allow_html=True)    
     #st.write("### Perspectives d'amélioration")
-    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Automatiser les traitements, via un pipeline</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Automatiser</h2>", unsafe_allow_html=True)
     st.markdown("""
-                - Automatiser la collecte des données sources depuis le site de la LFB (web scrapping)
-                - Automatiser les étapes de préparation des données, d'entrainement du modèle et de prédiction
+                - La collecte des données sources depuis le site de la LFB (web scrapping)
+                - Les étapes de préparation des données, d'entrainement du modèle et de prédiction
+                => pipeline
                 """)    
-    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Enrichir le jeu de données</h2>", unsafe_allow_html=True)
+    #st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Enrichir le jeu de données</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Revoir le calcul d'itinéraire</h2>", unsafe_allow_html=True)
     st.markdown("""
-                - Calculer l'itinéraire en s'affranchissant des sens interdits
-                - Calculer l'itinéraire en temps réel (routes fermées, travaux ...)
+                - S'affranchissant des sens interdits
+                - En temps réel (routes fermées, travaux ...)
                 """)
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Améliorer la Feature Engineering et la Modélisation</h2>", unsafe_allow_html=True)
     st.markdown("""
-                - Essayer d'autres transformations de features que celles déjà tentées (transformations polynomiales, logarithmiques)
-                - Essayer d'autres modèles de Deep Learning 
+                - Avec d'autres transformations de features
+                - Avec d'autres modèles de Deep Learning 
                 """)
 
     

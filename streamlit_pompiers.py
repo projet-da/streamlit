@@ -1082,7 +1082,7 @@ elif page == pages[8]:
     #st.write("#### Qualité des données saisies :")
     st.markdown("""      
                 - Valeurs <strong><span style="color:orange;">aberrantes</span></strong> : vitesses > 100 km/h                                        
-                - Valeurs <strong><span style="color:orange;">extrêmes</span></strong> sont très faibles : vitesses < 4 km/h (vitesse d'un marcheur)                                        
+                - Valeurs <strong><span style="color:orange;">extrêmes</span></strong> très faibles : vitesses < 4 km/h (vitesse d'un marcheur)                                        
                 => erreur de saisie, problème de calcul ...                                                                  
                 """, unsafe_allow_html=True)
  

@@ -695,7 +695,7 @@ elif page == pages[6]:
             </style>
             <p class="custom-p">Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de régression nous avons utilisé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>MAE, MSE, RMSE, R²</strong>.<br><br>
             <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Résultats / Classement des modèles de régression</h4>
-            Ci-dessous le classement (du plus performant au moins performant) des différents modèles de régression entrainés et testés, en fonction du <strong><span style="color: orange;">coefficient de détermination R²</span></strong> :</p>
+            Ci-dessous le classement (du plus performant au moins performant) des différents modèles de régression entrainés et testés, en fonction du <strong><span style="color: orange;">coefficient de détermination R²</span></strong> (entre 0 et 1) :</p>
             """, unsafe_allow_html=True)
     
         col1, col2 = st.columns([1, 10])
@@ -712,7 +712,7 @@ elif page == pages[6]:
             <p class="custom-p"><strong><span style="color: orange;">>>></span></strong>  Le <span style="color: orange;"><strong>modèle de régression le plus performant</strong></span> (avec <strong>le meilleur R²</strong>) est le modèle <strong><span style="color: orange;">XGBRegressor</span></strong>, suivi des modèles DecisionTreeRegressor et RandomForestRegressor.<br>
             Pour le modèle le plus performant, <strong>XGBRegressor</strong>,</p>
             <ul class="custom-ul">
-            <li>le <strong><span style="color: orange;">R²</span> (i.e. coefficient de détermination)</strong> est de <strong><span style="color: orange;">0.66</span></strong>,</li><br>
+            <li>le <strong><span style="color: orange;">R²</span> (i.e. coefficient de détermination)</strong> est de <strong><span style="color: orange;">0.66</span></strong>, ce qui constitue une bonne performance mais pas exceptionnelle</li><br>
             <li>la <strong><span style="color: orange;">MAE</span> (i.e. écart moyen entre les valeurs prédites et réelles de temps d’arrivée)</strong> est de <strong><span style="color: orange;">57,5 secondes</span></strong> pour un <strong>temps d'arrivée moyen de 357 secondes</strong>, soit un <strong><span style="color: orange;">écart moyen d’environ 16%</span> par rapport au temps moyen</strong>, ce qui représente un <strong>écart significatif</strong>, surtout dans un contexte où chaque seconde peut être critique, comme dans les interventions d'urgence.</li>
             </ul>
             """, unsafe_allow_html=True)
@@ -847,9 +847,9 @@ elif page == pages[6]:
             <p class="custom-p"><strong><span style="color: orange;">>>></span></strong> Le <strong>modèle de classification le plus performant</strong> est le modèle <strong><span style="color: orange;">XGBClassifier</span></strong>. Avec :<br></p>
             <ul class="custom-ul">
             <li><strong>Exactitude (Accuracy) : <span style="color: orange;">82.93%</span> </strong> - Cela signifie que le modèle <strong><span style="color: orange;">prédit correctement la classe</span></strong> liée à l'atteinte ou non de l’objectif d’un temps 
-            d'arrivée < 6 min <strong><span style="color: orange;">dans environ 83% des cas</span></strong>.</li><br>
-            <li><strong>Rappel (Recall) : <span style="color: orange;">88.06%</span> </strong> - Une valeur élevée indique que le modèle est <strong><span style="color: orange;">particulièrement bon pour prédire correctement</span> les cas où les camions de pompiers
-            <span style="color: orange;">arrivent en moins de 6 min (classe positive)</span></strong> et <strong>minimise le nombre de Faux Négatifs</strong> (Nb de positifs classés négatifs lors de la prédiction).</li>
+            d'arrivée < 6 min <strong><span style="color: orange;">dans environ 83% des cas</span></strong>, ce qui est une <strong><span style="color: orange;">bonne performance</span></strong>.</li><br>
+            <li><strong>Rappel (Recall) : <span style="color: orange;">88.06%</span></strong> - Cela signifie que <strong><span style="color: orange;">88% des cas</span></strong> où les camions de pompiers <span style="color: orange;">arrivent en moins de 6 min (classe positive)</span></strong> 
+            sont <strong><span style="color: orange;">correctement prédits</span></strong>, ce qui est une <strong><span style="color: orange;">très bonne performance</span></strong>.</li>
             </ul>
             """, unsafe_allow_html=True)
             # <li><strong>Précision : <span style="color: orange;">83.29%</span> </strong> - Cela montre que <strong>parmi les prédictions de classe positive</strong> du modèle, environ <strong>83% sont correctes</strong>.</li>

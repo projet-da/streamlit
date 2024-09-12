@@ -803,7 +803,7 @@ elif page == pages[6]:
             with col2:
                 st.image("images/Distribution des classes.png")
          
-       <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Modèles de classification entraînés</h4>
+        st.markdown("""<h4 style='text-align: left; color: darkblue; font-size: 16px;'>Modèles de classification entraînés</h4>""", unsafe_allow_html=True)
         with st.expander("**Liste des différents modèles de classification entraînés et évalués**"):
             st.markdown("""
                 <style>

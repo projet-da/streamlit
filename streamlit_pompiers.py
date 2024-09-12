@@ -1063,28 +1063,27 @@ elif page == pages[8]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Fausses Alarmes</h2>", unsafe_allow_html=True)
     #st.write("#### Analyse des False Alarms :")
     st.markdown("""
-                - Les Fausses Alarmes représentent près de la moitié des incidents <strong><span style="color:orange;">dont 80% sont des Fausses Alarmes Automatiques (AFA)</span></strong>
+                - <strong>50%<strong> des incidents <strong><span style="color:orange;">dont 80% sont des Fausses Alarmes Automatiques (appareil de détection de fumée)</span></strong>
                 """, unsafe_allow_html=True)
+   # st.markdown("""
+   #             - Les conséquences : 
+   #                 - Sollicitation des pompiers sur des lieux où il n’y a pas d’incidents
+   #                 - Perturbation sur le lieu de l'incident : évacuation ...
+   #                 - En 2023, les AFA représentent un coût de presque 25 millions de £ (sur près de 56 millions de £ en tout)
+   #             """)
     st.markdown("""
-                - Les conséquences : 
-                    - Sollicitation des pompiers sur des lieux où il n’y a pas d’incidents
-                    - Perturbation sur le lieu de l'incident : évacuation ...
-                    - En 2023, les AFA représentent un coût de presque 25 millions de £ (sur près de 56 millions de £ en tout)
-                """)
-    st.markdown("""
-                - Exemples de propositions d'amélioration métier :
-                    - Comprendre la cause de AFA pour les limiter : 
-                        - Mieux former les installateurs d'appareil de détection de fumée
-                        - Contrôler les appareils plus régulièrement
+                - Pistes d'amélioration métier :
+                    - Mieux former les installateurs
+                    - Contrôler les appareils plus régulièrement
                     - Envoyer un drône pour confirmer l'incident
                 """)
     
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Qualité des données saisies</h2>", unsafe_allow_html=True)
     #st.write("#### Qualité des données saisies :")
     st.markdown("""      
-                Certaines valeurs des temps d'arrivée sont <strong><span style="color:orange;">aberrantes</span></strong> : dans plusieurs cas la vitesse correspondante dépasse les 100 km/h, avec un record à 60 000 km/h.                                        
-                A contrario d'autres valeurs <strong><span style="color:orange;">extrêmes</span></strong> sont très faibles : plusieurs cas en dessous de 4 km/h (vitesse d'un marcheur).                                        
-                Il faudrait en comprendre la cause pour les limiter : erreur de saisie, problème de calcul ...                                                                  
+                - Valeurs <strong><span style="color:orange;">aberrantes</span></strong> : vitesses > 100 km/h, avec un record à 60 000 km/h.                                        
+                - Valeurs <strong><span style="color:orange;">extrêmes</span></strong> sont très faibles : plusieurs cas en dessous de 4 km/h (vitesse d'un marcheur).                                        
+                => erreur de saisie, problème de calcul ...                                                                  
                 """, unsafe_allow_html=True)
  
 

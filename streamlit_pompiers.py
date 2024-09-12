@@ -1063,7 +1063,7 @@ elif page == pages[8]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Fausses Alarmes</h2>", unsafe_allow_html=True)
     #st.write("#### Analyse des False Alarms :")
     st.markdown("""
-                - <strong>50%<strong> des incidents <strong><span style="color:orange;">dont 80% sont des Fausses Alarmes Automatiques (appareil de détection de fumée)</span></strong>
+                - 50% des incidents <strong><span style="color:orange;">dont 80% sont des Fausses Alarmes Automatiques (appareil de détection de fumée)</span></strong>
                 """, unsafe_allow_html=True)
    # st.markdown("""
    #             - Les conséquences : 
@@ -1081,8 +1081,8 @@ elif page == pages[8]:
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Qualité des données saisies</h2>", unsafe_allow_html=True)
     #st.write("#### Qualité des données saisies :")
     st.markdown("""      
-                - Valeurs <strong><span style="color:orange;">aberrantes</span></strong> : vitesses > 100 km/h, avec un record à 60 000 km/h.                                        
-                - Valeurs <strong><span style="color:orange;">extrêmes</span></strong> sont très faibles : plusieurs cas en dessous de 4 km/h (vitesse d'un marcheur).                                        
+                - Valeurs <strong><span style="color:orange;">aberrantes</span></strong> : vitesses > 100 km/h                                        
+                - Valeurs <strong><span style="color:orange;">extrêmes</span></strong> sont très faibles : vitesses < 4 km/h (vitesse d'un marcheur)                                        
                 => erreur de saisie, problème de calcul ...                                                                  
                 """, unsafe_allow_html=True)
  
@@ -1093,15 +1093,15 @@ elif page == pages[8]:
 elif page == pages[9]:
     st.markdown("<h1 style='text-align: left; color: orange; font-size: 26px;'>Perspectives d'amélioration</h1>", unsafe_allow_html=True)    
     #st.write("### Perspectives d'amélioration")
-    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Automatiser les traitements</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Automatiser les traitements, via un pipeline</h2>", unsafe_allow_html=True)
     st.markdown("""
                 - Automatiser la collecte des données sources depuis le site de la LFB (web scrapping)
-                - Créer un pipeline enchainant les étapes de préparation des données, d'entrainement du modèle et de prédiction
+                - Automatiser les étapes de préparation des données, d'entrainement du modèle et de prédiction
                 """)    
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Enrichir le jeu de données</h2>", unsafe_allow_html=True)
     st.markdown("""
-                - Utiliser une méthode de calcul d'itinéraire s'affranchissant des sens interdits
-                - Intégrer les ralentissements, routes fermée, travaux en cours et tout obstacle impactant le temps de trajet (ces données sont présentes dans le motif des retards mais pas au moment de la mobilisation)
+                - Calculer l'itinéraire en s'affranchissant des sens interdits
+                - Calculer l'itinéraire en temps réel (routes fermées, travaux ...)
                 """)
     st.markdown("<h2 style='text-align: left; color: black; font-size: 22px;'>Améliorer la Feature Engineering et la Modélisation</h2>", unsafe_allow_html=True)
     st.markdown("""

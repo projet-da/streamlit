@@ -792,7 +792,7 @@ elif page == pages[6]:
             Nous avons alors complété notre modélisation par l'utilisation de <strong><span style="color: orange;">modèles de classification</span></strong>, 
             afin de <strong>prédire</strong> cette fois-ci une <strong><span style="color: orange;">classe binaire</span></strong> qui indique si l'<strong><span style="color: orange;">objectif de temps d’arrivée < 6 min</span></strong>
             <li>est <strong><span style="color: orange;">atteint</strong></span> (classe <strong><span style="color: orange;">1</strong></span>)</li>
-            <li>ou <strong><span style="color: orange;">non atteint</strong></span> (classe <strong><span style="color: orange;">0</strong></span>)</strong></li>,
+            <li>ou <strong><span style="color: orange;">non atteint</strong></span> (classe <strong><span style="color: orange;">0</strong></span>)</strong>,</li>
             </p>
             """, unsafe_allow_html=True)
 
@@ -803,7 +803,8 @@ elif page == pages[6]:
             with col2:
                 st.image("images/Distribution des classes.png")
          
-        with st.expander("**Différents modèles de classification entraînés et évalués**"):
+       <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Modèles de classification entraînés</h4>
+        with st.expander("**Liste des différents modèles de classification entraînés et évalués**"):
             st.markdown("""
                 <style>
                 .custom-p {margin-bottom: -0.1em;}
@@ -822,8 +823,8 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
+            <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Evaluation & Classement des modèles de classification entraînés</h4>
             <p class="custom-p"> Pour <strong>évaluer et comparer la performance</strong> de ces différents modèles de classification nous avons utilisé différentes <strong><span style="color: orange;">métriques</span></strong> : <strong>Exactitude (Accuracy), Rappel (Recall), Précision, F1-Score, AUC-ROC</strong>.<p>
-            <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Résultats / Classement des modèles de classification</h4>
             <p>Ci-dessous le classement (du plus performant au moins performant) des modèles de classification finaux entrainés et testés, en fonction de l'<strong><span style="color: orange;">exactitude (ou accuracy)</span></strong> :</p>
             """, unsafe_allow_html=True)
     
@@ -846,14 +847,16 @@ elif page == pages[6]:
             <p class="custom-p"><strong><span style="color: orange;">>>></span></strong> Le <strong>modèle de classification le plus performant</strong> est le modèle <strong><span style="color: orange;">XGBClassifier</span></strong>. Avec :<br></p>
             <ul class="custom-ul">
             <li><strong>Exactitude (Accuracy) : <span style="color: orange;">82.93%</span> </strong> - Cela signifie que le modèle <strong><span style="color: orange;">prédit correctement la classe</span></strong> liée à l'atteinte ou non de l’objectif d’un temps 
-            d'arrivée < 6 min <strong><span style="color: orange;">dans environ 83% des cas</span></strong>.</li>
+            d'arrivée < 6 min <strong><span style="color: orange;">dans environ 83% des cas</span></strong>.</li><br>
             <li><strong>Rappel (Recall) : <span style="color: orange;">88.06%</span> </strong> - Une valeur élevée indique que le modèle est <strong><span style="color: orange;">particulièrement bon pour prédire correctement</span> les cas où les camions de pompiers
             <span style="color: orange;">arrivent en moins de 6 min (classe positive)</span></strong> et <strong>minimise le nombre de Faux Négatifs</strong> (Nb de positifs classés négatifs lors de la prédiction).</li>
+            </ul>
+            """, unsafe_allow_html=True)
             # <li><strong>Précision : <span style="color: orange;">83.29%</span> </strong> - Cela montre que <strong>parmi les prédictions de classe positive</strong> du modèle, environ <strong>83% sont correctes</strong>.</li>
             # <li><strong>F1 Score : <span style="color: orange;">85.61%</span> </strong> - Cette métrique combinant le Recall et la Precision indique une efficacité globale élevée du modèle, de 85.61%.</li>
             # <li><strong>AUC-ROC : <span style="color: orange;">82.01%</span> </strong> - Cette métrique, qui mesure la capacité du modèle à distinguer entre les classes, est également assez élevée, à 82.01%.</li>
-            </ul>
-            """, unsafe_allow_html=True)
+            # </ul>
+            # """, unsafe_allow_html=True)
     
     
         with st.expander("**Graphe des caractéristiques les plus importantes/influentes**"):

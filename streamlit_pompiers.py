@@ -468,7 +468,7 @@ elif page == pages[5]:
         </ul>
         """, unsafe_allow_html=True)
         
-    tab1, tab2 = st.tabs(["Gestion des valeurs manquantes", "Gestion des valeurs aberrantes/extrêmes"])
+    tab1, tab2 = st.tabs(["**Gestion des valeurs manquantes**", "**Gestion des valeurs aberrantes/extrêmes**"])
     
     ###########################################################################
     ## Gestion des valeurs manquantes
@@ -555,27 +555,27 @@ elif page == pages[6]:
         .custom-p {margin-bottom: -0.1em;}
         </style>
         <p class="custom-p">A partir des données d'entrée sélectionnées précédemment, nous avons <strong><span style="color: orange;">entrainé et évalué différents modèles de Machine Learning</span></strong> en nous basant 
-        sur les mobilisations des pompiers sur l'<strong><span style="color: orange;">année 2023</span></strong>.</p>
+        sur les données des mobilisations des pompiers sur l'<strong><span style="color: orange;">année 2023</span></strong>.</p>
         """, unsafe_allow_html=True)
 
-    with st.expander("**Pour que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons standardisé et encodé les données d'entrée**"):    
-        st.markdown("""
-            <style>
-            .custom-ul {
-                line-height: 1.2;
-            }
-            </style>
-            <style>
-            .custom-p {margin-bottom: -0.1em;}
-            </style>
-            <ul class="custom-ul">
-            <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des données.</li>
-            <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
-            </ul>
-            """, unsafe_allow_html=True)
+    # with st.expander("**Pour que les données d'entrée sélectionnées soient pleinement exploitables par les modèles de Machine Learning, nous avons standardisé et encodé les données d'entrée**"):    
+    #     st.markdown("""
+    #         <style>
+    #         .custom-ul {
+    #             line-height: 1.2;
+    #         }
+    #         </style>
+    #         <style>
+    #         .custom-p {margin-bottom: -0.1em;}
+    #         </style>
+    #         <ul class="custom-ul">
+    #         <li><strong><span style="color: orange;">Standardisé les données numériques </span></strong> pour les mettre sur la même échelle, afin que le modèle ne soit pas biaisé par l'échelle des données.</li>
+    #         <li><strong><span style="color: orange;">Encodé les données catégorielles nominales</span></strong> (ex: nom de la caserne de départ) en données binaires (0 ou 1).<br></li>
+    #         </ul>
+    #         """, unsafe_allow_html=True)
 
     # tab1, tab2, tab3, tab4 = st.tabs(["Jeux d'entrainement/test", "Standardisation/Encodage", "Modèles de régression", "Modèles de classification"])
-    tab3, tab4 = st.tabs(["Modèles de régression", "Modèles de classification"])
+    tab3, tab4 = st.tabs(["**Modèles de régression**", "**Modèles de classification**"])
     
     ###########################################################################
     # with tab1:
@@ -709,67 +709,67 @@ elif page == pages[6]:
             <style>
             .custom-p {margin-bottom: -0.1em;}
             </style>
-            <p class="custom-p"><strong><span style="color: orange;">>>></span></strong>  Le <strong>modèle de régression le plus performant</strong> (avec le meilleur R²) est le modèle <strong><span style="color: orange;">XGBRegressor</span></strong>, suivi des modèles DecisionTreeRegressor et RandomForestRegressor.<br>
+            <p class="custom-p"><strong><span style="color: orange;">>>></span></strong>  Le <span style="color: orange;"><strong>modèle de régression le plus performant</strong></span> (avec <strong>le meilleur R²</strong>) est le modèle <strong><span style="color: orange;">XGBRegressor</span></strong>, suivi des modèles DecisionTreeRegressor et RandomForestRegressor.<br>
             Pour le modèle le plus performant, <strong>XGBRegressor</strong>,</p>
             <ul class="custom-ul">
-            <li>le <strong><span style="color: orange;">R²</span> (i.e. coefficient de détermination)</strong> est de <strong><span style="color: orange;">0.66</span></strong>,</li>
+            <li>le <strong><span style="color: orange;">R²</span> (i.e. coefficient de détermination)</strong> est de <strong><span style="color: orange;">0.66</span></strong>,</li><br>
             <li>la <strong><span style="color: orange;">MAE</span> (i.e. écart moyen entre les valeurs prédites et réelles de temps d’arrivée)</strong> est de <strong><span style="color: orange;">57,5 secondes</span></strong> pour un <strong>temps d'arrivée moyen de 357 secondes</strong>, soit un <strong><span style="color: orange;">écart moyen d’environ 16%</span> par rapport au temps moyen</strong>, ce qui représente un <strong>écart significatif</strong>, surtout dans un contexte où chaque seconde peut être critique, comme dans les interventions d'urgence.</li>
             </ul>
             """, unsafe_allow_html=True)
     
-        with st.expander("**Graphe des résidus (écarts entre valeur prédite et valeur réelle)**"):
-            st.markdown("""
-                <style>
-                .custom-p {margin-bottom: -0.1em;}
-                </style>
-                <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Graphe des résidus (écarts entre valeur prédite et valeur réelle)</h4>
-                <p class="custom-p">Ci-dessous le <strong><span style="color: orange;">graphe des résidus</span></strong> liés au modèle <strong>XGBRegressor</strong>.<br>
-                On constate que les <strong>écarts entre la valeur prédite et la valeur réelle peuvent être très importants</strong>, parfois de quelques centaines de secondes.</p>
-                """, unsafe_allow_html=True)
+        # with st.expander("**Graphe des résidus (écarts entre valeur prédite et valeur réelle)**"):
+        #     st.markdown("""
+        #         <style>
+        #         .custom-p {margin-bottom: -0.1em;}
+        #         </style>
+        #         <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Graphe des résidus (écarts entre valeur prédite et valeur réelle)</h4>
+        #         <p class="custom-p">Ci-dessous le <strong><span style="color: orange;">graphe des résidus</span></strong> liés au modèle <strong>XGBRegressor</strong>.<br>
+        #         On constate que les <strong>écarts entre la valeur prédite et la valeur réelle peuvent être très importants</strong>, parfois de quelques centaines de secondes.</p>
+        #         """, unsafe_allow_html=True)
         
-            col1, col2 = st.columns([1, 10])
-            with col1:
-                st.markdown("")
-            with col2:
-                st.image("images/Graphe des residus XGBoostRegressor.png")
+        #     col1, col2 = st.columns([1, 10])
+        #     with col1:
+        #         st.markdown("")
+        #     with col2:
+        #         st.image("images/Graphe des residus XGBoostRegressor.png")
     
     
-        with st.expander("**Graphe des caractéristiques les plus importantes/influentes**"):
-            st.markdown("""
-                <style>
-                .custom-ul {
-                    line-height: 1.2;
-                }
-                </style>
-                <style>
-                .custom-p {margin-bottom: -0.1em;}
-                </style>
-                <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
-                <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBRegressor</strong>.</p>
-                """, unsafe_allow_html=True)
+        # with st.expander("**Graphe des caractéristiques les plus importantes/influentes**"):
+        #     st.markdown("""
+        #         <style>
+        #         .custom-ul {
+        #             line-height: 1.2;
+        #         }
+        #         </style>
+        #         <style>
+        #         .custom-p {margin-bottom: -0.1em;}
+        #         </style>
+        #         <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
+        #         <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBRegressor</strong>.</p>
+        #         """, unsafe_allow_html=True)
         
-            col1, col2 = st.columns([1, 10])
-            with col1:
-                st.markdown("")
-            with col2:
-                st.image("images/Features Importance XGBoostRegressor.png")
+        #     col1, col2 = st.columns([1, 10])
+        #     with col1:
+        #         st.markdown("")
+        #     with col2:
+        #         st.image("images/Features Importance XGBoostRegressor.png")
         
-            st.markdown("""
-                <style>
-                .custom-ul {
-                    line-height: 1.2;
-                }
-                </style>
-                <style>
-                .custom-p {margin-bottom: -0.1em;}
-                </style>
-                <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
-                <ul class="custom-ul">
-                <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
-                <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
-                <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
-                </ul>
-                """, unsafe_allow_html=True)
+        #     st.markdown("""
+        #         <style>
+        #         .custom-ul {
+        #             line-height: 1.2;
+        #         }
+        #         </style>
+        #         <style>
+        #         .custom-p {margin-bottom: -0.1em;}
+        #         </style>
+        #         <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
+        #         <ul class="custom-ul">
+        #         <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
+        #         <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
+        #         <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
+        #         </ul>
+        #         """, unsafe_allow_html=True)
 
 
     ###########################################################################
@@ -786,21 +786,22 @@ elif page == pages[6]:
             <li>l'<strong><span style="color: orange;">enrichissement</span></strong> du jeu de données initial avec <strong> de <span style="color: orange;">nouvelles données<span></strong> 
             (ex : <strong>distance de trajet le plus court</strong>, <strong>données météo</strong>),</li> 
             <li>l'<strong><span style="color: orange;">optimisation des hyperparamètres</span></strong> des modèles de régression,</li> 
-            <li>la <strong><span style="color: orange;">combinaison de différents algorithmes de Machine Learning</strong>/span> (techniques d’<strong>ensemble learning</strong>)</li> 
+            <li>la <strong><span style="color: orange;">combinaison de différents algorithmes de Machine Learning</strong></span> (techniques d’<strong>ensemble learning</strong>)</li> 
             </ul>
             <span style="color: red;"><strong>Nous ne sommes pas parvenus à améliorer significativement les résultats des modèles de régression</strong></span>.<br><br>
             Nous avons alors complété notre modélisation par l'utilisation de <strong><span style="color: orange;">modèles de classification</span></strong>, 
-            afin de <strong>prédire</strong> cette fois-ci une <strong><span style="color: orange;">classe binaire</span> indiquant si le temps d’arrivée sur un lieu d’incident sera inférieur ou supérieur à 6 min</strong>.<br>
-            La <strong><span style="color: orange;">variable cible</span></strong> est alors une <strong><span style="color: orange;">classe binaire</span> indiquant l'atteinte (classe 1) ou non (classe 0) de l’objectif de temps d’arrivée < 6 min</strong>, 
-             dont la <strong>distribution</strong> sur le jeu de données est la suivante :
+            afin de <strong>prédire</strong> cette fois-ci une <strong><span style="color: orange;">classe binaire</span></strong> qui indique si l'<strong><span style="color: orange;">objectif de temps d’arrivée < 6 min</span></strong>
+            <li>est <strong><span style="color: orange;">atteint</strong></span> (classe <strong><span style="color: orange;">1</strong></span>)</li>
+            <li>ou <strong><span style="color: orange;">non atteint</strong></span> (classe <strong><span style="color: orange;">0</strong></span>)</strong></li>,
             </p>
             """, unsafe_allow_html=True)
-    
-        col1, col2 = st.columns([1, 10])
-        with col1:
-            st.markdown("")
-        with col2:
-            st.image("images/Distribution des classes.png")
+
+        with st.expander("**avec la distribution de valeurs suivantes sur le jeu de données**"):
+            col1, col2 = st.columns([1, 10])
+            with col1:
+                st.markdown("")
+            with col2:
+                st.image("images/Distribution des classes.png")
          
         with st.expander("**Différents modèles de classification entraînés et évalués**"):
             st.markdown("""
@@ -844,11 +845,13 @@ elif page == pages[6]:
             </style>
             <p class="custom-p"><strong><span style="color: orange;">>>></span></strong> Le <strong>modèle de classification le plus performant</strong> est le modèle <strong><span style="color: orange;">XGBClassifier</span></strong>. Avec :<br></p>
             <ul class="custom-ul">
-            <li><strong>Exactitude (Accuracy) : <span style="color: orange;">82.93%</span> </strong> - Cela signifie que le modèle <strong>prédit correctement</strong> la classe liée à l’objectif d’un temps d'arrivée inférieur à 6 min <strong>dans environ 83% des cas</strong>.</li>
-            <li><strong>Rappel (Recall) : <span style="color: orange;">88.06%</span> </strong> - Une valeur élevée indique que le modèle est <strong>particulièrement bon pour prédire correctement les cas où les camions de pompiers arrivent rapidement (classe positive)</strong> et <strong>minimise le nombre de Faux Négatifs</strong> (Nb de positifs classés négatifs lors de la prédiction).</li>
-            <li><strong>Précision : <span style="color: orange;">83.29%</span> </strong> - Cela montre que <strong>parmi les prédictions de classe positive</strong> du modèle, environ <strong>83% sont correctes</strong>.</li>
-            <li><strong>F1 Score : <span style="color: orange;">85.61%</span> </strong> - Cette métrique combinant le Recall et la Precision indique une efficacité globale élevée du modèle, de 85.61%.</li>
-            <li><strong>AUC-ROC : <span style="color: orange;">82.01%</span> </strong> - Cette métrique, qui mesure la capacité du modèle à distinguer entre les classes, est également assez élevée, à 82.01%.</li>
+            <li><strong>Exactitude (Accuracy) : <span style="color: orange;">82.93%</span> </strong> - Cela signifie que le modèle <strong><span style="color: orange;">prédit correctement la classe</span></strong> liée à l'atteinte ou non de l’objectif d’un temps 
+            d'arrivée < 6 min <strong><span style="color: orange;">dans environ 83% des cas</span></strong>.</li>
+            <li><strong>Rappel (Recall) : <span style="color: orange;">88.06%</span> </strong> - Une valeur élevée indique que le modèle est <strong><span style="color: orange;">particulièrement bon pour prédire correctement</span> les cas où les camions de pompiers
+            <span style="color: orange;">arrivent en moins de 6 min (classe positive)</span></strong> et <strong>minimise le nombre de Faux Négatifs</strong> (Nb de positifs classés négatifs lors de la prédiction).</li>
+            # <li><strong>Précision : <span style="color: orange;">83.29%</span> </strong> - Cela montre que <strong>parmi les prédictions de classe positive</strong> du modèle, environ <strong>83% sont correctes</strong>.</li>
+            # <li><strong>F1 Score : <span style="color: orange;">85.61%</span> </strong> - Cette métrique combinant le Recall et la Precision indique une efficacité globale élevée du modèle, de 85.61%.</li>
+            # <li><strong>AUC-ROC : <span style="color: orange;">82.01%</span> </strong> - Cette métrique, qui mesure la capacité du modèle à distinguer entre les classes, est également assez élevée, à 82.01%.</li>
             </ul>
             """, unsafe_allow_html=True)
     

@@ -712,7 +712,8 @@ elif page == pages[6]:
             <p class="custom-p"><strong><span style="color: orange;">>>></span></strong>  Le <span style="color: orange;"><strong>modèle de régression le plus performant</strong></span> (avec <strong>le meilleur R²</strong>) est le modèle <strong><span style="color: orange;">XGBRegressor</span></strong>, suivi des modèles DecisionTreeRegressor et RandomForestRegressor.<br>
             Pour le modèle le plus performant, <strong>XGBRegressor</strong>,</p>
             <ul class="custom-ul">
-            <li>le <strong><span style="color: orange;">R²</span> (i.e. coefficient de détermination)</strong> est de <strong><span style="color: orange;">0.66</span></strong>, ce qui constitue une bonne performance mais pas exceptionnelle</li><br>
+            <li>le <strong><span style="color: orange;">R²</span> (i.e. coefficient de détermination)</strong> est de <strong><span style="color: orange;">0.66</span></strong>, 
+            ce qui est une <strong><span style="color: orange;">performance satisfaisante mais pas exceptionnelle</span></strong></li><br>
             <li>la <strong><span style="color: orange;">MAE</span> (i.e. écart moyen entre les valeurs prédites et réelles de temps d’arrivée)</strong> est de <strong><span style="color: orange;">57,5 secondes</span></strong> pour un <strong>temps d'arrivée moyen de 357 secondes</strong>, soit un <strong><span style="color: orange;">écart moyen d’environ 16%</span> par rapport au temps moyen</strong>, ce qui représente un <strong>écart significatif</strong>, surtout dans un contexte où chaque seconde peut être critique, comme dans les interventions d'urgence.</li>
             </ul>
             """, unsafe_allow_html=True)

@@ -860,42 +860,42 @@ elif page == pages[6]:
             # """, unsafe_allow_html=True)
     
     
-        with st.expander("**Graphe des caractéristiques les plus importantes/influentes**"):
-            st.markdown("""
-                <style>
-                .custom-ul {
-                    line-height: 1.2;
-                }
-                </style>
-                <style>
-                .custom-p {margin-bottom: -0.1em;}
-                </style>
-                <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
-                <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBClassifier</strong>.</p>
-                """, unsafe_allow_html=True)
+        # with st.expander("**Graphe des caractéristiques les plus importantes/influentes**"):
+        #     st.markdown("""
+        #         <style>
+        #         .custom-ul {
+        #             line-height: 1.2;
+        #         }
+        #         </style>
+        #         <style>
+        #         .custom-p {margin-bottom: -0.1em;}
+        #         </style>
+        #         <h4 style='text-align: left; color: darkblue; font-size: 16px;'>Importance des caractéristiques</h4>
+        #         <p class="custom-p">Ci-dessous un graphe visualisant par ordre d'importance décroissante les <strong><span style="color: orange;">caractéristiques les plus influentes</span></strong> dans les prédictions du modèle <strong>XGBClassifier</strong>.</p>
+        #         """, unsafe_allow_html=True)
         
-            col1, col2 = st.columns([1, 10])
-            with col1:
-                st.markdown("")
-            with col2:
-                st.image("images/Features Importance XGBoostClassifier.png")
+        #     col1, col2 = st.columns([1, 10])
+        #     with col1:
+        #         st.markdown("")
+        #     with col2:
+        #         st.image("images/Features Importance XGBoostClassifier.png")
         
-            st.markdown("""
-                <style>
-                .custom-ul {
-                    line-height: 1.2;
-                }
-                </style>
-                <style>
-                .custom-p {margin-bottom: -0.1em;}
-                </style>
-                <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
-                <ul class="custom-ul">
-                <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
-                <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
-                <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
-                </ul>
-                """, unsafe_allow_html=True)
+        #     st.markdown("""
+        #         <style>
+        #         .custom-ul {
+        #             line-height: 1.2;
+        #         }
+        #         </style>
+        #         <style>
+        #         .custom-p {margin-bottom: -0.1em;}
+        #         </style>
+        #         <p class="custom-p">Sans surprise, on retrouve en tête les 3 caractéristiques suivantes :</p>
+        #         <ul class="custom-ul">
+        #         <li><strong><span style="color: orange;">Dist_trajet_Incident_DeployedFromStation</span></strong> : <strong>Distance en m de l'itinéraire le plus court</strong> entre la caserne de départ (mobilisée suite à l'appel au 999) et le lieu de l'incident./li>      
+        #         <li><strong><span style="color: orange;">DeployedFrom_egalA_IncidentGround_Station</span></strong> : Permet d’identifier <strong>si le camion déployé</strong> sur le lieu d’incident suite à l’appel au 999 <strong>part d'une caserne différente de celle liée au lieu d’incident</strong>.</li>  
+        #         <li><strong><span style="color: orange;">Inner_Outer</span></strong> : <strong>Situation de l’incident dans un arrondissement du centre ou en périphérie de Londres</strong>. Permet d'identifier si le district (borough) du lieu d'incident fait partie de l'Inner London ou de l'Outer London.</li>
+        #         </ul>
+        #         """, unsafe_allow_html=True)
 
 
 ##############################################################

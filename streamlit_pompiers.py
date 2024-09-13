@@ -907,14 +907,14 @@ elif page == pages[7]:
 
     X_sim_all=pd.read_csv('./simulation/simulation.csv',sep=';')
  
-    tab1, tab2, tab3, tab4, tab5, tab5bis = st.tabs(["Etape 1", "Etape 2", "Etape 3","Etape 4","Etape 5","Etape 5 bis"])
+    tab1, tab2, tab3, tab4, tab5, tab5bis, tab6 = st.tabs(["Etape 1", "Etape 2", "Etape 3","Etape 4","Etape 5","Etape 5 bis","Etape 6"])
 
     with tab1:
         st.image("images/soho2.png")
 
     with tab2:        
         #st.audio("sounds/fire.mp3", format="audio/mpeg", autoplay=True)
-        st.audio("sounds/fire.mp3", format="audio/mpeg")
+        st.audio("sounds/fire2.mp3", format="audio/mpeg")
         st.image("images/bm4.png")
 
     with tab3:
@@ -1059,6 +1059,13 @@ elif page == pages[7]:
             'Régression':res_reg
              })
         st.dataframe(df_res_all.style.apply(color_row, axis=1),hide_index=True)
+
+    with tab6:        
+        st.audio("sounds/camion2.mp3", format="audio/mpeg")
+        st.write("") 
+        st.write("") 
+        st.image("images/parcours.png")
+
 
 
 ##############################################################
